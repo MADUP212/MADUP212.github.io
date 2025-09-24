@@ -2,7 +2,7 @@
 layout: home
 ---
 
-# Une citation de Bossuet : 
+#Une citation de Bossuet : 
 
 <div style="text-align: center; margin-bottom: 2em;">
   <img src="/assets/bossuet_photo.jpg" alt="Photo de Jacques-Bénigne Bossuet" style="width: 200px; border-radius: 50%;">
