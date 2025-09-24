@@ -1,13 +1,10 @@
-# Informations sur le site
 title: M.A.S. Dupuis
 author: Marc-Antoine Dupuis
 description: >-
   Étudiant en science politique à l'Université Laval
 
-# Thème utilisé
 theme: minima
 
-# Section spéciale pour les liens sociaux du thème Minima
 minima:
   social_links:
     - platform: github
