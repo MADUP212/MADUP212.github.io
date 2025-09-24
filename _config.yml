@@ -1,4 +1,11 @@
+# Informations sur le site
+title: Portfolio
+author: Marc-Antoine Dupuis  
+description: >- # Une description pour les moteurs de recherche.
+  Étudiant en science politique à l'Université Laval 
+
+# Liens sociaux (facultatif, apparaîtra dans le pied de page)
+github_username: MADUP212
+# linkedin_username: mdupuis212
+
 theme: minima
-title: Mon Nouveau Site
-author: MADUP212
-description: "Bienvenue sur mon site personnel construit avec le thème Minima."
