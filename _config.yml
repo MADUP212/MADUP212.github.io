@@ -1,11 +1,17 @@
 # Informations sur le site
 title: M.A.S. Dupuis
-author: Marc-Antoine Dupuis  
-description: >- # Une description pour les moteurs de recherche.
-  Étudiant en science politique à l'Université Laval 
+author: Marc-Antoine Dupuis
+description: >-
+  Étudiant en science politique à l'Université Laval
 
-# Liens sociaux (facultatif, apparaîtra dans le pied de page)
-github_username: MADUP212
-# linkedin_username: mdupuis212
-
+# Thème utilisé
 theme: minima
+
+# Section spéciale pour les liens sociaux du thème Minima
+minima:
+  social_links:
+    - platform: github
+      user_url: "https://github.com/MADUP212"
+      
+    - platform: linkedin
+      user_url: "https://www.linkedin.com/in/mdupuis212"
