@@ -1,2 +1,4 @@
-gem "minima"
-$ bundle
+theme: minima
+title: Mon Nouveau Site
+author: MADUP212
+description: "Bienvenue sur mon site personnel construit avec le thème Minima."
