@@ -3,7 +3,7 @@ layout: home
 ---
 
 <div style="text-align: right; margin-bottom: 2em;">
-  <img src="/assets/bossuet_photo.jpg" alt="Photo de Jacques-Bénigne Bossuet" style="width: 200px; border-radius: 50%;">
+  <img src="/assets/bossuet_photo.jpg" alt="Photo de Jacques-Bénigne Bossuet" style="width: 100px; border-radius: 50%;">
 </div>
 
 <div style="max-width: 60%; margin-left: auto; margin-right: 0; text-align: right;">
