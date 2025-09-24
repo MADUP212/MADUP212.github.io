@@ -1,6 +1,6 @@
 ---
 layout: page
-title: À Propos
+title: Contact
 ---
 
 <hr>
