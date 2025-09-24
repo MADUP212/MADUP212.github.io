@@ -5,9 +5,6 @@ description: >-
 
 theme: minima
 
-minima:
-  social_links:
-    - platform: github
-      url: "https://github.com/MADUP212"
-    - platform: linkedin
-      url: "https://www.linkedin.com/in/mdupuis212"
+# Réseaux sociaux compatibles Minima 2.x
+github_username: MADUP212
+linkedin_username: mdupuis212
