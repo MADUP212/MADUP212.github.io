@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord AGILE - Synthèse en Science Politique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A dashboard-style SPA. The main view features a top navigation bar (timeline of sprints), a key progress chart (word count burndown), and key metrics. Clicking a sprint on the timeline dynamically loads its details (objectives, interactive task checklist) into a content area below. This structure was chosen to provide a quick overview of the entire project while allowing the user to drill down into specific work periods (sprints) without leaving the page, reflecting the iterative and focused nature of the AGILE methodology. -->
+    <!-- Visualization & Content Choices: Report Info: 4-month, 8-sprint plan with word count goals -> Goal: Show progress over time -> Viz: Line Chart (Chart.js Canvas) to visualize word count accumulation against the target. Interaction: Hover tooltips. Justification: A line chart is the most intuitive way to represent progress towards a quantitative goal over time. | Report Info: Sprint tasks -> Goal: Track completion -> Presentation: Interactive HTML checklist. Interaction: Clicking checkboxes updates a main progress bar. Justification: Provides tangible, immediate feedback on progress, which is motivating. | Report Info: Phases & Sprints -> Goal: Navigation -> Presentation: Segmented horizontal bar (HTML/CSS). Interaction: Click to load details. Justification: Visually represents the project's timeline and serves as the primary navigation, making the plan's structure clear. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfbf7;
+            color: #4a4a4a;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 40vh;
+            max-height: 400px;
+        }
+        .nav-sprint.active {
+            background-color: #a38b78;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .task-checkbox:checked + label .checkbox-icon {
+            background-color: #a38b78;
+            border-color: #a38b78;
+        }
+        .task-checkbox:checked + label .checkbox-icon svg {
+            display: block;
+        }
+        .task-checkbox:checked + label span {
+            text-decoration: line-through;
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="container mx-auto p-4 sm:p-6 md:p-8">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-[#6b5b4c]">Plan de Rédaction AGILE</h1>
+            <p class="text-lg text-gray-600 mt-2">Synthèse en Science Politique (15 000 - 18 000 mots)</p>
+        </header>
+
+        <main>
+            <section id="dashboard" class="mb-8 p-6 bg-white rounded-xl shadow-md">
+                <h2 class="text-xl font-bold text-[#6b5b4c] mb-4">Progression Globale</h2>
+                <div class="w-full bg-gray-200 rounded-full h-4 mb-4">
+                    <div id="progressBar" class="bg-[#a38b78] h-4 rounded-full transition-all duration-500" style="width: 0%"></div>
+                </div>
+                 <div id="progressText" class="text-right font-semibold text-gray-700">0% des tâches complétées</div>
+            </section>
+            
+            <section id="timeline-nav" class="mb-8">
+                <h2 class="text-xl font-bold text-center text-[#6b5b4c] mb-4">Chronologie du Projet (4 Mois)</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-2">
+                </div>
+            </section>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div id="sprint-details" class="lg:col-span-2 p-6 bg-white rounded-xl shadow-md min-h-[400px]">
+                    <p class="text-center text-gray-500 pt-16">Sélectionnez un sprint dans la chronologie pour voir les détails.</p>
+                </div>
+
+                <div class="p-6 bg-white rounded-xl shadow-md">
+                    <h2 class="text-xl font-bold text-[#6b5b4c] mb-4 text-center">Progression des Mots</h2>
+                    <div class="chart-container">
+                        <canvas id="wordCountChart"></canvas>
+                    </div>
+                     <p class="text-xs text-center text-gray-500 mt-2">Visualisation de l'objectif d'écriture cumulé sur 16 semaines.</p>
+                </div>
+            </div>
+
+            <section id="agile-principles" class="mt-8 p-6 bg-white rounded-xl shadow-md">
+                <h2 class="text-xl font-bold text-[#6b5b4c] mb-4">Principes AGILE Appliqués</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+                    <div class="p-4 bg-amber-50 rounded-lg">
+                        <h3 class="font-bold text-amber-800">Product Backlog</h3>
+                        <p class="text-amber-700">La liste complète de toutes les sections et tâches de votre synthèse, décomposée pour être gérable.</p>
+                    </div>
+                    <div class="p-4 bg-lime-50 rounded-lg">
+                        <h3 class="font-bold text-lime-800">Sprints</h3>
+                        <p class="text-lime-700">Périodes de travail de 2 semaines avec un objectif clair, aboutissant à une partie concrète de votre travail.</p>
+                    </div>
+                    <div class="p-4 bg-sky-50 rounded-lg">
+                        <h3 class="font-bold text-sky-800">Sprint Review</h3>
+                        <p class="text-sky-700">Rencontre bi-hebdomadaire avec votre direction pour présenter les avancées et obtenir des retours précieux.</p>
+                    </div>
+                    <div class="p-4 bg-violet-50 rounded-lg">
+                        <h3 class="font-bold text-violet-800">Sprint Retrospective</h3>
+                        <p class="text-violet-700">Réflexion personnelle après chaque sprint pour optimiser votre méthode de travail pour la suite.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+<script>
+const sprintData = [
+    {
+        id: 1,
+        phase: 1,
+        title: "Fondation et Planification",
+        weeks: "1-2",
+        objective: "Finaliser la structure de la synthèse et créer un 'backlog' détaillé de toutes les tâches à accomplir.",
+        tasks: [
+            "Décomposer chaque grand chapitre en sous-sections et tâches.",
+            "Consolider la bibliographie préliminaire (identifier 5-10 sources clés/section).",
+            "Rédiger une V1 détaillée du cadre théorique et de la méthodologie.",
+            "Mettre en place les outils de travail (Zotero, Word/Scrivener, etc.)."
+        ],
+        review: "Valider le plan détaillé et la méthodologie avec la direction de recherche.",
+        wordGoal: 0,
+        cumulativeWords: 0
+    },
+    {
+        id: 2,
+        phase: 1,
+        title: "Revue de Littérature",
+        weeks: "3-4",
+        objective: "Produire une première ébauche complète de la revue de littérature.",
+        tasks: [
+            "Finaliser la lecture des sources essentielles pour la section.",
+            "Écrire l'ébauche de la revue, en se concentrant sur la complétude.",
+            "Intégrer les citations et références au fur et à mesure."
+        ],
+        review: "Envoyer l'ébauche pour commentaires sur la structure et la solidité des arguments.",
+        wordGoal: 3000,
+        cumulativeWords: 3000
+    },
+    {
+        id: 3,
+        phase: 2,
+        title: "Chapitre d'Analyse 1",
+        weeks: "5-6",
+        objective: "Rédiger une ébauche complète du premier chapitre analytique.",
+        tasks: [
+            "Organiser et analyser les données/sources spécifiques à ce chapitre.",
+            "Écrire l'argumentaire principal du chapitre avec preuves et analyses.",
+            "Faire le lien avec le cadre théorique et la revue de littérature."
+        ],
+        review: "Discuter de la clarté de l'argument et de la pertinence de l'analyse.",
+        wordGoal: 4000,
+        cumulativeWords: 7000
+    },
+    {
+        id: 4,
+        phase: 2,
+        title: "Chapitre d'Analyse 2",
+        weeks: "7-8",
+        objective: "Rédiger une ébauche complète du deuxième chapitre analytique.",
+        tasks: [
+            "Traiter le matériel de recherche pour ce second volet.",
+            "Construire l'argumentation de ce chapitre.",
+            "Assurer la transition et la cohérence avec le chapitre précédent."
+        ],
+        review: "Obtenir des retours sur la force de l'argumentation globale.",
+        wordGoal: 4000,
+        cumulativeWords: 11000
+    },
+    {
+        id: 5,
+        phase: 3,
+        title: "Dernier Chapitre & Conclusion",
+        weeks: "9-10",
+        objective: "Compléter le contenu avec le dernier chapitre d'analyse et une V1 de la conclusion.",
+        tasks: [
+            "Écrire l'ébauche du dernier chapitre analytique ou sections restantes.",
+            "Rédiger une V1 de la conclusion (résumé, réponse, limites, pistes futures)."
+        ],
+        review: "Présenter l'ensemble pour une vision globale et discuter des ajustements.",
+        wordGoal: 4000,
+        cumulativeWords: 15000
+    },
+    {
+        id: 6,
+        phase: 3,
+        title: "Introduction & 1ère Révision",
+        weeks: "11-12",
+        objective: "Rédiger une introduction percutante et effectuer une première passe de révision complète.",
+        tasks: [
+            "Rédiger l'introduction (accroche, problématique, structure).",
+            "Lire l'intégralité pour vérifier cohérence, fluidité et logique.",
+            "Commencer à intégrer les commentaires précédents de la direction."
+        ],
+        review: "Soumettre la version quasi complète pour des commentaires finaux sur le fond.",
+        wordGoal: 1500,
+        cumulativeWords: 16500
+    },
+    {
+        id: 7,
+        phase: 4,
+        title: "Révision & Mise en Forme",
+        weeks: "13-14",
+        objective: "Transformer l'ébauche en un manuscrit propre et bien formaté.",
+        tasks: [
+            "Intégrer les derniers commentaires de la direction.",
+            "Appliquer rigoureusement les normes de présentation de l'Université.",
+            "Vérifier chaque entrée de la bibliographie.",
+            "Faire une lecture attentive pour corriger coquilles et grammaire."
+        ],
+        review: "Aucune revue formelle, focus sur le polissage.",
+        wordGoal: 0,
+        cumulativeWords: 16500
+    },
+    {
+        id: 8,
+        phase: 4,
+        title: "Relecture Finale & Tampon",
+        weeks: "15-16",
+        objective: "Effectuer les dernières vérifications et se laisser une marge de sécurité avant le dépôt.",
+        tasks: [
+            "Faire relire le travail par une personne de confiance (regard neuf).",
+            "Imprimer une version pour une dernière relecture sur papier.",
+            "Générer le PDF final et vérifier les exigences administratives.",
+            "Utiliser la marge de sécurité pour les imprévus."
+        ],
+        review: "Objectif Final : Dépôt de la synthèse.",
+        wordGoal: 0,
+        cumulativeWords: 16500
+    }
+];
+
+const taskStatus = {};
+const totalTasks = sprintData.reduce((acc, sprint) => acc + sprint.tasks.length, 0);
+
+document.addEventListener('DOMContentLoaded', () => {
+    const timelineNav = document.querySelector('#timeline-nav .grid');
+    const sprintDetailsContainer = document.getElementById('sprint-details');
+    let activeSprintButton = null;
+
+    sprintData.forEach(sprint => {
+        const button = document.createElement('button');
+        button.className = `nav-sprint text-sm p-2 rounded-lg transition-all duration-300 shadow hover:bg-amber-100`;
+        button.innerHTML = `<span class="font-bold">Sprint ${sprint.id}</span><br><span class="text-xs">Sem. ${sprint.weeks}</span>`;
+        button.dataset.sprintId = sprint.id;
+
+        button.addEventListener('click', () => {
+            if (activeSprintButton) {
+                activeSprintButton.classList.remove('active');
+            }
+            button.classList.add('active');
+            activeSprintButton = button;
+            renderSprintDetails(sprint.id);
+        });
+        timelineNav.appendChild(button);
+    });
+
+    function renderSprintDetails(sprintId) {
+        const sprint = sprintData.find(s => s.id == sprintId);
+        if (!sprint) return;
+
+        let tasksHtml = sprint.tasks.map((task, index) => {
+            const taskId = `s${sprintId}-t${index}`;
+            const isChecked = taskStatus[taskId] ? 'checked' : '';
+            return `
+                <div class="flex items-start py-2">
+                    <input type="checkbox" id="${taskId}" class="task-checkbox hidden" data-task-id="${taskId}" ${isChecked}>
+                    <label for="${taskId}" class="flex items-start cursor-pointer w-full">
+                        <span class="checkbox-icon inline-flex items-center justify-center w-5 h-5 mr-3 border-2 border-gray-300 rounded-md transition-all duration-200 flex-shrink-0 mt-1">
+                            <svg class="hidden w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </span>
+                        <span class="flex-1">${task}</span>
+                    </label>
+                </div>
+            `;
+        }).join('');
+
+        sprintDetailsContainer.innerHTML = `
+            <div class="flex justify-between items-center mb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-[#6b5b4c]">Sprint ${sprint.id}: ${sprint.title}</h2>
+                    <p class="text-sm text-gray-500">Phase ${sprint.phase} | Semaines ${sprint.weeks}</p>
+                </div>
+                ${sprint.wordGoal > 0 ? `<div class="text-right"><div class="font-bold text-lg text-[#a38b78]">+${sprint.wordGoal.toLocaleString('fr-FR')} mots</div><div class="text-xs text-gray-500">Objectif</div></div>` : ''}
+            </div>
+
+            <div class="mb-6 p-4 bg-amber-50 border-l-4 border-amber-400 text-amber-800 rounded-r-lg">
+                <h3 class="font-bold">Objectif du Sprint</h3>
+                <p>${sprint.objective}</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-lg mb-2 text-gray-700">Liste des Tâches</h3>
+                <div id="taskList">${tasksHtml}</div>
+            </div>
+
+            <div class="mt-6 p-4 bg-sky-50 border-l-4 border-sky-400 text-sky-800 rounded-r-lg">
+                <h3 class="font-bold">Revue de Sprint</h3>
+                <p>${sprint.review}</p>
+            </div>
+        `;
+        
+        document.querySelectorAll('.task-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', (e) => {
+                const taskId = e.target.dataset.taskId;
+                taskStatus[taskId] = e.target.checked;
+                updateProgress();
+            });
+        });
+    }
+
+    function updateProgress() {
+        const completedTasks = Object.values(taskStatus).filter(Boolean).length;
+        const progress = totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
+        
+        const progressBar = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
+        
+        progressBar.style.width = `${progress}%`;
+        progressText.textContent = `${Math.round(progress)}% des tâches complétées`;
+    }
+
+    function initChart() {
+        const ctx = document.getElementById('wordCountChart').getContext('2d');
+        const labels = Array.from({ length: 8 }, (_, i) => `Fin S${i + 1}`);
+        const data = sprintData.map(s => s.cumulativeWords);
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Mots cumulés (objectif)',
+                    data: data,
+                    borderColor: '#a38b78',
+                    backgroundColor: 'rgba(163, 139, 120, 0.1)',
+                    fill: true,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Nombre de mots'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Sprints (périodes de 2 semaines)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += context.parsed.y.toLocaleString('fr-FR') + ' mots';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+    
+    initChart();
+});
+</script>
+</body>
+</html>
+
+
