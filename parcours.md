@@ -3,6 +3,8 @@ layout: page
 title: Parcours académique
 ---
 
+[//]: # (Page simple de présentation académique)
+
 * **Maîtrise ès arts (M.A.) en Science politique – Politique internationale** Université Laval | Québec (QC), Canada  
     *Septembre 2025 - Avril 2027*
 
