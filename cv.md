@@ -3,6 +3,8 @@ layout: page
 title: Expérience Professionnelle
 ---
 
+[//]: # (Page simple avec expérience professionnelle)
+
 ### Administrateur des ressources humaines (Réserviste)
 *Forces armées canadiennes | Régiment de la Chaudière, Lévis (QC)* *Mars 2021 – Présent*
 * **Grade** : Caporal
