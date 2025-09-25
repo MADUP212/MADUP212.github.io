@@ -1,9 +1,9 @@
-[//]: # (Titre, Auteur, Description)
+[//]: # (Titre, Auteur laissé vide, Description)
 
 title: M.A.S. Dupuis
-author: Marc-Antoine Dupuis
+author: 
 description: >-
-  Étudiant en science politique à l'Université Laval
+  Étudiant à la maîtrise en science politique à l'Université Laval, réserviste ARH dans les FAC. 
 
 [//]: # (Thème du site web)
 theme: minima
