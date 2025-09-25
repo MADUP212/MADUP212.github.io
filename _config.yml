@@ -1,13 +1,18 @@
+[//]: # (Titre, Auteur, Description)
+
 title: M.A.S. Dupuis
 author: Marc-Antoine Dupuis
 description: >-
   Étudiant en science politique à l'Université Laval
 
+[//]: # (Thème du site web)
 theme: minima
 
+[//]: # (Lien pour les réseaux sociaux en bas de page) 
 github_username: MADUP212
 linkedin_username: mdupuis212
 
+[//]: # (Sections) 
 header_pages:
   - parcours.md
   - cv.md
