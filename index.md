@@ -1,8 +1,7 @@
 ---
 layout: home
+title: Présentation
 ---
-
-## Présentation
 
 <div style="text-align: right; margin-bottom: 2em;">
   <img src="/assets/bossuet_photo.jpg" alt="Photo de Jacques-Bénigne Bossuet" style="width: 100px; border-radius: 50%;">
