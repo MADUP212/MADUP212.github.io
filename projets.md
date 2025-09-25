@@ -3,4 +3,5 @@ layout: home
 title: Projets
 ---
 
-- [Calendrier Agile (4 mois)](projets/Calendrier_Agile_4MOIS.html)
+<a href="Calendrier_Agile.html">Calendrier Agile 4 MoisE</a>
+
