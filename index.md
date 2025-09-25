@@ -3,6 +3,8 @@ layout: home
 title: Présentation
 ---
 
+[//]: # (Citation de Bossuet et son portrait)
+
 <div style="text-align: right; margin-bottom: 2em;">
   <img src="/assets/bossuet_photo.jpg" alt="Photo de Jacques-Bénigne Bossuet" style="width: 100px; border-radius: 50%;">
 </div>
@@ -16,9 +18,13 @@ title: Présentation
 
 <br>
 
+[//]: # (Télécharger CV mis à jour le 25 septembre 2025)
+
  <a href="assets/CV_Marc_Antoine_Dupuis.pdf" target="_blank" class="btn">
   Pour télécharger mon CV
 </a>
+
+[//]: # (Présentation)
 
 Je ne suis pas très bon en matière de présentation. J'ai donc demandé à Gemini : « En te basant sur mon site internet, fais-moi une présentation d'environ 200 mots https://www.masdupuis.com/ » (Prompt soumis à Gemini, Google, 25 septembre 2025.)
 
