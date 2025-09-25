@@ -2,6 +2,10 @@
 layout: home
 ---
 
+Je suis étudiant en science politique à l'Université Laval, et réserviste dans les Forces armées canadiennes. 
+Actuellement, je travaille sur les stratégies de politique étrangère en Pologne et j'apprends à coder en LaTex et 
+en R. 
+
 <div style="text-align: right; margin-bottom: 2em;">
   <img src="/assets/bossuet_photo.jpg" alt="Photo de Jacques-Bénigne Bossuet" style="width: 100px; border-radius: 50%;">
 </div>
