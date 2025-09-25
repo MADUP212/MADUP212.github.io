@@ -5,17 +5,12 @@ description: >-
 
 theme: minima
 
-# Réseaux sociaux compatibles Minima 2.x
 github_username: MADUP212
 linkedin_username: mdupuis212
 
-navigation:
-  - title: Parcours académique
-    url: /parcours
-  - title: CV
-    url: /cv
-  - title: Contact
-    url: /contact
-  - title: À Propos
-    url: /about
+header_pages:
+  - parcours.md
+  - cv.md
+  - contact.md
+  - about.md
 
