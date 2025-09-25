@@ -16,7 +16,7 @@ title: Présentation
 
 <br>
 
-Je n'aime pas me présenter. J'ai donc demandé à Gemini : « En te basant sur mon site internet, fais-moi une présentation d'environ 200 mots https://www.masdupuis.com/ » (Prompt soumis à Gemini, Google, 25 septembre 2025.)
+Je ne suis pas très bon en matière de présentation. J'ai donc demandé à Gemini : « En te basant sur mon site internet, fais-moi une présentation d'environ 200 mots https://www.masdupuis.com/ » (Prompt soumis à Gemini, Google, 25 septembre 2025.)
 
 Marc-Antoine S. Dupuis est un étudiant à la maîtrise en science politique à l’Université Laval, où il se spécialise en politique internationale. Son parcours académique, débuté à l'Université d'Ottawa et complété par un baccalauréat de l'UQAM, témoigne d'une solide fondation en politique comparée et en sociologie politique. Curieux et engagé, il a enrichi sa formation par des expériences internationales, notamment une participation au modèle OTAN à Howard University et à l'Université sous les Baobabs en Côte d'Ivoire.
 
