@@ -16,8 +16,8 @@ title: Présentation
 
 <br>
 
-<a href="assets/CV_Marc_Antoine_Dupuis.pdf" target="_blank" class="btn">
-  Télécharger le CV
+ <a href="assets/CV_Marc_Antoine_Dupuis.pdf" target="_blank" class="btn">
+  Pour télécharger mon CV
 </a>
 
 Je ne suis pas très bon en matière de présentation. J'ai donc demandé à Gemini : « En te basant sur mon site internet, fais-moi une présentation d'environ 200 mots https://www.masdupuis.com/ » (Prompt soumis à Gemini, Google, 25 septembre 2025.)
