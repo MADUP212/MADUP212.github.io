@@ -15,7 +15,7 @@ title: Expérience Professionnelle
     * Garde Cérémoniale (Ottawa, 2023)
     * Qualification militaire de base (Saint-Hubert, 2021)
 
----
+
 
 ### Agent des ventes et communications
 *Acrament’Bon | Québec (QC)* *Août 2025 – Présent*
@@ -23,7 +23,7 @@ title: Expérience Professionnelle
 * Collaborer aux stratégies marketing, à la création de visuels et à la communication avec la clientèle.
 * Contribuer activement à la production, à l'organisation de dégustations et à la présence sur les marchés.
 
----
+
 
 ### Agent de bureau
 *Ministère de l'Immigration, de la Francisation et de l'Intégration | Montréal (QC)* *Février 2024 – Avril 2025*
