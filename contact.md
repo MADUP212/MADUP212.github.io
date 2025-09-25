@@ -5,6 +5,8 @@ title: Contact
 
 <hr>
 
+
+[//]: # (Code pour formulaire de contact.)
 ## Formulaire de Contact
 
 <form
