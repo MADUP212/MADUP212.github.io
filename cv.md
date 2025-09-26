@@ -7,16 +7,17 @@ title: Expérience Professionnelle
     <ul class="space-y-8">
         <!-- Chaque expérience est un item de la liste principale (li) -->
         <li>
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <!-- Partie Gauche: Titre et Entreprise -->
-                <div>
-                    <p class="text-lg font-bold">Administrateur des ressources humaines (Réserviste)</p>
-                    <p class="text-lg text-gray-800">Forces armées canadiennes | Régiment de la Chaudière</p>
+            <!-- Section d'en-tête de l'expérience -->
+            <div>
+                <!-- Ligne 1: Titre et Lieu -->
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                    <p class="text-lg"><strong>Administrateur des ressources humaines (Réserviste)</strong></p>
+                    <p class="text-md"><strong>Lévis (QC)</strong></p>
                 </div>
-                <!-- Partie Droite: Lieu et Dates -->
-                <div style="text-align: right; flex-shrink: 0; padding-left: 2rem;">
-                    <p class="font-semibold">Lévis (QC)</p>
-                    <p class="italic text-gray-600">Mars 2021 – Présent</p>
+                <!-- Ligne 2: Entreprise et Dates -->
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                    <p class="italic text-gray-700">Forces armées canadiennes | Régiment de la Chaudière</p>
+                    <p class="italic text-gray-700">Mars 2021 – Présent</p>
                 </div>
             </div>
             <!-- Détails de l'expérience -->
@@ -38,16 +39,17 @@ title: Expérience Professionnelle
         </li>
 
         <li>
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <!-- Partie Gauche: Titre et Entreprise -->
-                <div>
-                    <p class="text-lg font-bold">Agent des ventes et communications</p>
-                    <p class="text-lg text-gray-800">Acrament'Bon</p>
+            <!-- Section d'en-tête de l'expérience -->
+            <div>
+                <!-- Ligne 1: Titre et Lieu -->
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                    <p class="text-lg"><strong>Agent des ventes et communications</strong></p>
+                    <p class="text-md"><strong>Québec (QC)</strong></p>
                 </div>
-                <!-- Partie Droite: Lieu et Dates -->
-                <div style="text-align: right; flex-shrink: 0; padding-left: 2rem;">
-                    <p class="font-semibold">Québec (QC)</p>
-                    <p class="italic text-gray-600">Août 2025 – Présent</p>
+                <!-- Ligne 2: Entreprise et Dates -->
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                    <p class="italic text-gray-700">Acrament'Bon</p>
+                    <p class="italic text-gray-700">Août 2025 – Présent</p>
                 </div>
             </div>
             <!-- Détails de l'expérience -->
@@ -59,16 +61,17 @@ title: Expérience Professionnelle
         </li>
 
         <li>
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <!-- Partie Gauche: Titre et Entreprise -->
-                <div>
-                    <p class="text-lg font-bold">Agent de bureau</p>
-                    <p class="text-lg text-gray-800">Ministère de l’Immigration, de la Francisation et de l’Intégration</p>
+            <!-- Section d'en-tête de l'expérience -->
+            <div>
+                <!-- Ligne 1: Titre et Lieu -->
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                    <p class="text-lg"><strong>Agent de bureau</strong></p>
+                    <p class="text-md"><strong>Montréal (QC)</strong></p>
                 </div>
-                <!-- Partie Droite: Lieu et Dates -->
-                <div style="text-align: right; flex-shrink: 0; padding-left: 2rem;">
-                    <p class="font-semibold">Montréal (QC)</p>
-                    <p class="italic text-gray-600">Février 2024 – Avril 2025</p>
+                <!-- Ligne 2: Entreprise et Dates -->
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                    <p class="italic text-gray-700">Ministère de l’Immigration, de la Francisation et de l’Intégration</p>
+                    <p class="italic text-gray-700">Février 2024 – Avril 2025</p>
                 </div>
             </div>
             <!-- Détails de l'expérience -->
@@ -80,5 +83,6 @@ title: Expérience Professionnelle
         </li>
     </ul>
 </div>
+
 
 
