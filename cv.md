@@ -6,19 +6,22 @@ title: Expérience Professionnelle
 [//]: # (Page simple avec expérience professionnelle)
 
 <div class="container mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold mb-8">Expérience Professionnelle</h1>
-
-    <ul class="space-y-6">
+    <ul class="space-y-8">
         <!-- Chaque expérience est un item de la liste principale (li) -->
         <li>
-            <p class="text-lg">
-                <strong>Administrateur des ressources humaines (Réserviste)</strong>
-                Forces armées canadiennes | Régiment de la Chaudière, Lévis (QC)
-            </p>
-            <p class="text-md italic text-gray-600">
-                Mars 2021 – Présent
-            </p>
-            <!-- Les détails sont dans une liste imbriquée pour créer l'indentation -->
+            <div class="flex justify-between items-start">
+                <!-- Partie Gauche: Titre et Entreprise -->
+                <div>
+                    <p class="text-lg font-bold">Administrateur des ressources humaines (Réserviste)</p>
+                    <p class="text-lg text-gray-800">Forces armées canadiennes | Régiment de la Chaudière</p>
+                </div>
+                <!-- Partie Droite: Lieu et Dates -->
+                <div class="text-right flex-shrink-0 pl-8">
+                    <p class="font-semibold">Lévis (QC)</p>
+                    <p class="italic text-gray-600">Mars 2021 – Présent</p>
+                </div>
+            </div>
+            <!-- Détails de l'expérience -->
             <ul class="list-disc list-inside mt-2 ml-4 space-y-1 text-gray-700">
                 <li>Grade : Caporal</li>
                 <li>Fournir des services administratifs en ressources humaines (RH) aux membres des Forces.</li>
@@ -37,13 +40,19 @@ title: Expérience Professionnelle
         </li>
 
         <li>
-            <p class="text-lg">
-                <strong>Agent des ventes et communications</strong>
-                Acrament'Bon | Québec (QC)
-            </p>
-            <p class="text-md italic text-gray-600">
-                Août 2025 – Présent
-            </p>
+            <div class="flex justify-between items-start">
+                <!-- Partie Gauche: Titre et Entreprise -->
+                <div>
+                    <p class="text-lg font-bold">Agent des ventes et communications</p>
+                    <p class="text-lg text-gray-800">Acrament'Bon</p>
+                </div>
+                <!-- Partie Droite: Lieu et Dates -->
+                <div class="text-right flex-shrink-0 pl-8">
+                    <p class="font-semibold">Québec (QC)</p>
+                    <p class="italic text-gray-600">Août 2025 – Présent</p>
+                </div>
+            </div>
+            <!-- Détails de l'expérience -->
             <ul class="list-disc list-inside mt-2 ml-4 space-y-1 text-gray-700">
                 <li>Participer à la mise en place d'un système de gestion de la relation client (CRM) pour le B2B.</li>
                 <li>Collaborer aux stratégies marketing, à la création de visuels et à la communication avec la clientèle.</li>
@@ -52,13 +61,19 @@ title: Expérience Professionnelle
         </li>
 
         <li>
-            <p class="text-lg">
-                <strong>Agent de bureau</strong>
-                Ministère de l’Immigration, de la Francisation et de l’Intégration | Montréal (QC)
-            </p>
-            <p class="text-md italic text-gray-600">
-                Février 2024 – Avril 2025
-            </p>
+            <div class="flex justify-between items-start">
+                <!-- Partie Gauche: Titre et Entreprise -->
+                <div>
+                    <p class="text-lg font-bold">Agent de bureau</p>
+                    <p class="text-lg text-gray-800">Ministère de l’Immigration, de la Francisation et de l’Intégration</p>
+                </div>
+                <!-- Partie Droite: Lieu et Dates -->
+                <div class="text-right flex-shrink-0 pl-8">
+                    <p class="font-semibold">Montréal (QC)</p>
+                    <p class="italic text-gray-600">Février 2024 – Avril 2025</p>
+                </div>
+            </div>
+            <!-- Détails de l'expérience -->
             <ul class="list-disc list-inside mt-2 ml-4 space-y-1 text-gray-700">
                 <li>Assurer la rédaction et la mise en forme de documents administratifs, la gestion des courriels et le classement de dossiers physiques et numériques.</li>
                 <li>Coordonner et gérer les étudiants au sein de l’équipe de gestion pour les opérations en présentiel.</li>
