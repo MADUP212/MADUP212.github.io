@@ -4,9 +4,9 @@ title: Expérience Professionnelle
 ---
 
 <div class="container mx-auto px-4 py-8">
-    <ul class="space-y-8">
-        <!-- Chaque expérience est un item de la liste principale (li) -->
-        <li>
+    <div class="space-y-8">
+        <!-- Chaque expérience est un bloc div -->
+        <div>
             <!-- Section d'en-tête de l'expérience -->
             <div>
                 <!-- Ligne 1: Titre et Lieu -->
@@ -21,7 +21,7 @@ title: Expérience Professionnelle
                 </div>
             </div>
             <!-- Détails de l'expérience -->
-            <ul class="list-disc list-inside mt-2 ml-4 space-y-1 text-gray-700">
+            <ul class="list-disc list-inside mt-4 ml-4 space-y-1 text-gray-700">
                 <li>Grade : Caporal</li>
                 <li>Fournir des services administratifs en ressources humaines (RH) aux membres des Forces.</li>
                 <li>Assurer le suivi des dossiers, la gestion des paies, des avantages sociaux et des contrats.</li>
@@ -36,9 +36,9 @@ title: Expérience Professionnelle
                     </ul>
                 </li>
             </ul>
-        </li>
+        </div>
 
-        <li>
+        <div>
             <!-- Section d'en-tête de l'expérience -->
             <div>
                 <!-- Ligne 1: Titre et Lieu -->
@@ -53,14 +53,14 @@ title: Expérience Professionnelle
                 </div>
             </div>
             <!-- Détails de l'expérience -->
-            <ul class="list-disc list-inside mt-2 ml-4 space-y-1 text-gray-700">
+            <ul class="list-disc list-inside mt-4 ml-4 space-y-1 text-gray-700">
                 <li>Participer à la mise en place d'un système de gestion de la relation client (CRM) pour le B2B.</li>
                 <li>Collaborer aux stratégies marketing, à la création de visuels et à la communication avec la clientèle.</li>
                 <li>Contribuer activement à la production, à l'organisation de dégustations et à la présence sur les marchés.</li>
             </ul>
-        </li>
+        </div>
 
-        <li>
+        <div>
             <!-- Section d'en-tête de l'expérience -->
             <div>
                 <!-- Ligne 1: Titre et Lieu -->
@@ -75,14 +75,16 @@ title: Expérience Professionnelle
                 </div>
             </div>
             <!-- Détails de l'expérience -->
-            <ul class="list-disc list-inside mt-2 ml-4 space-y-1 text-gray-700">
+            <ul class="list-disc list-inside mt-4 ml-4 space-y-1 text-gray-700">
                 <li>Assurer la rédaction et la mise en forme de documents administratifs, la gestion des courriels et le classement de dossiers physiques et numériques.</li>
                 <li>Coordonner et gérer les étudiants au sein de l’équipe de gestion pour les opérations en présentiel.</li>
                 <li>Utilisation avancée de la suite Microsoft Office (Excel, Word) pour le traitement de données et la documentation.</li>
             </ul>
-        </li>
-    </ul>
+        </div>
+    </div>
 </div>
+
+
 
 
 
