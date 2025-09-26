@@ -13,8 +13,8 @@ title: Parcours académique
             <div>
                 <!-- Ligne 1: Titre et Lieu -->
                 <div style="display: flex; justify-content: space-between; align-items: baseline;">
-                    <p class="text-lg"><strong>Maîtrise ès arts (M.A.) en Science politique – Politique internationale</strong></p>
-                    <p class="text-md"><strong>Québec (QC), Canada</strong></p>
+                    <p class="text-lg" style="margin-right: 1rem;"><strong>Maîtrise ès arts (M.A.) en Science politique – Politique internationale</strong></p>
+                    <p class="text-md" style="white-space: nowrap;"><strong>Québec (QC), Canada</strong></p>
                 </div>
                 <!-- Ligne 2: Institution et Dates -->
                 <div style="display: flex; justify-content: space-between; align-items: baseline;">
@@ -65,8 +65,8 @@ title: Parcours académique
             <div>
                 <!-- Ligne 1: Titre et Lieu -->
                 <div style="display: flex; justify-content: space-between; align-items: baseline;">
-                    <p class="text-lg"><strong>Baccalauréat ès arts (B.A.) en Science politique – Politique comparée et sociologie politique (obtenu)</strong></p>
-                    <p class="text-md"><strong>Montréal (QC), Canada</strong></p>
+                    <p class="text-lg" style="margin-right: 1rem;"><strong>Baccalauréat ès arts (B.A.) en Science politique – Politique comparée et sociologie politique (obtenu)</strong></p>
+                    <p class="text-md" style="white-space: nowrap;"><strong>Montréal (QC), Canada</strong></p>
                 </div>
                 <!-- Ligne 2: Institution et Dates -->
                 <div style="display: flex; justify-content: space-between; align-items: baseline;">
@@ -137,4 +137,6 @@ title: Parcours académique
         </div>
     </div>
 </div>
+
+
 
