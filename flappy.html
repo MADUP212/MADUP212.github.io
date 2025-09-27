@@ -15,69 +15,163 @@
             font-family: 'Courier New', Courier, monospace;
             color: white;
             flex-direction: column;
+            text-align: center;
+        }
+        .container {
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         #gameCanvas {
             background-color: #70c5ce;
             border: 2px solid #333;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            display: none; /* Caché au début */
         }
-        h1 {
+        h1, p {
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        p {
-            font-size: 1.1em;
+        /* Écran d'accueil */
+        #startScreen {
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+        }
+        #startScreen input {
+            font-size: 1.2em;
+            padding: 10px;
+            margin: 20px 0;
+            border: 2px solid #333;
+            border-radius: 5px;
+            text-align: center;
+        }
+        #startScreen button {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            background-color: #27ae60;
+            color: white;
+        }
+        /* Tableau des scores */
+        #highScores {
+            width: 100%;
+            max-width: 320px;
+            margin-bottom: 20px;
+        }
+        #highScores table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: rgba(0,0,0,0.2);
+        }
+        #highScores th, #highScores td {
+            padding: 8px;
+            border: 1px solid white;
+        }
+        /* Bouton retour */
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            background-color: rgba(0,0,0,0.4);
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
 
-    <h1>Flappy Bird</h1>
-    <canvas id="gameCanvas" width="320" height="480"></canvas>
-    <p>Utilisez [Espace] ou cliquez pour sauter.</p>
+    <div id="highScores">
+        <h2>Meilleurs Scores</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nom</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody id="scoresTableBody">
+                </tbody>
+        </table>
+    </div>
+
+    <div class="container">
+        <a href="https://masdupuis.com/projets" class="back-button">← Retour</a>
+
+        <div id="startScreen">
+            <h2>Entrez votre nom</h2>
+            <input type="text" id="playerNameInput" placeholder="Joueur" maxlength="10">
+            <button id="startGameBtn">Jouer</button>
+        </div>
+        
+        <canvas id="gameCanvas" width="320" height="480"></canvas>
+    </div>
 
     <script>
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
+        
+        // Nouveaux éléments de l'interface
+        const startScreen = document.getElementById('startScreen');
+        const startGameBtn = document.getElementById('startGameBtn');
+        const playerNameInput = document.getElementById('playerNameInput');
+        const scoresTableBody = document.getElementById('scoresTableBody');
 
-        // Variables du jeu
-        let bird, pipes, score, gameSpeed, gravity, isGameOver;
-
-        // Propriétés de l'oiseau
-        const birdProps = {
-            x: 50,
-            y: 150,
-            width: 20,
-            height: 20,
-            velocity: 0,
-            jump: -6 // La force du saut (valeur négative pour monter)
-        };
-
-        // Propriétés des tuyaux
-        const pipeProps = {
-            width: 50,
-            gap: 120, // Espace pour passer
-            spawnInterval: 150 // Intervalle en "frames" avant un nouveau tuyau
-        };
-
+        let bird, pipes, score, gameSpeed, gravity, isGameOver, playerName;
+        const birdProps = { x: 50, y: 150, width: 20, height: 20, velocity: 0, jump: -6 };
+        const pipeProps = { width: 50, gap: 120, spawnInterval: 150 };
         let frameCount = 0;
+        
+        // --- GESTION DES SCORES ---
+        function getHighScores() {
+            const scores = localStorage.getItem('flappyHighScores');
+            return scores ? JSON.parse(scores) : [];
+        }
 
-        // Initialisation ou réinitialisation du jeu
+        function saveHighScore(newScore) {
+            let scores = getHighScores();
+            scores.push(newScore);
+            scores.sort((a, b) => b.score - a.score); // Trier du plus haut au plus bas
+            scores = scores.slice(0, 5); // Garder seulement le top 5
+            localStorage.setItem('flappyHighScores', JSON.stringify(scores));
+        }
+
+        function displayHighScores() {
+            const scores = getHighScores();
+            scoresTableBody.innerHTML = ''; // Vider le tableau
+            if (scores.length === 0) {
+                scoresTableBody.innerHTML = '<tr><td colspan="3">Aucun score !</td></tr>';
+            } else {
+                scores.forEach((s, index) => {
+                    const row = `<tr><td>${index + 1}</td><td>${s.name}</td><td>${s.score}</td></tr>`;
+                    scoresTableBody.innerHTML += row;
+                });
+            }
+        }
+
+        // --- GESTION DU JEU ---
+        startGameBtn.addEventListener('click', () => {
+            playerName = playerNameInput.value || 'Anonyme';
+            startScreen.style.display = 'none';
+            canvas.style.display = 'block';
+            setup();
+        });
+
         function setup() {
             bird = { ...birdProps };
-            pipes = [];
-            score = 0;
-            gameSpeed = 2;
-            gravity = 0.3;
-            isGameOver = false;
-            frameCount = 0;
-            // Démarrer la boucle de jeu
+            pipes = []; score = 0; gameSpeed = 2; gravity = 0.3;
+            isGameOver = false; frameCount = 0;
             gameLoop();
         }
 
-        // Boucle principale du jeu
         function gameLoop() {
             if (isGameOver) {
-                // Afficher l'écran de fin
+                saveHighScore({ name: playerName, score: score });
+                displayHighScores(); // Mettre à jour l'affichage
+                
                 ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
                 ctx.fillStyle = 'white';
@@ -87,47 +181,28 @@
                 ctx.font = '20px "Courier New"';
                 ctx.fillText(`Score: ${score}`, canvas.width / 2, canvas.height / 2 + 20);
                 ctx.fillText('Cliquez pour rejouer', canvas.width / 2, canvas.height / 2 + 50);
-                return; // Arrêter la boucle
+                return;
             }
-
-            // Mettre à jour la logique du jeu
             update();
-            // Dessiner les éléments
             draw();
-
             frameCount++;
-            // Demander au navigateur d'exécuter cette fonction à nouveau
             requestAnimationFrame(gameLoop);
         }
 
-        // Mettre à jour la position des éléments
         function update() {
-            // Physique de l'oiseau
             bird.velocity += gravity;
             bird.y += bird.velocity;
 
-            // Générer de nouveaux tuyaux
             if (frameCount % pipeProps.spawnInterval === 0) {
                 let gapY = Math.random() * (canvas.height - pipeProps.gap - 100) + 50;
-                pipes.push({
-                    x: canvas.width,
-                    y: gapY, // Position du haut de l'espace
-                    passed: false
-                });
+                pipes.push({ x: canvas.width, y: gapY, passed: false });
             }
 
-            // Mettre à jour la position des tuyaux
-            pipes.forEach(pipe => {
-                pipe.x -= gameSpeed;
-            });
-
-            // Retirer les tuyaux sortis de l'écran
+            pipes.forEach(pipe => pipe.x -= gameSpeed);
             pipes = pipes.filter(pipe => pipe.x + pipeProps.width > 0);
             
-            // Détection des collisions
             checkCollisions();
 
-            // Mettre à jour le score
             pipes.forEach(pipe => {
                 if (!pipe.passed && bird.x > pipe.x + pipeProps.width) {
                     score++;
@@ -136,70 +211,43 @@
             });
         }
 
-        // Dessiner tous les éléments sur le canvas
         function draw() {
-            // Fond
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            // Dessiner l'oiseau
             ctx.fillStyle = 'yellow';
             ctx.fillRect(bird.x, bird.y, bird.width, bird.height);
 
-            // Dessiner les tuyaux
-            ctx.fillStyle = '#008000'; // Vert
+            ctx.fillStyle = '#008000';
             pipes.forEach(pipe => {
-                // Tuyau du haut
                 ctx.fillRect(pipe.x, 0, pipeProps.width, pipe.y);
-                // Tuyau du bas
                 ctx.fillRect(pipe.x, pipe.y + pipeProps.gap, pipeProps.width, canvas.height - pipe.y - pipeProps.gap);
             });
             
-            // Dessiner le score
             ctx.fillStyle = 'white';
             ctx.font = '30px "Courier New"';
             ctx.fillText(score, canvas.width / 2, 50);
         }
 
         function checkCollisions() {
-            // Collision avec le sol ou le plafond
-            if (bird.y + bird.height > canvas.height || bird.y < 0) {
-                isGameOver = true;
-            }
-
-            // Collision avec les tuyaux
+            if (bird.y + bird.height > canvas.height || bird.y < 0) isGameOver = true;
             pipes.forEach(pipe => {
-                if (bird.x < pipe.x + pipeProps.width &&
-                    bird.x + bird.width > pipe.x &&
+                if (bird.x < pipe.x + pipeProps.width && bird.x + bird.width > pipe.x &&
                     (bird.y < pipe.y || bird.y + bird.height > pipe.y + pipeProps.gap)) {
                     isGameOver = true;
                 }
             });
         }
         
-        // Contrôles du joueur
         function handleInput() {
-            if (isGameOver) {
-                setup(); // Recommencer le jeu
-            } else {
-                bird.velocity = bird.jump;
-            }
+            if (isGameOver) setup();
+            else bird.velocity = bird.jump;
         }
 
-        document.addEventListener('keydown', (e) => {
-            if (e.code === 'Space') {
-                handleInput();
-            }
-        });
-        
+        document.addEventListener('keydown', e => { if (e.code === 'Space') handleInput(); });
         canvas.addEventListener('mousedown', handleInput);
-        canvas.addEventListener('touchstart', (e) => {
-            e.preventDefault(); // Empêche le défilement sur mobile
-            handleInput();
-        }, { passive: false });
+        canvas.addEventListener('touchstart', e => { e.preventDefault(); handleInput(); }, { passive: false });
 
-
-        // Lancer le jeu pour la première fois
-        setup();
+        // Afficher les scores au chargement de la page
+        displayHighScores();
     </script>
 </body>
 </html>
