@@ -4,7 +4,7 @@ layout: default
 ---
 
 <div class="container">
-    <h2>Mes Projets</h2>
+    <h2>La Ronde</h2>
 
     <ul class="project-list">
         <li class="project-card">
