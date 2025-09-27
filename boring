@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur de Salaire en Temps Réel</title>
+    <style>
+        /* Style de base pour la page */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Conteneur principal */
+        .container {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            width: 100%;
+            max-width: 450px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        /* Section pour entrer le salaire */
+        .input-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: 500;
+            font-size: 1.1em;
+        }
+
+        .input-wrapper {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 5px 15px;
+        }
+
+        input[type="number"] {
+            border: none;
+            outline: none;
+            font-size: 1.2em;
+            width: 100%;
+            text-align: center;
+        }
+
+        .currency-symbol {
+            font-size: 1.2em;
+            color: #888;
+        }
+        
+        /* Cacher les flèches sur le champ de nombre */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Section des résultats */
+        .results {
+            margin-top: 20px;
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            display: none; /* Caché par défaut */
+        }
+
+        .results p {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .results .total {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #27ae60;
+            margin-top: 15px;
+        }
+
+        .results span {
+            font-weight: 700;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Calculateur de Salaire en Temps Réel</h1>
+        
+        <div class="input-section">
+            <label for="tauxHoraire">Votre salaire horaire :</label>
+            <div class="input-wrapper">
+                <input type="number" id="tauxHoraire" placeholder="Ex: 25.50" step="0.01" min="0">
+                <span class="currency-symbol">$</span>
+            </div>
+            <button id="calculerBtn">Lancer le compteur</button>
+        </div>
+
+        <div id="resultats" class="results">
+            <p>Par minute : <span id="gainParMinute">0.00 $</span></p>
+            <p>Par seconde : <span id="gainParSeconde">0.0000 $</span></p>
+            <p class="total" id="totalGagne">0.00 $</p>
+        </div>
+    </div>
+
+    <script>
+        // Récupérer les éléments du HTML
+        const tauxHoraireInput = document.getElementById('tauxHoraire');
+        const calculerBtn = document.getElementById('calculerBtn');
+        const resultatsDiv = document.getElementById('resultats');
+        const gainParMinuteSpan = document.getElementById('gainParMinute');
+        const gainParSecondeSpan = document.getElementById('gainParSeconde');
+        const totalGagneP = document.getElementById('totalGagne');
+
+        let intervalId = null; // Variable pour stocker l'ID de l'intervalle
+
+        // Ajouter un écouteur d'événement sur le bouton
+        calculerBtn.addEventListener('click', () => {
+            // 1. Récupérer et valider la valeur entrée
+            const tauxHoraire = parseFloat(tauxHoraireInput.value);
+
+            if (isNaN(tauxHoraire) || tauxHoraire <= 0) {
+                alert("Veuillez entrer un salaire horaire valide et supérieur à zéro.");
+                return;
+            }
+
+            // 2. Arrêter l'ancien compteur s'il y en a un
+            if (intervalId) {
+                clearInterval(intervalId);
+            }
+
+            // 3. Calculer les gains
+            const gainParMinute = tauxHoraire / 60;
+            const gainParSeconde = gainParMinute / 60;
+            let totalGagne = 0;
+
+            // 4. Afficher les résultats statiques
+            gainParMinuteSpan.textContent = `${gainParMinute.toFixed(2)} $`;
+            gainParSecondeSpan.textContent = `${gainParSeconde.toFixed(4)} $`;
+            resultatsDiv.style.display = 'block'; // Rendre la section des résultats visible
+
+            // 5. Lancer le compteur en temps réel (toutes les secondes)
+            intervalId = setInterval(() => {
+                totalGagne += gainParSeconde;
+                totalGagneP.textContent = `${totalGagne.toFixed(2)} $`;
+            }, 1000); // Met à jour toutes les 1000 ms = 1 seconde
+        });
+    </script>
+
+</body>
+</html>
