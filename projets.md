@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Projets
+title: La Ronde 
 ---
 
 **(27 septembre 2025)** voir son taux horaire défilé à chaque seconde : <a href="https://madup212.github.io/boring.html">random</a>
