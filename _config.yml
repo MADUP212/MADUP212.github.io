@@ -14,8 +14,9 @@ linkedin_username: mdupuis212
 
 [//]: # (Sections) 
 header_pages:
+  - index.md    
   - parcours.md
   - cv.md
   - contact.md
   - about.md
-  - projets.md 
+  - projets.md
