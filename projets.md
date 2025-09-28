@@ -92,7 +92,7 @@ layout: default
 
         <div class="projects-grid">
             <!-- Projet Calendrier Agile -->
-            <a href="dashboard_sauvegarde.html" class="project-card">
+            <a href="Calendrier_Agile.html" class="project-card">
                 <h2>🗓️&nbsp; Calendrier de Rédaction Agile</h2>
                 <p>Un tableau de bord interactif pour planifier et suivre la rédaction d'un projet académique avec la méthode AGILE.</p>
                 <span class="link">Consulter</span>
