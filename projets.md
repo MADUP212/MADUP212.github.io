@@ -14,7 +14,7 @@ layout: default
                 <p>Un jeu de Morpion contre l'ordinateur.</p>
                 <span class="project-date">27 septembre 2025</span>
             </div>
-            <a href="{{ '/projects/tictactoe.html' | relative_url }}" class="project-link">Jouer</a>
+            <a href="/projects/tictactoe.html" class="project-link">Jouer</a>
         </li>
         <li class="project-card">
             <div class="project-icon"><i class="fas fa-kiwi-bird"></i></div>
@@ -23,7 +23,7 @@ layout: default
                 <p>Un clone du célèbre jeu Flappy Bird.</p>
                 <span class="project-date">27 septembre 2025</span>
             </div>
-            <a href="{{ '/projects/flappy.html' | relative_url }}" class="project-link">Jouer</a>
+            <a href="/projects/flappy.html" class="project-link">Jouer</a>
         </li>
         <li class="project-card">
             <div class="project-icon"><i class="fas fa-clock"></i></div>
@@ -32,16 +32,16 @@ layout: default
                 <p>Voir son salaire s'accumuler en temps réel.</p>
                 <span class="project-date">27 septembre 2025</span>
             </div>
-            <a href="{{ '/projects/boring.html' | relative_url }}" class="project-link">Calculer</a>
+            <a href="/projects/boring.html" class="project-link">Calculer</a>
         </li>
         <li class="project-card">
             <div class="project-icon"><i class="fas fa-calendar-alt"></i></div>
             <div class="project-details">
                 <h3>Planificateur Agile</h3>
-                <p>Un calendrier de 4 mois pour une synthèse (par Gemini Pro).</p>
+                <p>Un calendrier de 4 mois pour une synthèse.</p>
                 <span class="project-date">26 septembre 2026</span>
             </div>
-            <a href="{{ '/Calendrier_Agile.html' | relative_url }}" class="project-link">Voir</a>
+            <a href="/Calendrier_Agile.html" class="project-link">Voir</a>
         </li>
     </ul>
 </div>
