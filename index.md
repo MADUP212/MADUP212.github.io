@@ -3,6 +3,8 @@ layout: home
 title: Accueil
 ---
 
+<link rel="icon" type="image/jpeg" href="/assets/bossuet_photo.jpg">
+
 [//]: # (Citation de Bossuet et son portrait)
 
 <div style="text-align: right; margin-bottom: 2em;">
