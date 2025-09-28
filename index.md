@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Présentation
+title: Accueil
 ---
 
 [//]: # (Citation de Bossuet et son portrait)
