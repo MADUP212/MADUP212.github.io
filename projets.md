@@ -114,8 +114,8 @@ layout: default
 
             <!-- Projet Calculateur -->
             <a href="boring.html" class="project-card">
-                <h2>🧮&nbsp; Calculateur Simple</h2>
-                <p>Un outil pratique pour réaliser rapidement les opérations mathématiques de base.</p>
+                <h2>🧮&nbsp; Calculateur de salaire</h2>
+                <p>Calculez combien vous gagnez à chaque seconde!.</p>
                 <span class="link">Utiliser</span>
             </a>
         </div>
