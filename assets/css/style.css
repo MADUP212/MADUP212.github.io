@@ -27,34 +27,66 @@ body {
 .sidebar-header { padding: 20px; text-align: center; border-bottom: 1px solid #dee2e6; }
 .sidebar-header h3 { margin: 0; color: #343a40; }
 .nav-list { list-style: none; padding: 0; margin: 20px 0; }
-.nav-list a {
-    display: block; padding: 15px 40px; color: #343a40; text-decoration: none;
-    font-weight: 500; transition: background-color 0.2s, color 0.2s;
-}
-.nav-list a:hover {
-    background-color: var(--accent-blue); color: white;
-}
+
 .overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4);
     z-index: 999; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s;
 }
 .overlay.open { opacity: 1; visibility: visible; }
 
-/* --- STYLES POUR L'ACCORDÉON DE LA BARRE LATÉRALE --- */
-.accordion-sidebar {
-    background-color: transparent; color: #343a40; cursor: pointer; padding: 15px 20px; width: 100%;
-    text-align: left; border: none; outline: none; transition: 0.4s;
-    font-weight: 500; font-size: 1em; font-family: inherit;
+/* --- STYLES POUR LES ÉLÉMENTS DE LA BARRE LATÉRALE --- */
+
+/* Style commun pour les liens ET les boutons accordéon de la barre latérale */
+.nav-list > li > a,
+.nav-list > li > .accordion-sidebar {
+    display: block;
+    width: 100%;
+    box-sizing: border-box; /* Assure un calcul de largeur cohérent */
+    padding: 15px 20px;
+    color: #343a40;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1em;
+    text-align: left;
+    border: none;
+    background-color: transparent;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
 }
-.accordion-sidebar:hover, .accordion-sidebar.active { background-color: #f1f1f1; }
+
+/* Style au survol pour les liens simples comme "Accueil" */
+.nav-list > li > a:hover {
+    background-color: var(--accent-blue);
+    color: white;
+}
+
+/* Styles spécifiques aux boutons accordéon de la barre latérale */
+.accordion-sidebar:hover, .accordion-sidebar.active { 
+    background-color: #f1f1f1; 
+}
 .accordion-sidebar:after {
-    content: '\002B'; color: #777; font-weight: bold; float: right;
+    content: '\002B'; 
+    color: #777; 
+    font-weight: bold; 
+    float: right;
 }
-.accordion-sidebar.active:after { content: "\2212"; }
+.accordion-sidebar.active:after { 
+    content: "\2212"; 
+}
 .panel-sidebar {
-    padding: 0; background-color: #fafafa; max-height: 0;
-    overflow: hidden; transition: max-height 0.2s ease-out;
+    padding: 0; 
+    background-color: #fafafa; 
+    max-height: 0;
+    overflow: hidden; 
+    transition: max-height 0.2s ease-out;
 }
+/* Styles pour les liens à l'intérieur des panneaux de la barre latérale */
+.panel-sidebar a {
+    padding-left: 40px;
+    font-size: 0.95em;
+}
+
 
 /* --- STYLES POUR L'ACCORDÉON DANS LES PAGES (ex: a-propos) --- */
 .page-content .accordion {
