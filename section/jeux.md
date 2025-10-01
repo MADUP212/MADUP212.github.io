@@ -4,8 +4,8 @@ title: Jeux
 ---
 
 <div class="page-content">
-  <h2>Mes Jeux</h2>
-  <p>Voici une sélection de mini-jeux développés pour le plaisir et l'expérimentation.</p>
+  <h2>Jeux</h2>
+  <p>Des petits jeux codés par Gemini Pro</p>
   
   <div class="game-list">
     
