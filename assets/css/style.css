@@ -142,6 +142,44 @@ body {
     width: 100%; /* S'assure que la ligne prend toute la largeur */
 }
 
+/* --- STYLE JOURNALISTE POUR LA PAGE DE JEUX --- */
+
+.game-list {
+  margin-top: 2rem;
+}
+
+.game-entry {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.game-entry:first-of-type {
+  border-top: 1px solid #e0e0e0;
+}
+
+.game-entry h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.game-entry h3 a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.2s ease;
+}
+
+.game-entry h3 a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+.game-entry p {
+  margin: 0;
+  color: #666;
+  font-size: 1em;
+}
+
 .panel div[style*="display: flex"] > div:first-child {
     min-width: 0; /* Permet au titre long de passer à la ligne au lieu de déborder */
     word-wrap: break-word; /* Force la coupure des mots si nécessaire */
