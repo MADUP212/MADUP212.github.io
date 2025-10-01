@@ -6,182 +6,151 @@
     <title>Flappy Bird</title>
     <style>
         body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fdfbf7; /* Beige clair */
+            color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
-            background-color: #fdfbf7; /* Beige clair */
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            color: #333;
-            flex-direction: column;
-            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
-        .container {
+        .game-wrapper {
             position: relative;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        #gameCanvas {
-            background-color: #f5f1e9; /* Beige un peu plus foncé */
-            border: 2px solid #333;
-            display: none; /* Caché au début */
-        }
-        h1, h2, p {
-            color: #333;
-        }
-        /* Écran d'accueil */
-        #startScreen {
-            padding: 30px;
-            background-color: #fff;
-            border: 2px solid #333;
-        }
-        #startScreen input[type="text"] {
-            font-size: 1.1em;
-            padding: 10px;
-            margin: 15px 0;
-            border: 2px solid #ccc;
-            border-radius: 5px;
-            text-align: center;
-            width: 80%;
-        }
-        #startScreen button {
-            font-size: 1.2em;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            border: none;
-            background-color: #333;
-            color: white;
-            transition: background-color 0.2s;
-            margin-top: 20px;
-        }
-        #startScreen button:hover {
-            background-color: #555;
-        }
-        /* Options de vitesse */
-        #speedSelection {
-            margin-top: 15px;
-        }
-        #speedSelection h3 {
-            margin-bottom: 10px;
-            font-size: 1em;
-            font-weight: normal;
-        }
-        #speedOptions {
             display: flex;
-            justify-content: center;
-            gap: 15px;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
         }
-        #speedOptions label {
-            cursor: pointer;
-        }
-        #speedOptions input {
-            margin-right: 5px;
-        }
-        /* Tableau des scores */
-        #highScores {
-            width: 100%;
-            max-width: 320px;
-            margin-bottom: 20px;
-        }
-        #highScores table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: #fff;
-            border: 1px solid #ccc;
-        }
-        #highScores th, #highScores td {
-            padding: 8px;
-            border: 1px solid #ccc;
-        }
-        #highScores th {
-            background-color: #f0f0f0;
-        }
-        /* Bouton retour */
         .back-button {
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: -5px;
+            left: -5px;
             color: #fff;
             background-color: rgba(0,0,0,0.5);
             padding: 5px 10px;
             text-decoration: none;
             border-radius: 5px;
             font-size: 0.9em;
-            z-index: 10;
+            z-index: 20;
         }
+        .container {
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            width: 320px;
+            height: 480px;
+            border: 2px solid #333;
+        }
+        #gameCanvas {
+            background-color: #f5f1e9; /* Beige un peu plus foncé */
+            display: none; /* Caché au début */
+        }
+        h1, h2, p {
+            color: #333;
+            margin: 0;
+        }
+        #startScreen {
+            padding: 30px;
+            background-color: #fff;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #startScreen input[type="text"] {
+            font-size: 1.1em; padding: 10px; margin: 15px 0; border: 2px solid #ccc;
+            border-radius: 5px; text-align: center; width: 80%;
+        }
+        #startScreen button {
+            font-size: 1.2em; padding: 10px 20px; cursor: pointer; border-radius: 5px;
+            border: none; background-color: #333; color: white;
+            transition: background-color 0.2s; margin-top: 20px;
+        }
+        #startScreen button:hover { background-color: #555; }
+        #speedSelection { margin-top: 15px; text-align: center; }
+        #speedSelection h3 { margin-bottom: 10px; font-size: 1em; font-weight: normal; }
+        #speedOptions { display: flex; justify-content: center; gap: 15px; }
+        #speedOptions label { cursor: pointer; }
+        #speedOptions input { margin-right: 5px; }
+        #highScores {
+            width: 100%;
+            max-width: 320px;
+            text-align: center;
+        }
+        #highScores table {
+            width: 100%; border-collapse: collapse; background-color: #fff; border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+        #highScores th, #highScores td { padding: 8px; border: 1px solid #ccc; }
+        #highScores th { background-color: #f0f0f0; }
     </style>
 </head>
 <body>
 
-    <div id="highScores">
-        <h2>Meilleurs Scores</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Nom</th>
-                    <th>Score</th>
-                </tr>
-            </thead>
-            <tbody id="scoresTableBody">
-            </tbody>
-        </table>
-    </div>
-
-    <div class="container">
+    <div class="game-wrapper">
         <a href="javascript:history.back()" class="back-button">← Retour</a>
 
-        <div id="startScreen">
-            <h2>Entrez votre nom</h2>
-            <input type="text" id="playerNameInput" placeholder="Joueur" maxlength="10">
-            
-            <div id="speedSelection">
-                <h3>Choisissez la vitesse :</h3>
-                <div id="speedOptions">
-                    <label><input type="radio" name="speed" value="120" checked> Lent</label>
-                    <label><input type="radio" name="speed" value="150"> Normal</label>
-                    <label><input type="radio" name="speed" value="180"> Rapide</label>
-                </div>
-            </div>
-
-            <button id="startGameBtn">Jouer</button>
+        <div id="highScores">
+            <h2>Meilleurs Scores</h2>
+            <table>
+                <thead>
+                    <tr><th>#</th><th>Nom</th><th>Score</th></tr>
+                </thead>
+                <tbody id="scoresTableBody"></tbody>
+            </table>
         </div>
-        
-        <canvas id="gameCanvas" width="320" height="480"></canvas>
+    
+        <div class="container">
+            <div id="startScreen">
+                <h2>Entrez votre nom</h2>
+                <input type="text" id="playerNameInput" placeholder="Joueur" maxlength="10">
+                
+                <div id="speedSelection">
+                    <h3>Choisissez la vitesse :</h3>
+                    <div id="speedOptions">
+                        <label><input type="radio" name="speed" value="120" checked> Lent</label>
+                        <label><input type="radio" name="speed" value="150"> Normal</label>
+                        <label><input type="radio" name="speed" value="180"> Rapide</label>
+                    </div>
+                </div>
+    
+                <button id="startGameBtn">Jouer</button>
+            </div>
+            
+            <canvas id="gameCanvas" width="320" height="480"></canvas>
+        </div>
     </div>
 
     <script>
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
-        
         const startScreen = document.getElementById('startScreen');
         const startGameBtn = document.getElementById('startGameBtn');
         const playerNameInput = document.getElementById('playerNameInput');
         const scoresTableBody = document.getElementById('scoresTableBody');
-
         let bird, pipes, score, isGameOver, playerName;
         let lastTime = 0;
         let pipeSpawnTimer = 0;
-
         const birdProps = { x: 50, y: 150, width: 20, height: 20, velocity: 0 };
         const gameSettings = {
             gravity: 0.25,
             jump: -6,
-            gameSpeed: 150, // Vitesse par défaut
+            gameSpeed: 150,
             pipeWidth: 50,
             pipeGap: 120,
-            pipeSpawnInterval: 1.5 * 1000 // 1.5 secondes en millisecondes
+            pipeSpawnInterval: 1.5 * 1000
         };
-        
-        // --- GESTION DES SCORES ---
         function getHighScores() {
             const scores = localStorage.getItem('flappyHighScores');
             return scores ? JSON.parse(scores) : [];
         }
-
         function saveHighScore(newScore) {
             let scores = getHighScores();
             scores.push(newScore);
@@ -189,7 +158,6 @@
             scores = scores.slice(0, 5);
             localStorage.setItem('flappyHighScores', JSON.stringify(scores));
         }
-
         function displayHighScores() {
             const scores = getHighScores();
             scoresTableBody.innerHTML = '';
@@ -202,20 +170,14 @@
                 });
             }
         }
-
-        // --- GESTION DU JEU ---
         startGameBtn.addEventListener('click', () => {
             playerName = playerNameInput.value || 'Anonyme';
-            
-            // Récupérer la vitesse sélectionnée
             const selectedSpeed = document.querySelector('input[name="speed"]:checked').value;
             gameSettings.gameSpeed = parseInt(selectedSpeed, 10);
-
             startScreen.style.display = 'none';
             canvas.style.display = 'block';
             setup();
         });
-
         function setup() {
             bird = { ...birdProps };
             pipes = []; 
@@ -225,12 +187,10 @@
             pipeSpawnTimer = gameSettings.pipeSpawnInterval;
             requestAnimationFrame(gameLoop);
         }
-
         function gameLoop(timestamp) {
             if (isGameOver) {
                 saveHighScore({ name: playerName, score: score });
                 displayHighScores();
-                
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
                 ctx.fillStyle = '#333';
@@ -242,36 +202,25 @@
                 ctx.fillText('Cliquez pour rejouer', canvas.width / 2, canvas.height / 2 + 50);
                 return;
             }
-            
-            if (lastTime === 0) {
-                lastTime = timestamp;
-            }
-            const deltaTime = (timestamp - lastTime) / 1000; // Delta time en secondes
+            if (lastTime === 0) lastTime = timestamp;
+            const deltaTime = (timestamp - lastTime) / 1000;
             lastTime = timestamp;
-            
             update(deltaTime);
             draw();
-            
             requestAnimationFrame(gameLoop);
         }
-
         function update(deltaTime) {
             bird.velocity += gameSettings.gravity;
             bird.y += bird.velocity;
-
-            // Spawn des tuyaux
             pipeSpawnTimer -= deltaTime * 1000;
             if (pipeSpawnTimer <= 0) {
                 let gapY = Math.random() * (canvas.height - gameSettings.pipeGap - 100) + 50;
                 pipes.push({ x: canvas.width, y: gapY, passed: false });
                 pipeSpawnTimer = gameSettings.pipeSpawnInterval;
             }
-            
             pipes.forEach(pipe => pipe.x -= gameSettings.gameSpeed * deltaTime);
             pipes = pipes.filter(pipe => pipe.x + gameSettings.pipeWidth > 0);
-            
             checkCollisions();
-
             pipes.forEach(pipe => {
                 if (!pipe.passed && bird.x > pipe.x + gameSettings.pipeWidth) {
                     score++;
@@ -279,30 +228,22 @@
                 }
             });
         }
-
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            // Oiseau
-            ctx.fillStyle = '#333'; // Noir
+            ctx.fillStyle = '#333';
             ctx.fillRect(bird.x, bird.y, bird.width, bird.height);
-
-            // Tuyaux
-            ctx.fillStyle = '#4a4a4a'; // Gris foncé
+            ctx.fillStyle = '#4a4a4a';
             pipes.forEach(pipe => {
                 ctx.fillRect(pipe.x, 0, gameSettings.pipeWidth, pipe.y);
                 ctx.fillRect(pipe.x, pipe.y + gameSettings.pipeGap, gameSettings.pipeWidth, canvas.height - pipe.y - gameSettings.pipeGap);
             });
-            
-            // Score
             ctx.fillStyle = '#333';
             ctx.font = '30px sans-serif';
             ctx.textAlign = 'center';
             ctx.fillText(score, canvas.width / 2, 50);
         }
-
         function checkCollisions() {
             if (bird.y + bird.height > canvas.height || bird.y < 0) isGameOver = true;
-            
             pipes.forEach(pipe => {
                 if (bird.x < pipe.x + gameSettings.pipeWidth && bird.x + bird.width > pipe.x &&
                     (bird.y < pipe.y || bird.y + bird.height > pipe.y + gameSettings.pipeGap)) {
@@ -310,19 +251,13 @@
                 }
             });
         }
-        
         function handleInput() {
-            if (isGameOver) {
-                setup();
-            } else {
-                bird.velocity = gameSettings.jump;
-            }
+            if (isGameOver) setup();
+            else bird.velocity = gameSettings.jump;
         }
-
         document.addEventListener('keydown', e => { if (e.code === 'Space') handleInput(); });
         canvas.addEventListener('mousedown', handleInput);
         canvas.addEventListener('touchstart', e => { e.preventDefault(); handleInput(); }, { passive: false });
-
         displayHighScores();
     </script>
 </body>
