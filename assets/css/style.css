@@ -74,6 +74,8 @@ body {
 .accordion-sidebar.active:after { 
     content: "\2212"; 
 }
+
+/* --- CORRECTION ESTHÉTIQUE POUR LES LIENS DANS LES PANNEAUX --- */
 .panel-sidebar {
     padding: 0; 
     background-color: #fafafa; 
@@ -82,8 +84,15 @@ body {
     transition: max-height 0.2s ease-out;
 }
 .panel-sidebar a {
-    padding-left: 40px;
+    display: block; /* Force chaque lien sur sa propre ligne */
+    padding: 15px 20px 15px 40px; /* Ajoute un padding cohérent et une indentation */
     font-size: 0.95em;
+    color: #343a40; /* Couleur du texte assortie */
+    text-decoration: none; /* Enlève le soulignement */
+    transition: background-color 0.2s, color 0.2s;
+}
+.panel-sidebar a:hover {
+    background-color: #f1f1f1; /* Léger fond gris au survol */
 }
 
 /* --- STYLE 'JOURNALISTE' POUR L'ACCORDÉON DANS LES PAGES --- */
