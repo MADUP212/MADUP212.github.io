@@ -1,7 +1,6 @@
 ---
 layout: default
 title: À propos
-permalink: /a-propos/
 ---
 
 <div class="page-content" markdown="1">
