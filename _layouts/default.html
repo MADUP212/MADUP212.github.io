@@ -4,84 +4,147 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title | default: site.title }}</title>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-   <style>
-    :root {
-        --sidebar-width: 260px;
-        --sidebar-bg: #ffffff;    /* CHANGÉ: Blanc */
-        --accent-blue: #000000;  /* CHANGÉ: Noir */
-    }
+    <style>
+        :root {
+            --sidebar-width: 260px;
+            --sidebar-bg: #ffffff;
+            --accent-blue: #000000;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #ffffff; color: #212529; margin: 0; overflow-x: hidden;
+        }
+        .menu-toggle {
+            position: fixed; top: 15px; left: 15px; z-index: 1001;
+            background: none; border: none; font-size: 1.5em; cursor: pointer; color: #343a40;
+        }
+        .sidebar {
+            position: fixed; top: 0; left: 0; height: 100vh; width: var(--sidebar-width);
+            background-color: var(--sidebar-bg); border-right: 1px solid #dee2e6;
+            z-index: 1000; transform: translateX(-100%); transition: transform 0.3s ease-in-out;
+            overflow-y: auto; /* Pour permettre de scroller si le menu est long */
+        }
+        .sidebar.open { transform: translateX(0); }
+        .sidebar-header { padding: 20px; text-align: center; border-bottom: 1px solid #dee2e6; }
+        .sidebar-header h3 { margin: 0; color: #343a40; }
+        .nav-list { list-style: none; padding: 0; margin: 20px 0; }
+        .nav-list a {
+            display: block; padding: 15px 20px; color: #343a40; text-decoration: none;
+            font-weight: 500; transition: background-color 0.2s, color 0.2s;
+        }
+        .nav-list a:hover {
+            background-color: var(--accent-blue); color: white;
+        }
+        .main-content { padding: 60px 20px 20px; margin-left: 0; transition: margin-left 0.3s ease-in-out; }
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4);
+            z-index: 999; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s;
+        }
+        .overlay.open { opacity: 1; visibility: visible; }
 
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        background-color: #ffffff;
-        color: #212529;
-        margin: 0;
-        overflow-x: hidden;
-    }
+        /* --- STYLES POUR L'ACCORDÉON MULTI-NIVEAUX --- */
+        .accordion {
+            background-color: transparent; /* Intégration au style de la sidebar */
+            color: #343a40; cursor: pointer; padding: 15px 20px; width: 100%;
+            text-align: left; border: none; outline: none; transition: 0.4s;
+            font-weight: 500; font-size: 1em; font-family: inherit;
+        }
+        .accordion:hover, .accordion.active {
+            background-color: #f1f1f1;
+        }
+        .accordion:after {
+            content: '\002B'; /* Symbole + */
+            color: #777; font-weight: bold; float: right;
+        }
+        .accordion.active:after {
+            content: "\2212"; /* Symbole - */
+        }
+        .panel {
+            padding: 0; background-color: white; max-height: 0;
+            overflow: hidden; transition: max-height 0.2s ease-out;
+        }
+        /* Style pour les sous-éléments */
+        .panel a, .panel .accordion {
+            padding-left: 40px; /* Indentation pour les sous-éléments */
+            font-size: 0.95em;
+        }
+        /* Style pour les sous-sous-éléments */
+        .panel .panel a {
+            padding-left: 60px; /* Indentation plus grande */
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+    <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
+        <i class="fas fa-bars"></i>
+    </button>
 
-    .menu-toggle {
-        position: fixed; top: 15px; left: 15px; z-index: 1001;
-        background: none; border: none; font-size: 1.5em; cursor: pointer; color: #343a40;
-    }
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>{{ site.title }}</h3>
+        </div>
+        <ul class="nav-list">
+            <li><a href="{{ '/' | relative_url }}">Accueil</a></li>
 
-    .sidebar {
-        position: fixed; top: 0; left: 0; height: 100vh; width: var(--sidebar-width);
-        background-color: var(--sidebar-bg); border-right: 1px solid #dee2e6;
-        z-index: 1000; transform: translateX(-100%); transition: transform 0.3s ease-in-out;
-    }
+            <li>
+                <button class="accordion">À Propos</button>
+                <div class="panel">
+                    <a href="{{ '/section/a-propos.html' | relative_url }}">Qui suis-je ?</a>
+                    </div>
+            </li>
 
-    .sidebar.open { transform: translateX(0); }
-    .sidebar-header { padding: 20px; text-align: center; border-bottom: 1px solid #dee2e6; }
-    .sidebar-header h3 { margin: 0; color: #343a40; }
-    .nav-list { list-style: none; padding: 0; margin: 20px 0; }
-    .nav-list a {
-        display: block; padding: 15px 20px; color: #343a40; text-decoration: none;
-        font-weight: 500; transition: background-color 0.2s, color 0.2s;
-    }
-
-    .nav-list a:hover {
-        background-color: var(--accent-blue);
-        color: white;
-    }
-
-    .main-content {
-        padding: 60px 20px 20px 20px;
-        margin-left: 0;
-        transition: margin-left 0.3s ease-in-out;
-    }
-
-    .overlay {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4);
-        z-index: 999; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s;
-    }
-
-    .overlay.open { opacity: 1; visibility: visible; }
+            <li>
+                <button class="accordion">La Ronde</button>
+                <div class="panel">
+                    <button class="accordion">Jeux</button>
+                    <div class="panel">
+                        <a href="{{ '/jeux/flappy.html' | relative_url }}">Flappy Game</a>
+                        <a href="{{ '/jeux/tictactoe.html' | relative_url }}">Tic-Tac-Toe</a>
+                    </div>
+                    <button class="accordion">Random</button>
+                    <div class="panel">
+                        <a href="{{ '/random/Calendrier_Agile.html' | relative_url }}">Calendrier Agile</a>
+                        <a href="{{ '/random/boring.html' | relative_url }}">Boring Project</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
     
-    .container { max-width: 700px; margin: 0 auto; }
-    h2 { text-align: center; color: #343a40; margin-top: 30px; margin-bottom: 40px; font-weight: 500; }
-    .project-list { list-style: none; padding: 0; }
-    .project-card {
-        background-color: #ffffff; border: 1px solid #dee2e6; border-left: 4px solid var(--accent-blue);
-        margin-bottom: 15px; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        display: flex; align-items: center; transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+    <main class="main-content" id="mainContent">
+        {{ content }}
+    </main>
+    
+    <div class="overlay" id="overlay"></div>
 
-    .project-card:hover { transform: translateY(-4px); box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
-    .project-icon { font-size: 1.8em; color: var(--accent-blue); margin-right: 20px; width: 40px; text-align: center; }
-    .project-details { flex-grow: 1; }
-    .project-details h3 { margin: 0 0 5px 0; color: #343a40; font-weight: 600; }
-    .project-details p { margin: 0; color: #6c757d; font-size: 0.95em; }
-    .project-date { font-size: 0.8em; color: #adb5bd; display: block; margin-top: 5px; }
-    .project-link {
-        background-color: var(--accent-blue); color: white; padding: 10px 18px; text-decoration: none;
-        border-radius: 5px; font-weight: 500; white-space: nowrap; transition: background-color 0.2s ease;
-    }
+    <script>
+        // Script pour le menu latéral (existant)
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        function toggleMenu() {
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('open');
+        }
+        menuToggle.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
 
-    .project-link:hover {
-        background-color: #333333; /* CHANGÉ: Gris foncé */
-    }
-
-    /* --- Styles pour l'Accordéon (AJOUT) --- */
+        // Script pour l'accordéon (fonctionne pour plusieurs niveaux)
+        var acc = document.getElementsByClassName("accordion");
+        for (var i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                } 
+            });
+        }
+    </script>
+</body>
+</html>
