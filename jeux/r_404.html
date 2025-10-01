@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #fdfbf7; /* Beige clair */
+            background-color: #fdfbf7;
             color: #333;
             display: flex;
             justify-content: center;
@@ -38,59 +38,59 @@
             background-color: #f7f7f7;
         }
         #dino {
-            width: 50px; /* Taille ajustée pour un logo carré */
+            width: 50px;
             height: 50px;
-            /* SVG pour le logo du langage R */
             background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Ctext x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-size="90" font-weight="bold" font-family="Arial, sans-serif" fill="%23333"%3ER%3C/text%3E%3C/svg%3E');
             background-repeat: no-repeat;
-            background-size: contain; /* Assure que le logo s'adapte bien */
+            background-size: contain;
             position: absolute;
             bottom: 0;
             left: 10px;
+            transition: height 0.2s, width 0.2s; /* Ajout d'une transition pour se baisser */
         }
         .jump {
             animation: jump 0.6s linear;
+        }
+        .crouch {
+            width: 55px; /* Le "R" s'écrase un peu */
+            height: 30px;
         }
         @keyframes jump {
             0%   { bottom: 0; }
             50%  { bottom: 80px; }
             100% { bottom: 0; }
         }
+        .obstacle {
+            position: absolute;
+            bottom: 0;
+            animation-name: moveObstacle;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
         .cactus {
             width: 20px;
             height: 40px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 40'%3E%3Cpath fill='%23333' d='M20 40H0V37h1v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1V22h1V12H9v10h1v8h1v1h1v1h1v1h1v1h1v1h1v1h1v3h1v1h1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-9h-1v-1h-1v-1h-1V10h1V9h1V8h1V7h1V6h2V5h1V3h1V1h1V0h1v1h1v1h1v2h1v1h1v1h2v1h1v1h1v1h1v2h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v2h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-2H3v-1H2v-1H1v-1V10h1V9h1V8h1V7h1V6h1V5h1V3h1V2h2V1h1V0h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1H4v1H3v1H2v1H1v12h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1H4v-1H3v-1H2v-1H1v-1H0v3z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            position: absolute;
-            bottom: 0;
-            animation: moveCactus 2s linear infinite;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 40'%3E%3Cpath fill='%23333' d='M20 40H0V37h1v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1V22h1V12H9v10h1v8h1v1h1v1h1v1h1v1h1v1h1v1h1v3h1v1h1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-9h-1v-1h-1v-1h-1V10h1V9h1V8h1V7h1V6h2V5h1V3h1V1h1V0h1v1h1v1h1v2h1v1h1v1h2v1h1v1h1v1h1v2h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v2h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-2H3v-1H2v-1H1v-1V10h1V9h1V8h1V7h1V6h1V5h1V3h1V2h2V1h1V0h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1H4v1H3v1H2v1H1v12h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1H4v-1H3v-1H2v-1H1v-1H0v3z'/%3E%3C/svg%3E");
         }
-        @keyframes moveCactus {
-            0% { right: -30px; }
-            100% { right: 600px; }
+        .bird {
+            width: 40px;
+            height: 30px;
+            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 30"%3E%3Cpath fill="%23333" d="M0 15 L10 10 L20 15 L25 12 L30 18 L35 15 L40 20 V30 H0 Z M15 5 L25 0 L30 5 Z"/%3E%3C/svg%3E');
+            bottom: 35px; /* Vole au-dessus du sol */
+        }
+        @keyframes moveObstacle {
+            0% { right: -50px; }
+            100% { right: 650px; }
         }
         #ground {
-            width: 100%;
-            height: 2px;
-            background-color: #333;
-            position: absolute;
-            bottom: -2px;
+            width: 100%; height: 2px; background-color: #333; position: absolute; bottom: -2px;
         }
         #score {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.5em;
-            font-weight: bold;
+            position: absolute; top: 10px; right: 10px; font-size: 1.5em; font-weight: bold;
         }
         #message-screen {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 1.5em;
-            font-weight: bold;
-            text-align: center;
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-size: 1.5em; font-weight: bold; text-align: center;
         }
     </style>
 </head>
@@ -113,28 +113,27 @@
             const messageScreen = document.getElementById('message-screen');
 
             let isJumping = false;
+            let isCrouching = false;
             let isGameOver = true;
             let score = 0;
-            let gameSpeed = 2000;
+            let gameSpeed = 2.0; // Vitesse initiale
             let scoreInterval;
-            let cactusInterval;
+            let obstacleInterval;
 
             function startGame() {
                 isGameOver = false;
                 score = 0;
-                gameSpeed = 2000;
+                gameSpeed = 2.0;
                 scoreDisplay.textContent = score;
                 messageScreen.style.display = 'none';
-
-                document.querySelectorAll('.cactus').forEach(c => c.remove());
-
+                document.querySelectorAll('.obstacle').forEach(o => o.remove());
                 scoreInterval = setInterval(updateScore, 100);
-                cactusInterval = setTimeout(spawnCactus, 1000);
+                obstacleInterval = setTimeout(spawnObstacle, 1000);
                 requestAnimationFrame(gameLoop);
             }
 
             function jump() {
-                if (isJumping || isGameOver) return;
+                if (isJumping || isCrouching || isGameOver) return;
                 isJumping = true;
                 dino.classList.add('jump');
                 setTimeout(() => {
@@ -142,72 +141,90 @@
                     isJumping = false;
                 }, 600);
             }
+
+            function crouch(enable) {
+                if (isJumping || isGameOver) return;
+                if (enable) {
+                    isCrouching = true;
+                    dino.classList.add('crouch');
+                } else {
+                    isCrouching = false;
+                    dino.classList.remove('crouch');
+                }
+            }
             
             document.addEventListener('keydown', (e) => {
-                if (e.code === 'Space') {
-                    e.preventDefault(); // Empêche la page de défiler
-                    if (isGameOver) {
-                        startGame();
-                    } else {
-                        jump();
-                    }
+                if (e.code === 'Space' || e.code === 'ArrowUp') {
+                    e.preventDefault();
+                    if (isGameOver) startGame();
+                    else jump();
+                } else if (e.code === 'ArrowDown') {
+                    e.preventDefault();
+                    crouch(true);
+                }
+            });
+            document.addEventListener('keyup', (e) => {
+                if (e.code === 'ArrowDown') {
+                    crouch(false);
                 }
             });
 
             function updateScore() {
                 score++;
                 scoreDisplay.textContent = score;
-                if (score > 0 && score % 100 === 0 && gameSpeed > 800) {
-                    gameSpeed -= 100;
-                }
+                gameSpeed += 0.003; // Augmentation progressive de la vitesse
             }
 
-            function spawnCactus() {
+            function spawnObstacle() {
                 if (isGameOver) return;
-
-                const cactus = document.createElement('div');
-                cactus.classList.add('cactus');
-                cactus.style.animationDuration = `${gameSpeed}ms`;
-                gameContainer.appendChild(cactus);
+                const isBird = Math.random() > 0.65; // 35% de chance d'avoir un oiseau
+                const obstacle = document.createElement('div');
+                obstacle.classList.add('obstacle');
+                
+                if (isBird) {
+                    obstacle.classList.add('bird');
+                } else {
+                    obstacle.classList.add('cactus');
+                }
+                
+                // La durée de l'animation diminue à mesure que la vitesse augmente
+                const animationDuration = 2000 / gameSpeed;
+                obstacle.style.animationDuration = `${animationDuration}s`;
+                gameContainer.appendChild(obstacle);
 
                 setTimeout(() => {
-                    cactus.remove();
-                }, gameSpeed);
+                    obstacle.remove();
+                }, animationDuration * 1.1);
 
-                const randomInterval = gameSpeed * (Math.random() * 0.5 + 0.75); // Intervalle basé sur la vitesse actuelle
-                cactusInterval = setTimeout(spawnCactus, randomInterval);
+                const randomInterval = (animationDuration * 0.8) + (Math.random() * (animationDuration * 0.5));
+                obstacleInterval = setTimeout(spawnObstacle, randomInterval);
             }
             
             function gameLoop() {
                 if (isGameOver) return;
-
                 const dinoRect = dino.getBoundingClientRect();
-                const cacti = document.querySelectorAll('.cactus');
-
-                for (let cactus of cacti) {
-                    const cactusRect = cactus.getBoundingClientRect();
-                    // Hitbox un peu plus tolérante
+                document.querySelectorAll('.obstacle').forEach(obstacle => {
+                    const obstacleRect = obstacle.getBoundingClientRect();
                     if (
-                        dinoRect.right > cactusRect.left + 5 &&
-                        dinoRect.left < cactusRect.right - 5 &&
-                        dinoRect.bottom > cactusRect.top + 5
+                        dinoRect.right > obstacleRect.left + 5 &&
+                        dinoRect.left < obstacleRect.right - 5 &&
+                        dinoRect.bottom > obstacleRect.top + 5 &&
+                        dinoRect.top < obstacleRect.bottom - 5
                     ) {
                         endGame();
                         return;
                     }
-                }
+                });
                 requestAnimationFrame(gameLoop);
             }
 
             function endGame() {
                 isGameOver = true;
                 clearInterval(scoreInterval);
-                clearTimeout(cactusInterval);
-                
-                document.querySelectorAll('.cactus').forEach(c => {
-                    c.style.animationPlayState = 'paused';
+                clearTimeout(obstacleInterval);
+                document.querySelectorAll('.obstacle').forEach(o => {
+                    o.style.animationPlayState = 'paused';
                 });
-                
                 messageScreen.innerHTML = `Partie terminée ! Score : ${score}<br>Appuyez sur Espace pour rejouer`;
                 messageScreen.style.display = 'block';
             }
