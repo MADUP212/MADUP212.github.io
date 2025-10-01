@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tableau de Bord AGILE - Synthèse</title>
+    <title>Tableau de Bord AGILE - Synthèse de Maîtrise</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -165,10 +165,12 @@
 </head>
 <body>
     <div class="container">
-        <a href="projets.html" class="back-button">← Retour</a>
+        <!-- === BOUTON RETOUR CORRIGÉ === -->
+        <a href="javascript:history.back()" class="back-button">← Retour</a>
+        
         <header>
-            <h1>Tableau de Bord de Rédaction</h1>
-            <p>Suivi de synthèse avec la méthode AGILE</p>
+            <h1>Calendrier AGILE pour Synthèse de Maîtrise</h1>
+            <p>Plan de rédaction sur 4 mois (16 semaines)</p>
         </header>
 
         <main>
@@ -192,15 +194,15 @@
     </div>
 
 <script>
+// --- NOUVELLES DONNÉES BASÉES SUR VOTRE DOCUMENT ---
 const sprintData = [
-    { id: 1, title: "Sprint 1: Planification", weeks: "1-2", objective: "Finaliser la structure et créer un 'backlog' détaillé.", tasks: ["Décomposer chaque chapitre", "Consolider la bibliographie", "Rédiger V1 du cadre théorique", "Mettre en place les outils"] },
-    { id: 2, title: "Sprint 2: Littérature", weeks: "3-4", objective: "Produire une V1 de la revue de littérature.", tasks: ["Finaliser lectures essentielles", "Écrire l'ébauche de la revue", "Intégrer les citations"] },
-    { id: 3, title: "Sprint 3: Analyse 1", weeks: "5-6", objective: "Rédiger l'ébauche du premier chapitre analytique.", tasks: ["Analyser les données du chapitre", "Écrire l'argumentaire principal", "Faire le lien avec le cadre théorique"] },
-    { id: 4, title: "Sprint 4: Analyse 2", weeks: "7-8", objective: "Rédiger l'ébauche du second chapitre analytique.", tasks: ["Traiter le matériel de recherche", "Construire l'argumentation", "Assurer la transition avec le chapitre 1"] },
-    { id: 5, title: "Sprint 5: Fin Contenu", weeks: "9-10", objective: "Compléter le dernier chapitre et la V1 de la conclusion.", tasks: ["Écrire le dernier chapitre", "Rédiger V1 de la conclusion"] },
-    { id: 6, title: "Sprint 6: Intro & Révision", weeks: "11-12", objective: "Rédiger l'introduction et effectuer une première révision.", tasks: ["Rédiger l'introduction", "Lire l'intégralité pour cohérence", "Intégrer les commentaires"] },
-    { id: 7, title: "Sprint 7: Mise en Forme", weeks: "13-14", objective: "Transformer l'ébauche en un manuscrit propre.", tasks: ["Intégrer les derniers retours", "Appliquer les normes de présentation", "Vérifier la bibliographie", "Corriger coquilles et grammaire"] },
-    { id: 8, title: "Sprint 8: Relecture Finale", weeks: "15-16", objective: "Effectuer les dernières vérifications avant le dépôt.", tasks: ["Faire relire par un tiers", "Relire sur papier", "Générer le PDF final", "Marge de sécurité"] }
+    { id: 1, title: "Sprint 1: Cadrage", weeks: "1-3", objective: "Établir des fondations solides : question de recherche, plan et revue de littérature.", tasks: ["Valider la question de recherche finale", "Établir un plan de rédaction détaillé", "Rédiger la V1 de la revue de littérature (incrément 1)", "Créer le backlog complet du projet"] },
+    { id: 2, title: "Sprint 2: Méthodologie", weeks: "4-5", objective: "Définir et rédiger l'approche méthodologique et théorique.", tasks: ["Rédiger la section méthodologie", "Finaliser le cadre théorique", "Soumettre la demande éthique si nécessaire"] },
+    { id: 3, title: "Sprint 3: Rédaction Chapitre 1", weeks: "6-8", objective: "Produire une version complète du premier chapitre analytique.", tasks: ["Analyser les données pour le chapitre 1", "Rédiger l'argumentaire et le corps du texte", "Intégrer les sources et citations"] },
+    { id: 4, title: "Sprint 4: Rédaction Chapitre 2", weeks: "9-11", objective: "Produire une version complète du second chapitre analytique.", tasks: ["Analyser les données pour le chapitre 2", "Rédiger l'argumentaire et le corps du texte", "Assurer la cohérence avec le chapitre 1"] },
+    { id: 5, title: "Sprint 5: Finalisation du contenu", weeks: "12-13", objective: "Compléter les sections restantes et obtenir une première ébauche complète.", tasks: ["Rédiger l'introduction", "Rédiger la conclusion", "Assembler tous les chapitres en un seul document"] },
+    { id: 6, title: "Sprint 6: Révision et Amélioration", weeks: "14-15", objective: "Réviser en profondeur le manuscrit pour la clarté, la cohérence et la qualité.", tasks: ["Faire une lecture complète du manuscrit", "Intégrer les retours de la direction de recherche", "Corriger la grammaire et le style"] },
+    { id: 7, title: "Sprint 7: Mise en forme et Dépôt", weeks: "16-16", objective: "Préparer le document final pour le dépôt officiel.", tasks: ["Appliquer les normes de présentation de l'université", "Vérifier la bibliographie et les citations", "Générer le PDF final pour le dépôt", "Soumettre la synthèse"] }
 ];
 
 let taskStatus = {};
@@ -256,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderSprintDetails(sprint.id);
             });
             barContainer.appendChild(bar);
-ganttChart.appendChild(barContainer);
+            ganttChart.appendChild(barContainer);
         });
     }
 
@@ -345,4 +347,3 @@ ganttChart.appendChild(barContainer);
 </script>
 </body>
 </html>
-
