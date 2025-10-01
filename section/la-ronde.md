@@ -1,7 +1,6 @@
 ---
 layout: default
-title: La Ronde
-permalink: /la-ronde/
+title: À propos
 ---
 
 <div class="page-content" markdown="1">
