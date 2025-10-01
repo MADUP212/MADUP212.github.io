@@ -9,9 +9,3 @@ theme: minima
 
 github_username: MADUP212
 linkedin_username: mdupuis212
-
-# On définit ici les liens principaux de la navigation
-header_pages:
-  - index.md
-  - a-propos.md
-  - la-ronde.md
