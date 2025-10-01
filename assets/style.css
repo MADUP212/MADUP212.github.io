@@ -1,0 +1,40 @@
+/* Style pour les boutons de l'accordéon */
+.accordion {
+  background-color: #f1f1f1;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  font-size: 1.1em;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+.accordion:hover, .accordion.active {
+  background-color: #ddd;
+}
+.accordion:after {
+  content: '\02795'; /* Symbole Unicode pour "+" */
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+.accordion.active:after {
+  content: "\2796"; /* Symbole Unicode pour "-" */
+}
+
+/* Style pour le panneau de contenu (caché par défaut) */
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  border-radius: 5px;
+  border: 1px solid #eee;
+  margin-bottom: 5px;
+}
