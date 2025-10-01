@@ -22,9 +22,13 @@ title: Accueil
 
 [//]: # (Télécharger CV mis à jour le 25 septembre 2025)
 
- <a href="assets/CV_Marc_Antoine_Dupuis.pdf" target="_blank" class="btn">
-  Pour télécharger mon CV
-</a>
+<p>
+  Bienvenue ! Je m'appelle Marc-Antoine Dupuis, étudiant à la maîtrise à l'Université Laval, en science politique. J'apprends actuellement à coder en R, à utiliser les méthodes AGILE, et à <em>vibe coder</em> avec Google Gemini Pro. Je m'intéresse aux enjeux de sécurité de l'OTAN ainsi qu'aux politiques canadiennes. Vous trouverez mon CV <a href="assets/CV_Marc_Antoine_Dupuis.pdf" target="_blank">ici</a>.
+</p>
+
+<p>
+  Welcome! I'm Marc-Antoine Dupuis, a master's student at Université Laval, in poltiical science. I'm currently learning to code in R, use AGILE methods, and <em>vibe code</em> with Google Gemini Pro. I'm interested in NATO security issues and canadian politics. You can find my CV <a href="assets/CV_Marc_Antoine_Dupuis.pdf" target="_blank">here</a>.
+</p>
 
 
 
