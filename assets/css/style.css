@@ -86,7 +86,7 @@ body {
     font-size: 0.95em;
 }
 
-/* --- NOUVEAU STYLE 'JOURNALISTE' POUR L'ACCORDÉON DANS LES PAGES --- */
+/* --- STYLE 'JOURNALISTE' POUR L'ACCORDÉON DANS LES PAGES --- */
 .page-content .accordion {
     background-color: transparent;
     color: #333;
@@ -101,30 +101,25 @@ body {
     font-size: 1.4em;
     font-weight: 600;
 }
-
 .page-content .accordion:last-of-type,
 .page-content .accordion:last-of-type.active + .panel {
     border-bottom: 1px solid #e0e0e0;
 }
-
 .page-content .accordion:hover, 
 .page-content .accordion.active {
     background-color: #fafafa;
 }
-
 .page-content .accordion:after {
-    content: '\25B8'; /* Icône chevron */
+    content: '\25B8';
     font-size: 0.7em;
     color: #888;
     float: right;
     margin-left: 15px;
     transition: transform 0.3s ease;
 }
-
 .page-content .accordion.active:after {
     transform: rotate(90deg);
 }
-
 .page-content .panel {
     padding: 25px 15px;
     background-color: white;
