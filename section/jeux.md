@@ -3,10 +3,32 @@ layout: default
 title: Jeux
 ---
 
-## Mes Jeux
+<div class="page-content">
+  <h2>Mes Jeux</h2>
+  <p>Voici une sélection de mini-jeux développés pour le plaisir et l'expérimentation.</p>
+  
+  <div class="game-list">
+    
+    <article class="game-entry">
+      <h3>
+        <a href="{{ '/jeux/paires-emojis.html' | relative_url }}">Paires d'Emojis</a>
+      </h3>
+      <p>Testez votre mémoire et trouvez toutes les paires cachées dans ce jeu de cartes classique.</p>
+    </article>
 
-Voici une sélection de mini-jeux développés par Gemini Pro. 
+    <article class="game-entry">
+      <h3>
+        <a href="{{ '/jeux/flappy.html' | relative_url }}">Flappy Game</a>
+      </h3>
+      <p>Naviguez à travers les obstacles dans ce classique addictif au style minimaliste.</p>
+    </article>
 
-* [**Flappy Game**]({{ '/jeux/flappy.html' | relative_url }})
-* [**Tic-Tac-Toe**]({{ '/jeux/tictactoe.html' | relative_url }})
-* [**Paires d'emojis**]({{ '/jeux/paires-emojis.html' | relative_url }})
+    <article class="game-entry">
+      <h3>
+        <a href="{{ '/jeux/tictactoe.html' | relative_url }}">Tic-Tac-Toe</a>
+      </h3>
+      <p>Affrontez une intelligence artificielle imbattable dans ce jeu de stratégie intemporel.</p>
+    </article>
+
+  </div>
+</div>
