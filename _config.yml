@@ -5,18 +5,13 @@ author:
 description: >-
   Étudiant à la maîtrise en science politique à l'Université Laval, réserviste ARH dans les FAC. 
 
-[//]: # (Thème du site web)
 theme: minima
 
-[//]: # (Lien pour les réseaux sociaux en bas de page) 
 github_username: MADUP212
 linkedin_username: mdupuis212
 
-[//]: # (Sections) 
+# On définit ici les liens principaux de la navigation
 header_pages:
-  - index.md    
-  - parcours.md
-  - cv.md
-  - contact.md
-  - about.md
-  - projets.md
+  - index.md
+  - a-propos.md
+  - la-ronde.md
