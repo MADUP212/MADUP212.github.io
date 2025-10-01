@@ -5,8 +5,7 @@ title: À propos
 
 <div class="page-content" markdown="1">
 
-  <button class="accordion">Parcours académique</button>
-  <div class="panel" markdown="1">
+  <button class="accordion">Parcours académique</button><div class="panel" markdown="1">
     <div>
       <div>
         <div style="display: flex; justify-content: space-between; align-items: baseline;">
@@ -109,11 +108,9 @@ title: À propos
         <li>Moyenne cumulative : 4,0 / 4,3. Récipiendaire d'une bourse de mérite de 1 000 $. Études poursuivies à l’UQAM.</li>
       </ul>
     </div>
-
   </div>
 
-  <button class="accordion">Expérience Professionnelle</button>
-  <div class="panel" markdown="1">
+  <button class="accordion">Expérience Professionnelle</button><div class="panel" markdown="1">
     <div>
       <div>
         <div style="display: flex; justify-content: space-between; align-items: baseline;">
@@ -176,11 +173,9 @@ title: À propos
         <li>Utilisation avancée de la suite Microsoft Office (Excel, Word) pour le traitement de données et la documentation.</li>
       </ul>
     </div>
-
   </div>
 
-  <button class="accordion">Contact</button>
-  <div class="panel" markdown="1">
+  <button class="accordion">Contact</button><div class="panel" markdown="1">
     <hr>
     <h2>Formulaire de Contact</h2>
     <form action="https://formspree.io/f/xovkqzyo" method="POST">
