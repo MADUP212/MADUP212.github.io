@@ -15,28 +15,27 @@
         <i class="fas fa-bars"></i>
     </button>
 
-    <nav class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <h3>{{ site.title }}</h3>
-        </div>
-        <ul class="nav-list">
-            <li><a href="{{ '/' | relative_url }}">Accueil</a></li>
-            <li>
-                <button class="accordion">À Propos</button>
-                <div class="panel">
-                    <a href="{{ '/section/a-propos.html' | relative_url }}">Qui suis-je ?</a>
-                </div>
-            </li>
-            <li>
-                <button class="accordion">La Ronde</button>
-                <div class="panel">
-                    <a href="{{ '/section/jeux.html' | relative_url }}">Jeux</a>
-                    <a href="{{ '/section/random.html' | relative_url }}">Random</a>
-                </div>
-            </li>
-        </ul>
-    </nav>
-    
+ <nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <h3>{{ site.title }}</h3>
+    </div>
+    <ul class="nav-list">
+        <li><a href="{{ '/' | relative_url }}">Accueil</a></li>
+        <li>
+            <button class="accordion">À Propos</button>
+            <div class="panel">
+                <a href="{{ '/section/a-propos.html' | relative_url }}">Qui suis-je ?</a>
+            </div>
+        </li>
+        <li>
+            <button class="accordion">La Ronde</button>
+            <div class="panel">
+                <a href="{{ '/section/jeux.html' | relative_url }}">Jeux</a>
+                <a href="{{ '/section/random.html' | relative_url }}">Random</a>
+            </div>
+        </li>
+    </ul>
+</nav>
     <main class="main-content" id="mainContent">
         {{ content }}
     </main>
