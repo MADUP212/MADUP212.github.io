@@ -136,3 +136,13 @@ body {
     overflow: hidden;
     transition: max-height 0.4s ease-out;
 }
+
+/* --- CORRECTIF POUR LE TEXTE QUI DÉPASSE DANS LES PANNEAUX --- */
+.panel div[style*="display: flex"] {
+    width: 100%; /* S'assure que la ligne prend toute la largeur */
+}
+
+.panel div[style*="display: flex"] > div:first-child {
+    min-width: 0; /* Permet au titre long de passer à la ligne au lieu de déborder */
+    word-wrap: break-word; /* Force la coupure des mots si nécessaire */
+}
