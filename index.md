@@ -27,7 +27,7 @@ title: Accueil
 </p>
 
 <p>
-  Welcome! I'm Marc-Antoine Dupuis, a master's student at Université Laval, in poltiical science. I'm currently learning to code in R, use AGILE methods, and <em>vibe code</em> with Google Gemini Pro. I'm interested in NATO security issues and canadian politics. You can find my CV <a href="assets/CV_Marc_Antoine_Dupuis.pdf" target="_blank">here</a>.
+  Welcome! I'm Marc-Antoine Dupuis, a master's student at Université Laval, in poltiical science. I'm currently learning to code in R, use AGILE methods, and <em>vibe code</em> with Google Gemini Pro. I'm interested in NATO security issues and canadian politics. You can find my CV <a href="assets/cv_english_oct25.pdf" target="_blank">here</a>.
 </p>
 
 
