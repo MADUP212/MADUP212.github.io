@@ -9,7 +9,7 @@ title: Projets Divers
   <div style="max-width: 700px; margin: 0 auto; padding: 2em 0;">
 
     <h2 style="text-align: center;">Projets Divers</h2>
-    <p style="text-align: center;">Collection de projets et outils variés.</p>
+    <p style="text-align: center;">Collection de projets et outils variés codés à l'aide de l'IA.</p>
     
     <div class="game-list">
 
