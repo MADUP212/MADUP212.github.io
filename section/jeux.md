@@ -17,7 +17,7 @@ title: Jeux
         <h3>
           <a href="{{ '/jeux/r_404.html' | relative_url }}">R-rawr-404</a>
         </h3>
-        <p>Internet ne fonctionne plus</p>
+        <p>(En construction)</p>
       </article>
       
       <article class="game-entry">
