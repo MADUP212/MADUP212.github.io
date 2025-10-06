@@ -22,11 +22,17 @@
     <ul class="nav-list">
         <!-- 1. Accueil -->
         <li><a href="{{ '/' | relative_url }}">Accueil</a></li>
-        
-        <!-- 2. CV -->
-        <li><a href="assets/CV_Marc_Antoine_Dupuis.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
 
-         <!-- 3. Projets -->
+        <!-- 2. Projets -->
+        <li>
+            <button class="accordion-sidebar">Projets</button>
+            <div class="panel-sidebar">
+                <a href="{{ '/section/projets/rearmement_polonais.html' | relative_url }}">Le réarmement polonais</a>
+            </div>
+        </li>
+        
+        <!-- 3. CV -->
+        <li><a href="assets/CV_Marc_Antoine_Dupuis.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
         
         <!-- 4. La Ronde -->
         <li>
@@ -40,10 +46,11 @@
         <!-- 5. Contact -->
         <li><a href="{{ '/section/a-propos.html' | relative_url }}">Contact</a></li>
         
-        <!-- 5. Lien LinkedIn -->
+        <!-- 6. Lien LinkedIn -->
         <li><a href="https://www.linkedin.com/in/mdupuis212/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
     </ul>
 </nav>
+
     
     <main class="main-content" id="mainContent">
         {{ content }}
