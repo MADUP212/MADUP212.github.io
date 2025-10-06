@@ -12,6 +12,19 @@
             background-color: #fdfbf7;
             margin: 0;
             padding: 2rem;
+            position: relative; /* Ajouté pour le positionnement du bouton */
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #fff;
+            background-color: rgba(0,0,0,0.5);
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1em;
+            z-index: 10;
         }
         .container {
             max-width: 800px;
@@ -78,6 +91,8 @@
     </style>
 </head>
 <body>
+
+    <a href="javascript:history.back()" class="back-button">← Retour</a>
 
     <div class="container">
         <h1>La Reconfiguration de la Politique de Défense Polonaise : Une Inférence Descriptive (2014-2025)</h1>
