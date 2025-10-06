@@ -35,25 +35,25 @@
             border: 2px solid #333;
             position: relative;
             overflow: hidden;
-            background-color: #f7f7f7;
+            background-color: #f5f1e9;
         }
         #dino {
             width: 50px;
             height: 50px;
-            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Ctext x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-size="90" font-weight="bold" font-family="Arial, sans-serif" fill="%23333"%3ER%3C/text%3E%3C/svg%3E');
+            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w.org/2000/svg" viewBox="0 0 100 100"%3E%3Ctext x="50%25" y="50%25" dominant-baseline="central" text-anchor="middle" font-size="90" font-weight="bold" font-family="Arial, sans-serif" fill="%23333"%3ER%3C/text%3E%3C/svg%3E');
             background-repeat: no-repeat;
             background-size: contain;
             position: absolute;
             bottom: 0;
             left: 10px;
-            transition: height 0.2s, width 0.2s; /* Ajout d'une transition pour se baisser */
+            transition: height 0.2s, width 0.2s;
         }
         .jump {
             animation: jump 0.6s linear;
         }
         .crouch {
-            width: 55px; /* Le "R" s'écrase un peu */
-            height: 30px;
+            width: 55px;
+            height: 30px; /* Le "R" devient plus petit */
         }
         @keyframes jump {
             0%   { bottom: 0; }
@@ -62,7 +62,6 @@
         }
         .obstacle {
             position: absolute;
-            bottom: 0;
             animation-name: moveObstacle;
             animation-timing-function: linear;
             animation-iteration-count: infinite;
@@ -70,13 +69,14 @@
         .cactus {
             width: 20px;
             height: 40px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 40'%3E%3Cpath fill='%23333' d='M20 40H0V37h1v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1V22h1V12H9v10h1v8h1v1h1v1h1v1h1v1h1v1h1v1h1v3h1v1h1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-9h-1v-1h-1v-1h-1V10h1V9h1V8h1V7h1V6h2V5h1V3h1V1h1V0h1v1h1v1h1v2h1v1h1v1h2v1h1v1h1v1h1v2h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v2h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-2H3v-1H2v-1H1v-1V10h1V9h1V8h1V7h1V6h1V5h1V3h1V2h2V1h1V0h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1H4v1H3v1H2v1H1v12h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1H4v-1H3v-1H2v-1H1v-1H0v3z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 40'%3E%3Cpath fill='%23333' d='M20 40H0V37h1v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1V22h1V12H9v10h1v8h1v1h1v1h1v1h1v1h1v1h1v3h1v1h1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-9h-1v-1h-1v-1h-1V10h1V9h1V8h1V7h1V6h2V5h1V3h1V1h1V0h1v1h1v1h1v2h1v1h1v1h2v1h1v1h1v1h1v2h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v2h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-2H3v-1H2v-1H1v-1V10h1V9h1V8h1V7h1V6h1V5h1V3h1V2h2V1h1V0h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1H4v1H3v1H2v1H1v12h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1H4v-1H3v-1H2v-1H1v-1H0v3z'/%3E");
+            bottom: 0;
         }
         .bird {
             width: 40px;
             height: 30px;
             background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 30"%3E%3Cpath fill="%23333" d="M0 15 L10 10 L20 15 L25 12 L30 18 L35 15 L40 20 V30 H0 Z M15 5 L25 0 L30 5 Z"/%3E%3C/svg%3E');
-            bottom: 35px; /* Vole au-dessus du sol */
+            bottom: 35px; /* Position de vol */
         }
         @keyframes moveObstacle {
             0% { right: -50px; }
@@ -116,19 +116,19 @@
             let isCrouching = false;
             let isGameOver = true;
             let score = 0;
-            let gameSpeed = 2.0; // Vitesse initiale
+            let gameSpeed = 3.0; 
             let scoreInterval;
             let obstacleInterval;
 
             function startGame() {
                 isGameOver = false;
                 score = 0;
-                gameSpeed = 2.0;
+                gameSpeed = 3.0;
                 scoreDisplay.textContent = score;
                 messageScreen.style.display = 'none';
                 document.querySelectorAll('.obstacle').forEach(o => o.remove());
                 scoreInterval = setInterval(updateScore, 100);
-                obstacleInterval = setTimeout(spawnObstacle, 1000);
+                obstacleInterval = setTimeout(spawnObstacle, 1500);
                 requestAnimationFrame(gameLoop);
             }
 
@@ -172,12 +172,12 @@
             function updateScore() {
                 score++;
                 scoreDisplay.textContent = score;
-                gameSpeed += 0.003; // Augmentation progressive de la vitesse
+                gameSpeed += 0.005; 
             }
 
             function spawnObstacle() {
                 if (isGameOver) return;
-                const isBird = Math.random() > 0.65; // 35% de chance d'avoir un oiseau
+                const isBird = Math.random() > 0.6; // 40% de chance d'avoir un oiseau
                 const obstacle = document.createElement('div');
                 obstacle.classList.add('obstacle');
                 
@@ -187,16 +187,15 @@
                     obstacle.classList.add('cactus');
                 }
                 
-                // La durée de l'animation diminue à mesure que la vitesse augmente
-                const animationDuration = 2000 / gameSpeed;
+                const animationDuration = 2500 / gameSpeed;
                 obstacle.style.animationDuration = `${animationDuration}s`;
                 gameContainer.appendChild(obstacle);
 
                 setTimeout(() => {
                     obstacle.remove();
-                }, animationDuration * 1.1);
+                }, animationDuration);
 
-                const randomInterval = (animationDuration * 0.8) + (Math.random() * (animationDuration * 0.5));
+                const randomInterval = (animationDuration * 0.7) + (Math.random() * (animationDuration * 0.6));
                 obstacleInterval = setTimeout(spawnObstacle, randomInterval);
             }
             
@@ -206,10 +205,10 @@
                 document.querySelectorAll('.obstacle').forEach(obstacle => {
                     const obstacleRect = obstacle.getBoundingClientRect();
                     if (
-                        dinoRect.right > obstacleRect.left + 5 &&
-                        dinoRect.left < obstacleRect.right - 5 &&
-                        dinoRect.bottom > obstacleRect.top + 5 &&
-                        dinoRect.top < obstacleRect.bottom - 5
+                        dinoRect.right > obstacleRect.left + 10 &&
+                        dinoRect.left < obstacleRect.right - 10 &&
+                        dinoRect.bottom > obstacleRect.top + 10 &&
+                        dinoRect.top < obstacleRect.bottom - 10
                     ) {
                         endGame();
                         return;
@@ -232,3 +231,4 @@
     </script>
 </body>
 </html>
+
