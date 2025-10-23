@@ -19,7 +19,7 @@ title: Présentations
 Huth & Russett (1984) On Detterence
 </a>
         </h3>
-        <p>Résumé de lecture : Huth, P. & Russett, B. (1984). What makes deterrence work? Testing theories of deterrence.</p>
+        <p>Résumé de lecture : Huth, P. & Russett, B. (1984). What makes deterrence work? Cases from 1900 to 1980.</p>
       </article>
 
     </div>
