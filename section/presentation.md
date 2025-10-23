@@ -15,7 +15,7 @@ title: Présentation
 
         <article class="game-entry">
         <h3>
-          <a href="{{ '/assets/presentations/huth_detterence.html' | relative_url }}">Huth & Russett 1984</a>
+          <a href="{{ '/assets/presentations/huth_detterence.qmd' | relative_url }}">Huth & Russett 1984</a>
         </h3>
         <p>Résumé de lecture : Huth, P. & Russett, B. (1984). What makes deterrence work? </p>
       </article>
