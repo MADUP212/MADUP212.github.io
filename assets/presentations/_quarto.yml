@@ -1,0 +1,10 @@
+Project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Analyse empirique de la dissuasion internationale"
+  navbar:
+    left:
+      - href: huth_detterence_web.qmd
+        text: Présentation
