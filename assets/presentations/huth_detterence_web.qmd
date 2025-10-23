@@ -4,13 +4,13 @@ subtitle: |
   Références : Huth, P. & Russett, B. (1984).  
   What makes deterrence work? Cases from 1900 to 1980 
   *World Politics, 36*(4), 496–526. 
+author: "Marc-Antoine Dupuis"
 format:
   revealjs:
     theme: simple
     transition: fade
     smaller: true
     math: true
-    self-contained: true  
 footer: |
   <div style="display: flex; justify-content: center; font-size: 0.75em;">
     <div style="margin-right: 2em;">Auteur : Marc-Antoine Dupuis</div>
