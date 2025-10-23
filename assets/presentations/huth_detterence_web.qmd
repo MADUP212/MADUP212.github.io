@@ -5,8 +5,7 @@ subtitle: |
   What makes deterrence work? Cases from 1900 to 1980 
   *World Politics, 36*(4), 496–526. 
 author: "Marc-Antoine Dupuis"
-format:
-  revealjs:
+format: revealjs
     theme: simple
     transition: fade
     smaller: true
