@@ -1,234 +1,194 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Jeu du R</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #fdfbf7;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            flex-direction: column;
-            position: relative;
-        }
-        .back-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            color: #fff;
-            background-color: rgba(0,0,0,0.5);
-            padding: 8px 12px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1em;
-            z-index: 10;
-        }
-        #game-container {
-            width: 600px;
-            height: 200px;
-            border: 2px solid #333;
-            position: relative;
-            overflow: hidden;
-            background-color: #f5f1e9;
-        }
-        #dino {
-            width: 50px;
-            height: 50px;
-            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w.org/2000/svg" viewBox="0 0 100 100"%3E%3Ctext x="50%25" y="50%25" dominant-baseline="central" text-anchor="middle" font-size="90" font-weight="bold" font-family="Arial, sans-serif" fill="%23333"%3ER%3C/text%3E%3C/svg%3E');
-            background-repeat: no-repeat;
-            background-size: contain;
-            position: absolute;
-            bottom: 0;
-            left: 10px;
-            transition: height 0.2s, width 0.2s;
-        }
-        .jump {
-            animation: jump 0.6s linear;
-        }
-        .crouch {
-            width: 55px;
-            height: 30px; /* Le "R" devient plus petit */
-        }
-        @keyframes jump {
-            0%   { bottom: 0; }
-            50%  { bottom: 80px; }
-            100% { bottom: 0; }
-        }
-        .obstacle {
-            position: absolute;
-            animation-name: moveObstacle;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-        }
-        .cactus {
-            width: 20px;
-            height: 40px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 40'%3E%3Cpath fill='%23333' d='M20 40H0V37h1v-1h1v-1h1v-1h1v-1h1v-1h1v-1h1V22h1V12H9v10h1v8h1v1h1v1h1v1h1v1h1v1h1v3h1v1h1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-9h-1v-1h-1v-1h-1V10h1V9h1V8h1V7h1V6h2V5h1V3h1V1h1V0h1v1h1v1h1v2h1v1h1v1h2v1h1v1h1v1h1v2h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v2h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-2H3v-1H2v-1H1v-1V10h1V9h1V8h1V7h1V6h1V5h1V3h1V2h2V1h1V0h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1H4v1H3v1H2v1H1v12h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1H4v-1H3v-1H2v-1H1v-1H0v3z'/%3E");
-            bottom: 0;
-        }
-        .bird {
-            width: 40px;
-            height: 30px;
-            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 30"%3E%3Cpath fill="%23333" d="M0 15 L10 10 L20 15 L25 12 L30 18 L35 15 L40 20 V30 H0 Z M15 5 L25 0 L30 5 Z"/%3E%3C/svg%3E');
-            bottom: 35px; /* Position de vol */
-        }
-        @keyframes moveObstacle {
-            0% { right: -50px; }
-            100% { right: 650px; }
-        }
-        #ground {
-            width: 100%; height: 2px; background-color: #333; position: absolute; bottom: -2px;
-        }
-        #score {
-            position: absolute; top: 10px; right: 10px; font-size: 1.5em; font-weight: bold;
-        }
-        #message-screen {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            font-size: 1.5em; font-weight: bold; text-align: center;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Jeu du R</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #fdfbf7;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      flex-direction: column;
+      position: relative;
+    }
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: #fff;
+      background-color: rgba(0,0,0,0.5);
+      padding: 8px 12px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1em;
+      z-index: 10;
+    }
+    #game-container {
+      width: 600px;
+      height: 200px;
+      border: 2px solid #333;
+      position: relative;
+      overflow: hidden;
+      background-color: #f5f1e9;
+    }
+    #dino {
+      width: 50px;
+      height: 50px;
+      background: none;
+      position: absolute;
+      bottom: 0;
+      left: 10px;
+      font-size: 44px;
+      font-weight: bold;
+      color: #333;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      transition: height 0.2s, width 0.2s, font-size 0.2s;
+    }
+    .jump { animation: jump 0.6s linear; }
+    .crouch { height: 30px !important; font-size: 26px !important;}
+    @keyframes jump {
+      0% { bottom: 0; }
+      50% { bottom: 80px; }
+      100% { bottom: 0; }
+    }
+    .obstacle {
+      position: absolute;
+      bottom: 0;
+      right: -20px;
+      width: 20px;
+      height: 40px;
+      background: #333;
+      animation: moveObstacle 2s linear infinite;
+    }
+    @keyframes moveObstacle {
+      0% { right: -20px; }
+      100% { right: 620px; }
+    }
+    #ground { width: 100%; height: 2px; background-color: #333; position: absolute; bottom: 0; }
+    #score { position: absolute; top: 10px; right: 10px; font-size: 1.5em; font-weight: bold;}
+    #message-screen {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      font-size: 1.5em; font-weight: bold; text-align: center;
+      background: rgba(255,255,255, 0.7); padding: 1em 2em; border-radius: 1em;
+    }
+  </style>
 </head>
 <body>
-
-    <a href="javascript:history.back()" class="back-button">← Retour</a>
-    
-    <div id="game-container">
-        <div id="dino"></div>
-        <div id="ground"></div>
-        <div id="score">0</div>
-        <div id="message-screen">Appuyez sur Espace pour commencer</div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const dino = document.getElementById('dino');
-            const gameContainer = document.getElementById('game-container');
-            const scoreDisplay = document.getElementById('score');
-            const messageScreen = document.getElementById('message-screen');
-
-            let isJumping = false;
-            let isCrouching = false;
-            let isGameOver = true;
-            let score = 0;
-            let gameSpeed = 3.0; 
-            let scoreInterval;
-            let obstacleInterval;
-
-            function startGame() {
-                isGameOver = false;
-                score = 0;
-                gameSpeed = 3.0;
-                scoreDisplay.textContent = score;
-                messageScreen.style.display = 'none';
-                document.querySelectorAll('.obstacle').forEach(o => o.remove());
-                scoreInterval = setInterval(updateScore, 100);
-                obstacleInterval = setTimeout(spawnObstacle, 1500);
-                requestAnimationFrame(gameLoop);
-            }
-
-            function jump() {
-                if (isJumping || isCrouching || isGameOver) return;
-                isJumping = true;
-                dino.classList.add('jump');
-                setTimeout(() => {
-                    dino.classList.remove('jump');
-                    isJumping = false;
-                }, 600);
-            }
-
-            function crouch(enable) {
-                if (isJumping || isGameOver) return;
-                if (enable) {
-                    isCrouching = true;
-                    dino.classList.add('crouch');
-                } else {
-                    isCrouching = false;
-                    dino.classList.remove('crouch');
-                }
-            }
-            
-            document.addEventListener('keydown', (e) => {
-                if (e.code === 'Space' || e.code === 'ArrowUp') {
-                    e.preventDefault();
-                    if (isGameOver) startGame();
-                    else jump();
-                } else if (e.code === 'ArrowDown') {
-                    e.preventDefault();
-                    crouch(true);
-                }
-            });
-            document.addEventListener('keyup', (e) => {
-                if (e.code === 'ArrowDown') {
-                    crouch(false);
-                }
-            });
-
-            function updateScore() {
-                score++;
-                scoreDisplay.textContent = score;
-                gameSpeed += 0.005; 
-            }
-
-            function spawnObstacle() {
-                if (isGameOver) return;
-                const isBird = Math.random() > 0.6; // 40% de chance d'avoir un oiseau
-                const obstacle = document.createElement('div');
-                obstacle.classList.add('obstacle');
-                
-                if (isBird) {
-                    obstacle.classList.add('bird');
-                } else {
-                    obstacle.classList.add('cactus');
-                }
-                
-                const animationDuration = 2500 / gameSpeed;
-                obstacle.style.animationDuration = `${animationDuration}s`;
-                gameContainer.appendChild(obstacle);
-
-                setTimeout(() => {
-                    obstacle.remove();
-                }, animationDuration);
-
-                const randomInterval = (animationDuration * 0.7) + (Math.random() * (animationDuration * 0.6));
-                obstacleInterval = setTimeout(spawnObstacle, randomInterval);
-            }
-            
-            function gameLoop() {
-                if (isGameOver) return;
-                const dinoRect = dino.getBoundingClientRect();
-                document.querySelectorAll('.obstacle').forEach(obstacle => {
-                    const obstacleRect = obstacle.getBoundingClientRect();
-                    if (
-                        dinoRect.right > obstacleRect.left + 10 &&
-                        dinoRect.left < obstacleRect.right - 10 &&
-                        dinoRect.bottom > obstacleRect.top + 10 &&
-                        dinoRect.top < obstacleRect.bottom - 10
-                    ) {
-                        endGame();
-                        return;
-                    }
-                });
-                requestAnimationFrame(gameLoop);
-            }
-
-            function endGame() {
-                isGameOver = true;
-                clearInterval(scoreInterval);
-                clearTimeout(obstacleInterval);
-                document.querySelectorAll('.obstacle').forEach(o => {
-                    o.style.animationPlayState = 'paused';
-                });
-                messageScreen.innerHTML = `Partie terminée ! Score : ${score}<br>Appuyez sur Espace pour rejouer`;
-                messageScreen.style.display = 'block';
-            }
+  <a href="javascript:history.back()" class="back-button">← Retour</a>
+  <div id="game-container">
+    <div id="dino">R</div>
+    <div id="ground"></div>
+    <div id="score">0</div>
+    <div id="message-screen">Appuyez sur Espace pour commencer</div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const dino = document.getElementById('dino');
+      const gameContainer = document.getElementById('game-container');
+      const scoreDisplay = document.getElementById('score');
+      const messageScreen = document.getElementById('message-screen');
+      let isJumping = false;
+      let isCrouching = false;
+      let isGameOver = true;
+      let score = 0;
+      let scoreInterval;
+      let obstacleInterval;
+      function startGame() {
+        isGameOver = false;
+        score = 0;
+        scoreDisplay.textContent = score;
+        messageScreen.style.display = 'none';
+        document.querySelectorAll('.obstacle').forEach(o => o.remove());
+        scoreInterval = setInterval(updateScore, 100);
+        obstacleInterval = setTimeout(spawnObstacle, 1000 + Math.random() * 2000);
+        requestAnimationFrame(gameLoop);
+      }
+      function jump() {
+        if (isJumping || isCrouching || isGameOver) return;
+        isJumping = true;
+        dino.classList.add('jump');
+        setTimeout(() => {
+          dino.classList.remove('jump');
+          isJumping = false;
+        }, 600);
+      }
+      function crouch(enable) {
+        if (isJumping || isGameOver) return;
+        if (enable) {
+          isCrouching = true;
+          dino.classList.add('crouch');
+        } else {
+          isCrouching = false;
+          dino.classList.remove('crouch');
+        }
+      }
+      document.addEventListener('keydown', (e) => {
+        if (e.code === 'Space' || e.code === 'ArrowUp') {
+          e.preventDefault();
+          if (isGameOver) startGame();
+          else jump();
+        } else if (e.code === 'ArrowDown') {
+          e.preventDefault();
+          crouch(true);
+        }
+      });
+      document.addEventListener('keyup', (e) => {
+        if (e.code === 'ArrowDown') {
+          crouch(false);
+        }
+      });
+      function updateScore() {
+        score++;
+        scoreDisplay.textContent = score;
+      }
+      function spawnObstacle() {
+        if (isGameOver) return;
+        const obstacle = document.createElement('div');
+        obstacle.classList.add('obstacle');
+        gameContainer.appendChild(obstacle);
+        let moveDuration = 2000;
+        obstacle.style.animation = `moveObstacle ${moveDuration}ms linear 1`;
+        setTimeout(() => {
+          if (obstacle.parentNode) obstacle.parentNode.removeChild(obstacle);
+        }, moveDuration);
+        obstacleInterval = setTimeout(spawnObstacle, 1000 + Math.random() * 2000);
+      }
+      function gameLoop() {
+        if (isGameOver) return;
+        const dinoRect = dino.getBoundingClientRect();
+        document.querySelectorAll('.obstacle').forEach(obstacle => {
+          const obstacleRect = obstacle.getBoundingClientRect();
+          if (
+            dinoRect.right > obstacleRect.left &&
+            dinoRect.left < obstacleRect.right &&
+            dinoRect.bottom > obstacleRect.top &&
+            dinoRect.top < obstacleRect.bottom
+          ) {
+            endGame();
+            return;
+          }
         });
-    </script>
+        requestAnimationFrame(gameLoop);
+      }
+      function endGame() {
+        isGameOver = true;
+        clearInterval(scoreInterval);
+        clearTimeout(obstacleInterval);
+        document.querySelectorAll('.obstacle').forEach(o => {
+          o.style.animationPlayState = 'paused';
+        });
+        messageScreen.innerHTML = `Partie terminée ! Score : ${score}<br>Appuyez sur Espace pour rejouer`;
+        messageScreen.style.display = 'block';
+      }
+    });
+  </script>
 </body>
 </html>
-
