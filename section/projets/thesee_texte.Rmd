@@ -1,0 +1,284 @@
+<style>
+blockquote { font-size: 1em; }
+</style>
+
+---
+title: "La rédaction humaine à l'ère du numérique"
+author: "Marc-Antoine S. Dupuis"
+date: "`r Sys.Date()`"
+output: html_document
+lang: fr
+---
+
+## Le cidre de glace, l'IA et le paradoxe de Thésée
+En 2020, j'entre à l'Institut d'hôtellerie du Québec, dans un programme en service et sommellerie. J'ai peut-être, impulsivement, pensé que l'école n'était pas faite pour moi : ma mauvaise expérience en technique de multimédia m'avait repoussé. Dans un cours sur le cidre, notre professeure nous raconta une anecdote qui, presque six ans plus tard, me fait toujours sourire. La fabrication du cidre de glace à la pomme était, raconta-t-elle, un processus très complexe. Les travailleurs se levaient très tôt le matin pour cueillir les pommes gelées par la nuit. Le timing était crucial, car la température devait être suffisamment froide pour qu'elles gèlent, mais suffisamment chaude pour qu'elles ne tombent pas toutes. Lorsqu'elles gèlent, les pommes (ou d'autres fruits comme les raisins) libèrent l'eau et deviennent, conséquemment, beaucoup plus sucrées. C'est ce que l'on cherche dans un cidre de glace, et ce processus traditionnel était mis de l'avant pour justifier le prix de ces cidres.
+
+Un jour, quelques-uns ont décidé d'expérimenter quelque chose. Pourquoi attendre que la nature gèle les pommes, alors que nous avons des réfrigérateurs ? Il suffirait d'y mettre les pommes, et le résultat serait similaire. D'aucuns les critiqueront ; en effet, rien ne bat la tradition, l'artisanat ! Le résultat ? En test à l'aveugle, les experts ne notaient aucune différence.
+
+Cela me fait penser à une citation de Marx et Engels, du manifeste du parti communiste, lorsqu'ils décrivent le « socialisme réactionnaire » :
+
+> Ainsi naquit le socialisme féodal où se mêlaient jérémiades et libelles, échos du passé et grondements sourds de l'avenir. Si parfois sa critique amère, mordante et spirituelle frappait la bourgeoisie au cœur, son impuissance à comprendre la marche de l'histoire moderne était toujours assurée d'un effet comique.[^1]
+
+[^1]: Marx, K., & Engels, F. (1848). Manifeste du Parti communiste (Traduction de Laura Lafargue, 1893; J.-M. Tremblay, Éd.). Les classiques des sciences sociales. https://classiques.uqam.ca/classiques/Engels_Marx/manifeste_communiste/Manifeste_communiste.pdf p. 26
+
+Son impuissance à comprendre la marche de l'histoire moderne... Pour Marx et Engels, ces aristocrates qui s'opposaient au mouvement naturel du féodalisme au capitalisme n'y comprenaient rien : revenir en arrière, dans un passé mystifié, car nous nous opposons aux idées de l'avenir, est contre-productif. Les forces productives croîtront, et avec elles, la libération du prolétariat. Si nous réfléchissons au sens de cette phrase en 2025, d'aucuns penseront à l'IA. J'ai voulu amener l'anecdote du cidre pour la raison suivante : l'humain peut-il réellement distinguer quelque chose « d'artificiel » de quelque chose de « naturel » ?
+
+Car à l'ère du numérique, la puissance des outils numériques et de l'IA est sans commune mesure. L'IA peut trouver une question de recherche, via n'importe quel modèle tel que Perplexity, ChatGPT, Claude ou Gemini. Elle peut, par la même occasion, vous dire les grandes théories de la littérature sur le sujet. Puis, Consensus ou Elicit feront une revue de la connaissance. Ces sources pourront être gérées directement sur Zotero, un logiciel de gestion des références qui, en quelques clics, peut récupérer des PDF disponibles d'une bibliographie qu'on lui donne. L'IA de votre choix pourra enfin, de cette littérature, rédiger une revue de la connaissance, élaborer des hypothèses, et formuler une question opérationnelle. Rien ne vous empêche, par la suite, de récolter les données via l'IA, de les lui transmettre pour qu'elle les code en R ou Python, d'en analyser les résultats, puis de les rédiger. Évidemment, l'IA pourra mettre tout cela en forme en LaTeX, en Markdown ou en Quarto. Des fonctionnalités comme la prise de contrôle du navigateur, proposée par Perplexity par exemple, permettront de résoudre les bugs qu'on pourrait rencontrer.
+
+Rappelons-nous du paradoxe de Thésée, qui nous propose une réflexion sur la continuité entre l'âme d'un objet et son aspect matériel. Si nous prenons un bateau et que nous en changeons une pièce, le bateau reste le même bateau. Puis, si nous réparons le bateau, au fil des années, jusqu'à ce que toutes les pièces du bateau ne soient plus d'origine, est-ce le même bateau ? Allons plus loin. Si toutes les anciennes pièces servent à reconstruire un bateau, lequel des deux est l'original ? Je pense que ce paradoxe illustre le débat que je présente aujourd'hui. Un texte écrit par l'humain dont la question de recherche a été formulée par IA semble rester un texte humain. Un texte écrit par l'humain dont la revue de littérature a été aidée par l'IA le semble aussi. Un texte écrit par l'humain mais corrigé par IA l'est également. Cependant, plus les étapes sont faites par l'IA, moins le texte est humain. Le débat que je souhaite proposer est le suivant : où se situe la ligne entre un texte humain et un texte IA ? *À quel % d'étapes artificielles le texte n'est plus considéré comme écrit par l'humain ?*
+
+Je propose une contribution à cette discussion en comparant un texte écrit à 100% par l'IA, un texte écrit par étapes successives par l'IA, et un texte écrit par l'humain. Nous verrons, étapes par étapes, le processus du devis de recherche hypothético-déductif, avec des outils numériques, sans intervention humaine. Nous verrons ainsi la puissance de ces outils aujourd'hui. Mais nous verrons qu'en testant le résultat final, disponible [ici](https://github.com/MADUP212/MADUP212.github.io/blob/6194370f1f844124e752902e49fec2051cf9472e/assets/thesee_test.pdf), au niveau des détecteurs d'IA, une illustration du paradoxe de Thésée appliqué à l'IA. Plus il y a d'étapes humaines, plus le % d'IA détecté est faible. Malgré les limites de ces détecteurs, qu'on verra à la section des résultats, il semble qu'en moyenne, ces détecteurs fonctionnent plutôt bien, offrant ainsi une piste de réflexion sur l'usage des détecteurs pour répondre à notre question initiale.
+
+
+### Question de recherche
+
+Commeçons par le point de départ : la question de recherche. C'est une question qui nous intéresse, basée sur un certain désir d'en savoir plus sur l'état du monde. Puisque l'on parle de l'IA, j'ai souhaité en faire « mon » sujet de devis de recherche. Perplerxity a généré une question, après avoir utilisé le prompt suivant : 
+
+```
+Question : 
+Ton rôle : invente une question de recherche qui touche la détection de l'IA dans les travaux universitaires.
+
+Réponse : 
+
+Dans quelle mesure les outils de détection d'intelligence artificielle parviennent-ils à distinguer de manière fiable les productions académiques humaines de celles générées ou assistées par l'IA, et quelles sont les implications éthiques et pédagogiques de leur utilisation dans les établissements universitaires ?
+```
+
+### Théorie
+
+Notre question de recherche étant posée, nous passons à la seconde étape : la théorie. Sous forme de revue de la connaissance, la théorie est un pas de recul pour voir ce qui a déjà été fait. Nous ne sommes pas seul sur cette planète, et d'autres humains ont probablement eu le même désir d'en savoir plus sur ce sujet. Il est fort peu probable de tomber sur un sujet qui n'a jamais été abordé. Si c'est le cas, félicitations ! Sinon, il suffit d'effectuer une revue de la littérature. 
+
+Deux outils IA peuvent être utile pour une revue de la connaissance : Consensus et Elicit. Nous utiliserons ici Consensus pour sa simplicité et son interface plus accessible. La recherche commence avec notre question de recherche. Consensus fouille la littérature, et propose une conclusion basée sur les sources. À notre question de départ, Consensus conclu eci : 
+
+```
+Les outils de détection d'IA ne distinguent pas de façon fiable les textes académiques humains des textes générés ou assistés par l'IA, ce qui soulève d'importants enjeux éthiques et pédagogiques. »  
+```
+
+Pour notre devis de recherche, il faut cependant fouiller et lire ces sources. Consensus permet d'exporter la bibliographie au format .CSV ou .RIS. Le format .RIS nous permet d'importer cette bibliographie dans Zotero ou Endnote, des outils de gestion des références. Nous utiliserons Zotero, qui est gratuit, libre et open-access. Surtout, Zotero permet de rechercher les PDF de nos références. Pour notre cas, sur 15 références, seulement 8 ont été récupéré par Zotero. 
+
+Ayant, dans notre bibliothèque Zotero, des PDF, nous pouvons maintenant exporter notre bibliographie au format BibTeX et avec ces PDF dans un même dossier. Le format BibTex nous servira pour faciliter les références en LaTeX. C'est un second fichier texte, qui recense toutes les références de notre bibliothèque. Dans notre texte LaTeX, il suffit de citer ces références, avec une balise du type auteur_date, pour qu'elle soit présente dans le texte au format Auteur-Date. Puis, à la fin de notre texte, la fonction bibliograpy permet « d'imprimer » celle-ci avec les références utilisées dans le texte. Ceci facilite la vie par rapport à la gestion manuelle des sources dans un fichier Word par exemple. 
+
+L'utilisation des IA pour générer entièrement sa revue de connaissance n'est peut-être pas particulièrement recommandé si vous souhaitez écrire avec rigueur, approfondir un sujet, etc. Pour notre expérience cependant, nous les utiliserons. NotebookLM nous servira « d'assistant de recherche ». NotebookLM est un modèle de LLM, Large Language Model (modèle de langage étendu) :  
+
+```
+Un Large Language Model (LLM) est une forme avancée d'intelligence artificielle conçue pour comprendre et générer du langage ou du texte humain. (Perplexity)
+```
+
+Cet outil de Google permet de travailler dans nos sources, sans les lire. L'avantage est qu'il cite ses sources, vous pouvez donc les vérifier. Ici, la ligne n'est pas claire entre un lecteur qui réalise une fiche de lecture à 100% sans IA, ou un lecteur qui le réalise à 100% avec l'IA. Pour notre expérience, nous le ferons 100% IA. Peut-être, comme le mentionne Adrien Cloutier[^2] dans son cours sur les outils numériques (Université Laval), que l'IA pourrait être notre futur deuxième codeur dans des revues systématiques. En réalité, peut-être que l'IA, avec ses capacités systémiques plus grandes qu'un cerveau humain, pourrait réaliser des revues moins biaisées de la littérature. Pour l'instant, nous avons demandé à Perplexity quel prompt utiliser pour une réponse optimisée de NotebookLM. Voici sa réponse : 
+
+[^2]: Cloutier, A. (s.d.). Adrien Cloutier – Doctorant en science politique. https://adriencloutier.com/
+
+
+```
+Voici un prompt adapté pour une revue de littérature concise avec NotebookLM, respectant la norme APA 7 : Résume en quelques phrases chaque article PDF selon la norme APA 7e édition. Inclus uniquement :
+La référence bibliographique APA complète
+Un résumé très bref (1-2 phrases) des résultats ou contributions principales
+Une citation in-text en APA intégrée au résumé
+
+
+Présente la revue sous forme de points synthétiques ou en un paragraphe global très concis. Conclus en une phrase sur l'état actuel de la recherche. Rédige en français, style académique, sans paraphrase.`
+```
+
+NotebookLM, en quelques instants, a fourni une synthèse de chaque article. Cette synthèse, je l'ai donnée à Perplexity pour qu'il en fasse un paragraphe concis. Voici le résultat : 
+
+```
+La littérature suggère que les outils actuels de détection de texte IA présentent une précision limitée (Elkhatat et al., 2023 ; Farrelly & Baker, 2023 ; Weber-Wulff et al., 2023), et que l'utilisation de techniques adverses, telles que la paraphrase et l'introduction d'erreurs, peut significativement réduire leur efficacité (Perkins et al., 2024 ; Weber-Wulff et al., 2023 ; Perkins, 2023). Les modèles d'apprentissage machine spécialisés surpassent parfois les systèmes grand public (Najjar et al., 2025 ; Noauthor, 2025 ; Gotoman, 2025). Les réviseurs humains tendent à mieux discerner le contenu généré par IA dans certains cas, grâce à leur capacité de détecter des incohérences (Liu et al., 2024 ; Flitcroft et al., 2024 ; Popkov et al., 2024).
+```
+
+### Hypothèses
+
+Maintenant que nous avons fait un tour de la littérature, il est temps de formuler des hypothèses. Ce sont, en quelques mots, ce qu'on s'attend de voir en observant ce qui doit être observer pour répondre à notre question. En science, l'idée n'est pas de chercher à avoir raison, mais plutôt de chercher à prouver qu'on n'a systématiquement pas tort. La nuance est importante : on ne cherche pas des preuves qui vont dans notre sens, on cherche plutôt à avoir tort, suffisament de fois. Par exemple, pour prouver l'efficacité des détecteurs d'IA, il ne suffit pas de tester ces détecteurs uniquement avec des textes IA. Il faudrait plutôt tester ces détecteurs maintes et maintes fois avec des textes écrit par l'IA et par l'humain pour potentiellement émettre la conclusion que ces détecteurs sont efficaces. 
+
+Je demande donc, à Perplexity, sur la base de notre question et de notre revue de littérature, de formuler des hypothèses. Voici sa réponse. 
+
+
+```
+- **H1 : Les outils de détection de texte généré par l'IA présentent une fiabilité limitée**
+    
+    Plusieurs études indiquent que l'exactitude des détecteurs est souvent inférieure à 80%, avec un risque non négligeable de faux positifs et de classifications incertaines, surtout pour les textes humains écrits par des non-natifs ou dans des contextes particuliers (Elkhatat et al., 2023 ; Farrelly & Baker, 2023 ; Weber-Wulff et al., 2023).
+    
+- **H2 : Les techniques d'adversarialisation et de paraphrase réduisent significativement l'efficacité des détecteurs IA**
+    
+    Des stratégies simples telles que l'ajout de fautes d'orthographe ou l'augmentation de l'hétérogénéité syntaxique diminuent l'exactitude des outils de détection, rendant ces derniers peu fiables pour garantir l'intégrité académique (Perkins et al., 2024 ; Weber-Wulff et al., 2023).
+    
+- **H3 : Les humains, notamment les professeurs, sont globalement plus performants que les outils automatisés pour discerner le contenu généré par IA dans des textes spécialisés**
+    
+    Des études dans le domaine médical montrent que les réviseurs humains identifient plus efficacement les incohérences ou erreurs dans les textes générés par IA, souvent avec une précision supérieure à celle des outils d'IA (Liu et al., 2024).
+    
+- **H4 : Les modèles d'apprentissage machine spécialisés surpassent les systèmes de détection généralisés pour identifier le texte IA dans des contextes techniques précis**
+    
+    Les modèles ML comme XGBoost ou Random Forest offrent une meilleure performance sur des tâches ciblées que les outils grand public tels que GPTZero, surtout quand la différentiation porte sur des caractéristiques pratiques versus abstraites (Najjar et al., 2025).
+    
+- **H5 : L'utilisation exclusive des détecteurs de texte IA expose à des risques d'équité et d'intégrité scientifique**
+    
+    L'application non critique de ces outils peut engendrer des conséquences injustes pour certains groupes (locuteurs non natifs, étudiants internationaux), soulignant le besoin d'une approche pédagogique intégrée, éthique et informée (Farrelly & Baker, 2023).
+```
+
+Ces hypothèses, plutôt intéressantes, nous donnent des nuances importantes sur les outils de détection de l'IA. Cependant, puisque nous n'avons pas vérifié chacune des sources, formuler et publier ces hypothèses seraient un jeu dangereux. 
+
+### Méthodologie
+
+Passons maintenant à la méthodologie. C'est, en quelques mots, le comment de notre recherche. Nous avons, d'abord, la question. Puis, avec un pas de recul, nous savons ce qui a été fait, nous avons donc des hypothèses en tête. Enfin, ces hypothèses doivent être tester, avec une méthodologie rigoureuse et transparente, pour confirmer, infirmer et/ou nunancer ces hypotèses. Généralement, nous formulons une question opérationnelle, une question pratique, pour répondre à cette question. Opérationnaliser une question, c'est passer de la question, au *comment* répond-t-on à la question. J'ai demandé à Perplexity, avec ce qu'on a déjà fait, de formuler une question opérationnelle, et d'en rédiger un paragraphe pour notre devis de recherche. Voici sa réponse : 
+
+
+```
+Question opérationnelle : 
+
+Quelle combinaison de méthodes (outils de détection automatisés, techniques adverses, et révision humaine) maximise la précision et l'équité dans l'identification du texte généré par intelligence artificielle dans le contexte de l'enseignement supérieur ?
+
+Opérationnalisation de la question : 
+
+Afin d'opérationnaliser la question de recherche portant sur la précision et l'équité des méthodes de détection de texte généré par intelligence artificielle en contexte académique, le devis proposé consistera en une expérimentation comparative. Un corpus de textes, incluant des productions humaines et générées par IA (avec variantes adverses telles que paraphrase ou présence d'erreurs), sera soumis à l'évaluation par trois approches : outils automatisés généralistes, modèles d'apprentissage machine spécialisés et réviseurs humains. Les performances seront mesurées en termes de taux de vrais positifs, faux positifs et faux négatifs, en portant une attention particulière à la variabilité selon le profil des auteurs (locuteurs natifs ou non natifs, étudiants internationaux). Des analyses statistiques permettront de comparer la pertinence et l'impact de chaque approche, afin d'identifier la combinaison optimale pour garantir à la fois la fiabilité et l'équité dans le contrôle de l'intégrité académique.
+```
+
+### Résultats, conclusion et discussion
+
+Finalement, un devis de recherche comporte des sections tels que les résultats attendus, la conclusion et la contribution. Dans notre cas, il suffit de demander à l'IA de les rédiger, sur la base de ce qui a déjà été fait. Voici sa réponse : 
+
+```
+Résultats attendus : 
+
+Il est attendu que la précision varie selon l’approche et le type de texte. Les techniques adverses devraient diminuer l’exactitude des détecteurs automatisés, alors que l’expertise humaine et le recours à des modèles spécialisés pourraient améliorer la fiabilité globale et limiter les injustices envers les groupes vulnérables. 
+
+Conclusion : 
+
+L’étude visera à proposer un cadre combiné où la complémentarité entre outils automatiques et révision humaine permet de renforcer le contrôle d’intégrité académique, tout en limitant les risques de biais et d’erreur.
+
+Contribution : 
+Ce projet contribuera à l’optimisation des protocoles de détection de texte généré par IA dans l’enseignement supérieur, en intégrant une analyse comparative, des recommandations méthodologiques, et une attention particulière à l’équité entre les groupes d’étudiants.
+```
+
+
+## La fiabilité de l'IA
+
+Notre texte d'IA par étape a ainsi été créé. Chaque bloc a été assemblé dans Overleaf, un outil qui permet de créer des textes en LaTex. La version gratuite suffit pour la plupart des travaux académiques, mais la version payante est nécessaire si l'on souhaite collaborer. Perplexity a généré un code LaTex basé sur ce que nous avons préalablement rédigé. La fonction de prise de contrôle de Perplexity, où l'IA prend contrôle du navigateur, a permis de corriger certaines erreurs dans le code. 
+
+Au total, cinq textes ont été testé. Nous avons généré un texte entièrement par IA, en demandant à Perplexity de générer un texte de 1000 mots sur les détecteurs d'IA. Ce texte a été « humanisé », en demandant simplement à l'IA d'humaniser le texte. Puis, notre texte IA « par étape » a aussi été humanisé. Enfin, un texte de 2020, sélectionné au hasard du*Journal de Montréal,* de 2020[^3], sert de texte humain. 
+
+[^3]: Trudeau, J. (2020, 8 janvier). Trump et la réponse proportionnelle. Le Journal de Montréal. https://www.journaldemontreal.com/2020/01/08/trump-et-la-reponse-proportionnelle
+
+J'ai nommé *100% IA* le texte généré à 100% par l'IA, *100% IA : humanisé* le texte généré à 100% par l'IA mais humanisé, *Thésée - IA* le texte fait en plusieurs étapes par l'IA, et *Thésée IA - Humanisé* le texte humanisé, puis *Texte humain* le texte de Jonathan Trudeau. Le tableau 1 présente les résultats, et le graphique 1 présente les scores moyens et les écarts-types entre les détecteurs. 
+
+En tenant compte du score moyen, le résultat tend à confirmer l'hypothèse suivante : plus il y a d'étapes humaines, plus le score est faible. Les scores des textes « humanisés » sont plus faibles que les scores des textes bruts. Enfin, certains détecteurs sortent du lot. Le détecteur JustDone nous donne 31% de score IA pour Thésée humanisé, mais 99% pour le texte de Jonathan Trudeau, faussant également la moyenne « humaine » à 21.80%, qui est de 6.38% si on enlève le score JustDone. Isgen sort également du lot, en offrant des scores de 0% pour le texte Thésée brut et le texte humain. Enfin, Copyleaks semble le meilleur candidat, avec un score IA de 100% pour les textes générés par IA, et 0% pour le texte généré par l'humain. Le graphique ci-dessous a été généré par R, et permet de visualiser les scores moyens ainsi que l'écart-type. Le code R a été généré par Perplexity, après plusieurs essais et erreurs. 
+
+**Tableau 1 : résultat**
+
+| Nom du détecteur | 100% IA | 100% IA : humanisé | Thésée - IA | Thésée IA - Humanisé | Texte humain |
+|------------------|---------|--------------------|-------------|----------------------|--------------------------|
+| Quillbot         | 100%    | 94%                | 86%         | 37%                 | 11%                      |
+| ZeroGPT          | 96.89%  | 64.41%             | 77.77%      | 32.3%               | 9.79%                    |
+| JustDone         | 99%     | 78%                | 85%         | 31%                 | 99%                      |
+| Scribbr          | 100%    | 94%                | 86%         | 32.3%               | 11%                      |
+| Isgen            | 100%    | 46%                | 0%          | 21%                 | 0%                       |
+| Copyleaks        | 100%    | 100%               | 100%        | 100%                | 0%                       |
+
+
+**Graphique 1 : score moyen des textes et écart-type entre les détecteurs**
+
+```{r echo=FALSE}
+library(ggplot2)
+
+donnees <- data.frame(
+  categorie = c(
+    "100% IA", "100% IA humanisé", "Thésée - IA",
+    "Thésée IA - Humanisé", "Humain"
+  ),
+  moyenne = c(99.32, 79.40, 72.46, 42.27, 21.80),
+  ecart_type = c(1.25, 20.94, 36.22, 28.77, 38.18)
+)
+
+donnees$color <- c("dodgerblue", "orange", "forestgreen", "firebrick", "purple")
+
+ggplot(donnees, aes(x = categorie, y = moyenne, color = categorie)) +
+  geom_errorbar(
+    aes(
+      ymin = pmax(0, moyenne - ecart_type),
+      ymax = moyenne + ecart_type,
+      color = categorie
+    ),
+    alpha = 0.5, width = 0.14, linewidth = 1
+  ) +
+  geom_point(aes(color = categorie), size = 3) +
+  scale_color_manual(values = donnees$color) +
+  labs(
+    x = "Type de textes",
+    y = "Score moyen et écart-type"
+  ) +
+  coord_cartesian(
+    ylim = c(0, max(donnees$moyenne + donnees$ecart_type) + 8)
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 12),
+    axis.text.y = element_text(size = 12),
+    axis.title.x = element_text(size = 15, face = "bold"),
+    axis.title.y = element_text(size = 15, face = "bold"),
+    legend.position = "none",
+    plot.margin = margin(0.6, 0.8, 0.6, 0.8, "cm"), # marges réduites, mais suffisantes
+    panel.border = element_rect(colour = "grey20", fill = NA, linewidth = 1)
+  ) +
+  scale_x_discrete(expand = expansion(mult = 0.18))
+```
+
+
+Le code du graphique se situe ci-dessous. J’ai utilisé le package ggplot2, qui permet de visualiser des données dans R. On attribue à « donnees » les données du tableau, à lesquels j’ai ajouté les écarts-types et les moyennes. Avec une base de données plus grande, j’aurai également pu lui référer un fichier CSV. Puis, j’appel ggplot pour qu’il génère un graphique (barres flottantes) avec ces données, en attribuant à chaque données une couleur spécifique. La fonction geom-errorbar permet de visualiser les écarts-types, et la fonction geom-point de visualiser les moyennes. Enfin, les fonctions panel.border et scale_x_discrete permet d'encadrer le graphique et de le mettre à l'échelle du texte. 
+
+```
+library(ggplot2)
+
+donnees <- data.frame(
+  categorie = c(
+    "100% IA", "100% IA humanisé", "Thésée - IA",
+    "Thésée IA - Humanisé", "Humain"
+  ),
+  moyenne = c(99.32, 79.40, 72.46, 42.27, 21.80),
+  ecart_type = c(1.25, 20.94, 36.22, 28.77, 38.18)
+)
+
+donnees$color <- c("dodgerblue", "orange", "forestgreen", "firebrick", "purple")
+
+ggplot(donnees, aes(x = categorie, y = moyenne, color = categorie)) +
+  geom_errorbar(
+    aes(
+      ymin = pmax(0, moyenne - ecart_type),
+      ymax = moyenne + ecart_type,
+      color = categorie
+    ),
+    alpha = 0.5, width = 0.14, linewidth = 1
+  ) +
+  geom_point(aes(color = categorie), size = 3) +
+  scale_color_manual(values = donnees$color) +
+  labs(
+    x = "Type de textes",
+    y = "Score moyen et écart-type"
+  ) +
+  coord_cartesian(
+    ylim = c(0, max(donnees$moyenne + donnees$ecart_type) + 8)
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 12),
+    axis.text.y = element_text(size = 12),
+    axis.title.x = element_text(size = 15, face = "bold"),
+    axis.title.y = element_text(size = 15, face = "bold"),
+    legend.position = "none",
+    plot.margin = margin(0.6, 0.8, 0.6, 0.8, "cm"), # marges réduites, mais suffisantes
+    panel.border = element_rect(colour = "grey20", fill = NA, linewidth = 1)
+  ) +
+  scale_x_discrete(expand = expansion(mult = 0.18))
+```
+
+### L'avenir de l'IA à l'ère du numérique 
+
+Revenons au paradoxe de Thésée, en l'appliquant à l'intelligence artificielle. Si un élément de mon texte a été écrit à l'aide de l'IA, est-ce toujours mon texte ? Nos données montrent que les détecteurs sont plutôt bons à détecter l'intelligence artificielle, et que plus les étapes sont humaines, moins ils détectent de l'IA. 
+
+L'ensemble des outils sont gratuits, ou accessibles. Zotero est un logiciel open-source et libre, Consensus, sans licence, ainsi que la plupart des outils IA le sont également. Et grâce à l'IA, et avec de nombreux essais et erreurs, il est plus facile que jamais de coder. 
+
+Il relève de l'intégrité de l'étudiant d'utiliser l'IA. Je pense qu'une bonne utilisation de l'IA est celle qui accélère notre courbe d'apprentissage pour qu'on devienne meilleur, et qui réduit notre temps de travail en déléguant des tâches redondantes. En fait, plus personne aujourd'hui ne se plaint que le courriel a remplacé la poste, que la voiture a remplacé le cheval, que l'ordinateur a remplacé la machine à écrire, et que la machine à écrire a remplacé la plume. La technique a-t-elle remplacé l'humain ? Ce n'est pas sûr. 
+
+J'aimerais l'illustrer avec les échecs. Un essai vidéo de la chaîne *Ego,* paru récemment, raconte l'histoire de la confrontation entre Garry Kasparov, à l'époque le meilleur joueur d'échecs au monde, et Deep Blue, une intelligence artificielle développée par IBM. En 1997, Kasparov perd contre Deep Blue : la première fois que l'ordinateur bat un champion du monde. Pourtant, le jeu d'échecs, durant les trois décennies suivantes, n'a jamais été aussi populaire. Peut-être réservé à une élite, les échecs se sont démocratisés. Partout dans le monde, grâce à l'ordinateur, chacun a son propre coach.[^4]
+
+[^4]: Ego Chess. (2025, 31 octobre). Le jour où l’Homme a battu la machine. [Vidéo]. YouTube. [**https://youtu.be/Yo5vRHJ5y0Y**]
+
+En conclusion, nous nous adapterons sans doute. Il le faudra. En ressortira peut-être, avec succès et erreurs, des méthodes mixtes de recherche académique. Nos évaluations, nos textes, seront sans doute différents. Ce qu'on demanda à un étudiant de 2020 n'était pas la même chose qu'un étudiant de 1960. En 2030, il est probable que nos devoirs soient différents qu'en 2020. Avec suffisamment de formation sur l'IA et les outils numériques, le niveau de la maîtrise actuelle deviendra peut-être celui du baccalauréat de demain. Les anciennes méthodes rejoindront les musées des civilisations passées.
+
+
