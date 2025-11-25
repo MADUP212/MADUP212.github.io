@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="geodist_dupuism_files/libs/clipboard/clipboard.min.js"></script>
+<script src="geodist_dupuism_files/libs/quarto-html/tabby.min.js"></script>
+<script src="geodist_dupuism_files/libs/quarto-html/popper.min.js"></script>
+<script src="geodist_dupuism_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="geodist_dupuism_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="geodist_dupuism_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="geodist_dupuism_files/libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.42">
+
+  <meta name="author" content="Marc-Antoine Dupuis">
+  <meta name="dcterms.date" content="2025-11-25">
+  <title>geodist</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="geodist_dupuism_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="geodist_dupuism_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #f07178; background-color: #2a0f15; font-weight: bold; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #00e0e0; } /* Attribute */
+    code span.bn { color: #d4d0ab; } /* BaseN */
+    code span.bu { color: #abe338; } /* BuiltIn */
+    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffd700; } /* Constant */
+    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
+    code span.cv { color: #ffd700; } /* CommentVar */
+    code span.do { color: #f8f8f2; } /* Documentation */
+    code span.dt { color: #ffa07a; } /* DataType */
+    code span.dv { color: #d4d0ab; } /* DecVal */
+    code span.er { color: #f07178; text-decoration: underline; } /* Error */
+    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
+    code span.fl { color: #d4d0ab; } /* Float */
+    code span.fu { color: #ffa07a; } /* Function */
+    code span.im { color: #abe338; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
+    code span.op { color: #ffa07a; } /* Operator */
+    code span.ot { color: #00e0e0; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
+    code span.sc { color: #abe338; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #00e0e0; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #dcc6e0; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="geodist_dupuism_files/libs/revealjs/dist/theme/quarto-949fcd71989a651394be00d684876026.css">
+  <link href="geodist_dupuism_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="geodist_dupuism_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="geodist_dupuism_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="geodist_dupuism_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="geodist_dupuism_files/libs/kePrint-0.0.1/kePrint.js"></script>
+  <link href="geodist_dupuism_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+</head>
+<body class="quarto-dark">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">geodist</h1>
+  <p class="subtitle">Dependency-free, ultra fast calculation of geodesic distances.</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Marc-Antoine Dupuis 
+</div>
+</div>
+</div>
+
+  <p class="date">2025-11-25</p>
+</section>
+<section id="la-géodésie" class="title-slide slide level1 center">
+<h1>La géodésie</h1>
+<style>
+/* Style des notes de bas de page */
+.reveal .footnotes {
+  text-align: left;
+  font-size: 0.5em !important;
+  position: absolute;
+  bottom: 0px;        /* Collé tout en bas */
+  left: 20px;
+  width: 90%;
+  z-index: 100;
+  
+  /* Ajout esthétique : fond semi-transparent pour éviter tout conflit visuel */
+  background-color: rgba(25, 25, 25, 0.9); 
+  padding-top: 5px;
+}
+
+.reveal .footnotes hr {
+  display: none;
+}
+
+/* FORCE UNE MARGE DE SÉCURITÉ EN BAS 
+   Cela empêche le texte principal de descendre trop bas
+*/
+.reveal .slides > section {
+  height: 90% !important; /* Laisse 10% d'espace libre en bas */
+  box-sizing: border-box; /* S'assure que le padding ne casse pas la mise en page */
+}
+</style>
+<blockquote>
+<p>The shortest path between two points on the earth, customarily treated as an ellipsoid of revolution, is called a geodesic.<sup>1</sup></p>
+</blockquote>
+<p><strong>But</strong> : un package léger, sans dépendance, pour calculer des distances géodésiques très rapidement.</p>
+<p>Est deux fois plus rapides que ses concurrents (du marché gratuit) : SF et Geosphere<sup>2</sup></p>
+<p>Publié en 2018, fondé notamment sur l’algorithme de Karney (2013).</p>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Karney, C. F. F. (2013). Algorithms for geodesics. Journal of Geodesy, 87(1), 43‑55. </p></li><li id="fn2"><p>Padgham, M., Sumner, M. D., &amp; Karney, C. F. F. (2025). geodist: Fast, dependency-free geodesic distance calculations (Version 0.1.1) [Logiciel]. CRAN. https://cran.r-project.org/package=geodist</p></li></ol></aside></section>
+
+<section id="la-conccurence" class="title-slide slide level1 center">
+<h1>La conccurence</h1>
+<p><strong>Avantages de Geodist</strong> : rapide, gratuit, flexible, virtuellement aucune limite d’adresses, <em>pouvoir</em> tout faire soi-même, compatibilité avec les milliers de packages R.</p>
+<p><strong>Inconvénients</strong> : <em>devoir</em> tout faire « soi-même », ne calcule pas les distances routières (Google Maps API), ou les niveaux de terrain (QGIS, Mapbox).</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-condensed table-bordered caption-top" data-quarto-postprocess="true" style="font-size: 14px; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Outil</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Accessibilité</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Communauté d'utilisateurs</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Popularité en sciences sociales</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Compatibilité avec d'autres outils</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Transparence et réplicabilité</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Adaptabilité et flexibilité</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">sf, geosphere, geodist (packages R)</td>
+<td style="text-align: left;">Gratuit, open-source.</td>
+<td style="text-align: left;">Large communauté</td>
+<td style="text-align: left;">Élevée</td>
+<td style="text-align: left;">Excellente</td>
+<td style="text-align: left;">Maximale</td>
+<td style="text-align: left;">Très élevée</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">QGIS (Système d'Information Géographique)</td>
+<td style="text-align: left;">Gratuit, open-source</td>
+<td style="text-align: left;">Logiciel SIG le plus populaire</td>
+<td style="text-align: left;">Croissante</td>
+<td style="text-align: left;">Excellente</td>
+<td style="text-align: left;">Élevée</td>
+<td style="text-align: left;">Très élevée</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Google Maps API (Application Programming Interface)</td>
+<td style="text-align: left;">Gratuit jusqu’à 5000 évènements. 1-10$ / 1000 évènements.</td>
+<td style="text-align: left;">Très large.</td>
+<td style="text-align: left;">Modérée</td>
+<td style="text-align: left;">Bonne</td>
+<td style="text-align: left;">Limitée</td>
+<td style="text-align: left;">Modérée</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Mapbox</td>
+<td style="text-align: left;">Gratuit, mais abonnements payants, jusqu’à + 6000$.</td>
+<td style="text-align: left;">Large</td>
+<td style="text-align: left;">Croissante</td>
+<td style="text-align: left;">Excellente</td>
+<td style="text-align: left;">Moyenne</td>
+<td style="text-align: left;">Très élevée</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+
+<section id="geodist-en-sciences-sociales" class="title-slide slide level1 scrollable center">
+<h1>Geodist en sciences sociales</h1>
+<p>Exemple pour calculer les distances moyennes entre les principales communautés autochtones du Québec et les services de santé les plus proches. <em>Erreurs possibles</em> : IA a récupéré les adresses.</p>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># ===================================================</span></span>
+<span id="cb1-2"><a href=""></a><span class="co"># CODE COMBINÉ : CALCUL DE DISTANCES + VISUALISATION</span></span>
+<span id="cb1-3"><a href=""></a><span class="co"># ===================================================</span></span>
+<span id="cb1-4"><a href=""></a></span>
+<span id="cb1-5"><a href=""></a><span class="co"># Charger les librairies</span></span>
+<span id="cb1-6"><a href=""></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-7"><a href=""></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-8"><a href=""></a><span class="fu">library</span>(geodist)</span>
+<span id="cb1-9"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-10"><a href=""></a></span>
+<span id="cb1-11"><a href=""></a><span class="co"># ===== PARTIE 1 : CALCUL DES DISTANCES =====</span></span>
+<span id="cb1-12"><a href=""></a></span>
+<span id="cb1-13"><a href=""></a><span class="co"># Lire le fichier CSV</span></span>
+<span id="cb1-14"><a href=""></a>donnees <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/Users/marcantoinedupuis/Library/CloudStorage/GoogleDrive-2946762@gmail.com/Mon disque/Université/ULAVAL/Outils Numériques/outil_presentation/donnes_clsc.csv"</span>, </span>
+<span id="cb1-15"><a href=""></a>                    <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-16"><a href=""></a></span>
+<span id="cb1-17"><a href=""></a><span class="co"># Fonction pour séparer les coordonnées</span></span>
+<span id="cb1-18"><a href=""></a>separer_coordonnees <span class="ot">&lt;-</span> <span class="cf">function</span>(coord_string) {</span>
+<span id="cb1-19"><a href=""></a>  coords <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(<span class="fu">gsub</span>(<span class="st">" "</span>, <span class="st">""</span>, coord_string), <span class="st">","</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb1-20"><a href=""></a>  <span class="fu">return</span>(<span class="fu">data.frame</span>(<span class="at">lat =</span> <span class="fu">as.numeric</span>(coords[<span class="dv">1</span>]), </span>
+<span id="cb1-21"><a href=""></a>                    <span class="at">lon =</span> <span class="fu">as.numeric</span>(coords[<span class="dv">2</span>])))</span>
+<span id="cb1-22"><a href=""></a>}</span>
+<span id="cb1-23"><a href=""></a></span>
+<span id="cb1-24"><a href=""></a><span class="co"># Traiter les coordonnées autochtones</span></span>
+<span id="cb1-25"><a href=""></a>coords_autochtones <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(donnees<span class="sc">$</span>localisation_autochtone, </span>
+<span id="cb1-26"><a href=""></a>                                            separer_coordonnees))</span>
+<span id="cb1-27"><a href=""></a><span class="fu">colnames</span>(coords_autochtones) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"lat_autochtone"</span>, <span class="st">"lon_autochtone"</span>)</span>
+<span id="cb1-28"><a href=""></a></span>
+<span id="cb1-29"><a href=""></a><span class="co"># Traiter les coordonnées des centres de santé</span></span>
+<span id="cb1-30"><a href=""></a>coords_sante <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(donnees<span class="sc">$</span>localisation_sante, </span>
+<span id="cb1-31"><a href=""></a>                                      separer_coordonnees))</span>
+<span id="cb1-32"><a href=""></a><span class="fu">colnames</span>(coords_sante) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"lat_sante"</span>, <span class="st">"lon_sante"</span>)</span>
+<span id="cb1-33"><a href=""></a></span>
+<span id="cb1-34"><a href=""></a><span class="co"># Combiner les données</span></span>
+<span id="cb1-35"><a href=""></a>donnees_completes <span class="ot">&lt;-</span> <span class="fu">cbind</span>(donnees, coords_autochtones, coords_sante)</span>
+<span id="cb1-36"><a href=""></a></span>
+<span id="cb1-37"><a href=""></a><span class="co"># Calculer la distance pour chaque ligne</span></span>
+<span id="cb1-38"><a href=""></a>calcul_distances <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb1-39"><a href=""></a>  resultats <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb1-40"><a href=""></a></span>
+<span id="cb1-41"><a href=""></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(data)) {</span>
+<span id="cb1-42"><a href=""></a>    origine <span class="ot">&lt;-</span> <span class="fu">c</span>(data<span class="sc">$</span>lon_autochtone[i], data<span class="sc">$</span>lat_autochtone[i])</span>
+<span id="cb1-43"><a href=""></a>    destination <span class="ot">&lt;-</span> <span class="fu">c</span>(data<span class="sc">$</span>lon_sante[i], data<span class="sc">$</span>lat_sante[i])</span>
+<span id="cb1-44"><a href=""></a></span>
+<span id="cb1-45"><a href=""></a>    distance_geodesique <span class="ot">&lt;-</span> geodist<span class="sc">::</span><span class="fu">geodist</span>(</span>
+<span id="cb1-46"><a href=""></a>      <span class="at">x =</span> <span class="fu">matrix</span>(origine, <span class="at">ncol =</span> <span class="dv">2</span>),</span>
+<span id="cb1-47"><a href=""></a>      <span class="at">y =</span> <span class="fu">matrix</span>(destination, <span class="at">ncol =</span> <span class="dv">2</span>),</span>
+<span id="cb1-48"><a href=""></a>      <span class="at">measure =</span> <span class="st">"haversine"</span></span>
+<span id="cb1-49"><a href=""></a>    ) <span class="sc">/</span> <span class="dv">1000</span></span>
+<span id="cb1-50"><a href=""></a></span>
+<span id="cb1-51"><a href=""></a>    distance_routiere_approx <span class="ot">&lt;-</span> distance_geodesique <span class="sc">*</span> <span class="fl">1.35</span></span>
+<span id="cb1-52"><a href=""></a></span>
+<span id="cb1-53"><a href=""></a>    resultats <span class="ot">&lt;-</span> <span class="fu">rbind</span>(resultats, <span class="fu">data.frame</span>(</span>
+<span id="cb1-54"><a href=""></a>      <span class="at">communaute =</span> data<span class="sc">$</span>nom_communaute[i],</span>
+<span id="cb1-55"><a href=""></a>      <span class="at">centre_sante =</span> data<span class="sc">$</span>institution_sante_proche[i],</span>
+<span id="cb1-56"><a href=""></a>      <span class="at">distance_geodesique_km =</span> <span class="fu">round</span>(distance_geodesique, <span class="dv">2</span>),</span>
+<span id="cb1-57"><a href=""></a>      <span class="at">distance_routiere_approx_km =</span> <span class="fu">round</span>(distance_routiere_approx, <span class="dv">2</span>)</span>
+<span id="cb1-58"><a href=""></a>    ))</span>
+<span id="cb1-59"><a href=""></a>  }</span>
+<span id="cb1-60"><a href=""></a></span>
+<span id="cb1-61"><a href=""></a>  <span class="fu">return</span>(resultats)</span>
+<span id="cb1-62"><a href=""></a>}</span>
+<span id="cb1-63"><a href=""></a></span>
+<span id="cb1-64"><a href=""></a><span class="co"># Calculer toutes les distances</span></span>
+<span id="cb1-65"><a href=""></a>resultats_distances <span class="ot">&lt;-</span> <span class="fu">calcul_distances</span>(donnees_completes)</span>
+<span id="cb1-66"><a href=""></a></span>
+<span id="cb1-67"><a href=""></a><span class="co"># Afficher les résultats</span></span>
+<span id="cb1-68"><a href=""></a></span>
+<span id="cb1-69"><a href=""></a><span class="fu">cat</span>(<span class="st">"===== DISTANCES ENTRE COMMUNAUTÉS ET CENTRES DE SANTÉ =====</span><span class="sc">\n\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>===== DISTANCES ENTRE COMMUNAUTÉS ET CENTRES DE SANTÉ =====</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(resultats_distances)) {</span>
+<span id="cb3-2"><a href=""></a>  <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"Communauté: %s</span><span class="sc">\n</span><span class="st">"</span>, resultats_distances<span class="sc">$</span>communaute[i]))</span>
+<span id="cb3-3"><a href=""></a>  <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"Centre de santé: %s</span><span class="sc">\n</span><span class="st">"</span>, resultats_distances<span class="sc">$</span>centre_sante[i]))</span>
+<span id="cb3-4"><a href=""></a>  <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"Distance routière approximative: %.2f km</span><span class="sc">\n\n</span><span class="st">"</span>, </span>
+<span id="cb3-5"><a href=""></a>              resultats_distances<span class="sc">$</span>distance_routiere_approx_km[i]))</span>
+<span id="cb3-6"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Communauté: Odanak
+Centre de santé: Centre de Santé d'Odanak
+Distance routière approximative: 0.09 km
+
+Communauté: Wôlinak
+Centre de santé: Centre de Santé de Wôlinak
+Distance routière approximative: 0.09 km
+
+Communauté: Wolf Lake
+Centre de santé: CLSC de Témiscaming-Kipawa (Point de service)
+Distance routière approximative: 33.73 km
+
+Communauté: Kebaowek First Nation
+Centre de santé: Centre de Santé de Kebaowek
+Distance routière approximative: 0.14 km
+
+Communauté: Communauté anicinape de Kitcisakik
+Centre de santé: Poste de soins infirmiers Kitcisakik
+Distance routière approximative: 0.03 km
+
+Communauté: Kitigan Zibi Anishinabeg
+Centre de santé: Centre de santé Wanaki
+Distance routière approximative: 0.24 km
+
+Communauté: La Nation Anishnabe du Lac-Simon
+Centre de santé: Centre de Santé Mino-Tehewin
+Distance routière approximative: 0.08 km
+
+Communauté: Conseil de la Première Nation Abitibiwinni
+Centre de santé: Centre de Santé de Pikogan
+Distance routière approximative: 0.24 km
+
+Communauté: Algonquins of Barriere Lake
+Centre de santé: Centre de santé de Lac-Rapide
+Distance routière approximative: 0.02 km
+
+Communauté: Timiskaming First Nation
+Centre de santé: Centre de Santé Timiskaming
+Distance routière approximative: 0.05 km
+
+Communauté: Long Point First Nation
+Centre de santé: Centre de santé de Winneway
+Distance routière approximative: 0.07 km
+
+Communauté: Atikamekw de Manawan
+Centre de santé: Centre de Santé Masko-Siwin
+Distance routière approximative: 0.09 km
+
+Communauté: Bande des Atikamekw d'Opitciwan
+Centre de santé: Centre de Santé d'Opitciwan
+Distance routière approximative: 0.05 km
+
+Communauté: Conseil des Atikamekw de Wemotaci
+Centre de santé: Centre de Santé de Wemotaci
+Distance routière approximative: 0.09 km
+
+Communauté: La Nation Crie de Chisasibi
+Centre de santé: CMC Chisasibi
+Distance routière approximative: 104.61 km
+
+Communauté: La Nation Crie d'Eastmain
+Centre de santé: CMC Eastmain
+Distance routière approximative: 143.22 km
+
+Communauté: La Nation Crie de Mistissini
+Centre de santé: CMC Mistissini
+Distance routière approximative: 0.79 km
+
+Communauté: La Nation Crie de Nemaska
+Centre de santé: CMC Nemaska
+Distance routière approximative: 0.09 km
+
+Communauté: Oujé-Bougoumou Cree Nation
+Centre de santé: CMC Oujé-Bougoumou
+Distance routière approximative: 39.57 km
+
+Communauté: Les Cris de la Première Nation de Waskaganish
+Centre de santé: CMC Waskaganish
+Distance routière approximative: 0.14 km
+
+Communauté: Waswanipi
+Centre de santé: CMC Waswanipi
+Distance routière approximative: 3.28 km
+
+Communauté: La Nation Crie de Wemindji
+Centre de santé: CMC Wemindji
+Distance routière approximative: 1.07 km
+
+Communauté: La Première Nation de Whapmagoostui
+Centre de santé: CMC Whapmagoostui
+Distance routière approximative: 1.49 km
+
+Communauté: Bande des Innus de Pessamit
+Centre de santé: Centre de Santé de Pessamit
+Distance routière approximative: 21.52 km
+
+Communauté: Bande Innue Essipit
+Centre de santé: Centre de santé communautaire d'Essipit
+Distance routière approximative: 75.28 km
+
+Communauté: Première Nation des Pekuakamiulnuatsh
+Centre de santé: Centre de Santé de Mashteuiatsh
+Distance routière approximative: 37.90 km
+
+Communauté: Bande de la Nation Innu Matimekush-Lac John
+Centre de santé: Centre de santé de Matimekush
+Distance routière approximative: 10.05 km
+
+Communauté: Bande des Innus de Ekuanitshit
+Centre de santé: Centre de santé d'Ekuanitshit
+Distance routière approximative: 0.15 km
+
+Communauté: Première Nation des Innus de Nutashkuan
+Centre de santé: Centre de santé de Nutashkuan
+Distance routière approximative: 3.51 km
+
+Communauté: Bande des Montagnais de Pakua Shipi
+Centre de santé: Centre de santé de Pakua Shipi
+Distance routière approximative: 374.93 km
+
+Communauté: Montagnais de Unamen Shipu
+Centre de santé: Centre de santé d'Unamen Shipu
+Distance routière approximative: 48.57 km
+
+Communauté: Innu Takuaikan Uashat mak Mani-Utenam
+Centre de santé: Centre de santé Uashat mak Mani-Utenam
+Distance routière approximative: 0.06 km
+
+Communauté: La Nation Micmac de Gespeg
+Centre de santé: CLSC de Gaspé (Services de santé Gespeg)
+Distance routière approximative: 2.86 km
+
+Communauté: Micmacs of Gesgapegiag
+Centre de santé: Gesgapegiag Health and Community Services
+Distance routière approximative: 0.06 km
+
+Communauté: Listuguj Mi'gmaq Government
+Centre de santé: Listuguj Community Health Services
+Distance routière approximative: 11.04 km
+
+Communauté: Nation Naskapi de Kawawachikamach
+Centre de santé: CLSC Naskapi
+Distance routière approximative: 8.27 km
+
+Communauté: Première Nation Wolastoqiyik Wahsipekuk
+Centre de santé: CLSC de Rivière-du-Loup (Siège administratif)
+Distance routière approximative: 17.79 km
+
+Communauté: Nation Wendat
+Centre de santé: Centre de santé Marie-Paule-Sioui-Vincent
+Distance routière approximative: 4.29 km
+
+Communauté: Mohawks of Kahnawá:ke
+Centre de santé: Centre Hospitalier Kateri Memorial
+Distance routière approximative: 1.10 km
+
+Communauté: Mohawks of Kanesatake
+Centre de santé: Centre de santé de Kanesatake
+Distance routière approximative: 0.09 km
+
+Communauté: Akulivik
+Centre de santé: CLSC d'Akulivik
+Distance routière approximative: 0.04 km
+
+Communauté: Aupaluk
+Centre de santé: CLSC d'Aupaluk
+Distance routière approximative: 0.12 km
+
+Communauté: Chisasibi
+Centre de santé: CMC Chisasibi
+Distance routière approximative: 104.61 km
+
+Communauté: Inukjuak
+Centre de santé: CLSC d'Inukjuak
+Distance routière approximative: 0.30 km
+
+Communauté: Ivujivik
+Centre de santé: CLSC d'Ivujivik
+Distance routière approximative: 0.03 km
+
+Communauté: Kangiqsualujjuaq
+Centre de santé: CLSC de Kangiqsualujjuaq
+Distance routière approximative: 0.15 km
+
+Communauté: Kangiqsujuaq
+Centre de santé: CLSC de Kangiqsujuaq
+Distance routière approximative: 0.16 km
+
+Communauté: Kangirsuk
+Centre de santé: CLSC de Kangirsuk
+Distance routière approximative: 0.10 km
+
+Communauté: Killiniq
+Centre de santé: N/A
+Distance routière approximative: 0.00 km
+
+Communauté: Kuujjuaq
+Centre de santé: Centre de santé Ungava Tulattavik
+Distance routière approximative: 5.24 km
+
+Communauté: Kuujjuarapik
+Centre de santé: CLSC de Kuujjuaraapik
+Distance routière approximative: 0.06 km
+
+Communauté: Puvirnituq
+Centre de santé: Centre de santé Inuulitsivik
+Distance routière approximative: 0.08 km
+
+Communauté: Quaqtaq
+Centre de santé: CLSC de Quaqtaq
+Distance routière approximative: 0.06 km
+
+Communauté: Salluit
+Centre de santé: CLSC de Salluit
+Distance routière approximative: 0.06 km
+
+Communauté: Tasiujaq
+Centre de santé: CLSC de Tasiujaq
+Distance routière approximative: 0.06 km
+
+Communauté: Umiujaq
+Centre de santé: CLSC d'Umiujaq
+Distance routière approximative: 0.05 km</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># Sauvegarder les résultats dans un fichier CSV</span></span>
+<span id="cb5-2"><a href=""></a><span class="fu">write.csv</span>(resultats_distances, </span>
+<span id="cb5-3"><a href=""></a>          <span class="st">"distances_communautes_centres_sante.csv"</span>, </span>
+<span id="cb5-4"><a href=""></a>          <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb5-5"><a href=""></a></span>
+<span id="cb5-6"><a href=""></a><span class="fu">cat</span>(<span class="st">"Les résultats ont été sauvegardés dans 'distances_communautes_centres_sante.csv'</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Les résultats ont été sauvegardés dans 'distances_communautes_centres_sante.csv'</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="co"># Afficher un résumé statistique</span></span>
+<span id="cb7-2"><a href=""></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">===== STATISTIQUES DES DISTANCES =====</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+===== STATISTIQUES DES DISTANCES =====</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"Distance moyenne: %.2f km</span><span class="sc">\n</span><span class="st">"</span>, </span>
+<span id="cb9-2"><a href=""></a>            <span class="fu">mean</span>(resultats_distances<span class="sc">$</span>distance_routiere_approx_km, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Distance moyenne: 18.89 km</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"Distance médiane: %.2f km</span><span class="sc">\n</span><span class="st">"</span>, </span>
+<span id="cb11-2"><a href=""></a>            <span class="fu">median</span>(resultats_distances<span class="sc">$</span>distance_routiere_approx_km, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Distance médiane: 0.15 km</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"Distance minimale: %.2f km</span><span class="sc">\n</span><span class="st">"</span>, </span>
+<span id="cb13-2"><a href=""></a>            <span class="fu">min</span>(resultats_distances<span class="sc">$</span>distance_routiere_approx_km, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Distance minimale: 0.00 km</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"Distance maximale: %.2f km</span><span class="sc">\n</span><span class="st">"</span>, </span>
+<span id="cb15-2"><a href=""></a>            <span class="fu">max</span>(resultats_distances<span class="sc">$</span>distance_routiere_approx_km, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Distance maximale: 374.93 km</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a><span class="co"># ===== PARTIE 2 : ATTRIBUTION DES FAMILLES ET VISUALISATION =====</span></span>
+<span id="cb17-2"><a href=""></a></span>
+<span id="cb17-3"><a href=""></a><span class="co"># Fonction pour attribuer les familles autochtones</span></span>
+<span id="cb17-4"><a href=""></a>get_famille <span class="ot">&lt;-</span> <span class="cf">function</span>(comm) {</span>
+<span id="cb17-5"><a href=""></a>  <span class="cf">if</span> (<span class="fu">grepl</span>(<span class="st">"Odanak|Wôlinak"</span>, comm, <span class="at">ignore.case=</span><span class="cn">TRUE</span>)) <span class="fu">return</span>(<span class="st">"Abénakis"</span>)</span>
+<span id="cb17-6"><a href=""></a>  <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">grepl</span>(<span class="st">"Algonquins|Wolf Lake|Kebaowek|Kitcisakik|Kitigan Zibi|Lac-Simon|Barriere Lake|Timiskaming|Winneway|Abitibiwinni|Long Point"</span>, comm, <span class="at">ignore.case=</span><span class="cn">TRUE</span>)) <span class="fu">return</span>(<span class="st">"Algonquins"</span>)</span>
+<span id="cb17-7"><a href=""></a>  <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">grepl</span>(<span class="st">"Atikamekw"</span>, comm, <span class="at">ignore.case=</span><span class="cn">TRUE</span>)) <span class="fu">return</span>(<span class="st">"Atikamekw"</span>)</span>
+<span id="cb17-8"><a href=""></a>  <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">grepl</span>(<span class="st">"^La Nation Crie|Cree Nation|Cris|Waswanipi|Waskaganish|Mistissini|Nemaska|Wemindji|Chisasibi|Eastmain|Oujé-Bougoumou"</span>, comm, <span class="at">ignore.case=</span><span class="cn">TRUE</span>)) <span class="fu">return</span>(<span class="st">"Cris"</span>)</span>
+<span id="cb17-9"><a href=""></a>  <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">grepl</span>(<span class="st">"Innu|Innue|Matimekush|Ekuanitshit|Nutashkuan|Pekuakamiulnuatsh|Uashat|Pakua Shipi|Unamen Shipu|Essipit|Pessamit"</span>, comm, <span class="at">ignore.case=</span><span class="cn">TRUE</span>)) <span class="fu">return</span>(<span class="st">"Innus"</span>)</span>
+<span id="cb17-10"><a href=""></a>  <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">grepl</span>(<span class="st">"Micmac|Mi'gmaq|Gespeg|Gesgapegiag|Listuguj"</span>, comm, <span class="at">ignore.case=</span><span class="cn">TRUE</span>)) <span class="fu">return</span>(<span class="st">"Micmacs"</span>)</span>
+<span id="cb17-11"><a href=""></a>  <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">grepl</span>(<span class="st">"Naskapi"</span>, comm, <span class="at">ignore.case=</span><span class="cn">TRUE</span>)) <span class="fu">return</span>(<span class="st">"Naskapis"</span>)</span>
+<span id="cb17-12"><a href=""></a>  <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">grepl</span>(<span class="st">"Wolastoqiyik"</span>, comm, <span class="at">ignore.case=</span><span class="cn">TRUE</span>)) <span class="fu">return</span>(<span class="st">"Wolastoqiyik"</span>)</span>
+<span id="cb17-13"><a href=""></a>  <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">grepl</span>(<span class="st">"Wendat"</span>, comm, <span class="at">ignore.case=</span><span class="cn">TRUE</span>)) <span class="fu">return</span>(<span class="st">"Wendat"</span>)</span>
+<span id="cb17-14"><a href=""></a>  <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">grepl</span>(<span class="st">"Mohawks|Kahnawá:ke|Kanesatake"</span>, comm, <span class="at">ignore.case=</span><span class="cn">TRUE</span>)) <span class="fu">return</span>(<span class="st">"Mohawks"</span>)</span>
+<span id="cb17-15"><a href=""></a>  <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">grepl</span>(<span class="st">"Akulivik|Aupaluk|Inukjuak|Ivujivik|Kangiqsualujjuaq|Kangiqsujuaq|Kangirsuk|Killiniq|Kuujjuaq|Kuujjuarapik|Puvirnituq|Quaqtaq|Salluit|Tasiujaq|Umiujaq|Ungava"</span>, comm, <span class="at">ignore.case=</span><span class="cn">TRUE</span>)) <span class="fu">return</span>(<span class="st">"Inuit"</span>)</span>
+<span id="cb17-16"><a href=""></a>  <span class="cf">else</span> <span class="fu">return</span>(<span class="st">"Autre"</span>)</span>
+<span id="cb17-17"><a href=""></a>}</span>
+<span id="cb17-18"><a href=""></a></span>
+<span id="cb17-19"><a href=""></a><span class="co"># Attribuer les familles aux résultats</span></span>
+<span id="cb17-20"><a href=""></a>resultats_distances<span class="sc">$</span>famille <span class="ot">&lt;-</span> <span class="fu">sapply</span>(resultats_distances<span class="sc">$</span>communaute, get_famille)</span>
+<span id="cb17-21"><a href=""></a></span>
+<span id="cb17-22"><a href=""></a><span class="co"># Filtrer les familles demandées</span></span>
+<span id="cb17-23"><a href=""></a>familles_demandes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Abénakis"</span>,<span class="st">"Algonquins"</span>,<span class="st">"Atikamekw"</span>,<span class="st">"Cris"</span>,<span class="st">"Innus"</span>,</span>
+<span id="cb17-24"><a href=""></a>                       <span class="st">"Micmacs"</span>,<span class="st">"Naskapis"</span>,<span class="st">"Wolastoqiyik"</span>,<span class="st">"Wendat"</span>,<span class="st">"Mohawks"</span>,<span class="st">"Inuit"</span>)</span>
+<span id="cb17-25"><a href=""></a>df_filtre <span class="ot">&lt;-</span> resultats_distances[resultats_distances<span class="sc">$</span>famille <span class="sc">%in%</span> familles_demandes,]</span>
+<span id="cb17-26"><a href=""></a></span>
+<span id="cb17-27"><a href=""></a><span class="co"># Calculer les statistiques par famille</span></span>
+<span id="cb17-28"><a href=""></a>stats <span class="ot">&lt;-</span> df_filtre <span class="sc">%&gt;%</span></span>
+<span id="cb17-29"><a href=""></a>  <span class="fu">group_by</span>(famille) <span class="sc">%&gt;%</span></span>
+<span id="cb17-30"><a href=""></a>  <span class="fu">summarise</span>(</span>
+<span id="cb17-31"><a href=""></a>    <span class="at">moyenne =</span> <span class="fu">mean</span>(distance_routiere_approx_km, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb17-32"><a href=""></a>    <span class="at">ecart_type =</span> <span class="fu">sd</span>(distance_routiere_approx_km, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb17-33"><a href=""></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb17-34"><a href=""></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb17-35"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">famille_n =</span> <span class="fu">paste0</span>(famille, <span class="st">" (n = "</span>, n, <span class="st">")"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-36"><a href=""></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(moyenne))</span>
+<span id="cb17-37"><a href=""></a></span>
+<span id="cb17-38"><a href=""></a><span class="co"># Afficher les statistiques</span></span>
+<span id="cb17-39"><a href=""></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">===== STATISTIQUES PAR FAMILLE AUTOCHTONE =====</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+===== STATISTIQUES PAR FAMILLE AUTOCHTONE =====</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="fu">print</span>(stats[, <span class="fu">c</span>(<span class="st">"famille_n"</span>, <span class="st">"moyenne"</span>, <span class="st">"ecart_type"</span>, <span class="st">"n"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 11 × 4
+   famille_n            moyenne ecart_type     n
+   &lt;chr&gt;                  &lt;dbl&gt;      &lt;dbl&gt; &lt;int&gt;
+ 1 Innus (n = 9)        63.6      120.         9
+ 2 Cris (n = 9)         44.2       57.5        9
+ 3 Wolastoqiyik (n = 1) 17.8       NA          1
+ 4 Naskapis (n = 1)      8.27      NA          1
+ 5 Micmacs (n = 3)       4.65       5.71       3
+ 6 Wendat (n = 1)        4.29      NA          1
+ 7 Algonquins (n = 9)    3.84      11.2        9
+ 8 Mohawks (n = 2)       0.595      0.714      2
+ 9 Inuit (n = 15)        0.434      1.33      15
+10 Abénakis (n = 2)      0.09       0          2
+11 Atikamekw (n = 3)     0.0767     0.0231     3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="co"># Générer le graphique automatiquement</span></span>
+<span id="cb21-2"><a href=""></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">===== GÉNÉRATION DU GRAPHIQUE =====</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+===== GÉNÉRATION DU GRAPHIQUE =====</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a>graphique <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(stats, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(famille_n, moyenne), <span class="at">y =</span> moyenne)) <span class="sc">+</span></span>
+<span id="cb23-2"><a href=""></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"skyblue"</span>, <span class="at">width =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb23-3"><a href=""></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> moyenne <span class="sc">-</span> ecart_type, <span class="at">ymax =</span> moyenne <span class="sc">+</span> ecart_type),</span>
+<span id="cb23-4"><a href=""></a>                <span class="at">width =</span> <span class="fl">0.25</span>, <span class="at">color =</span> <span class="st">"darkblue"</span>, <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb23-5"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb23-6"><a href=""></a>    <span class="at">title =</span> <span class="st">"Distance routière moyenne d'un centre de santé par famille autochtone"</span>,</span>
+<span id="cb23-7"><a href=""></a>    <span class="at">x =</span> <span class="st">"Famille autochtone (nombre de communautés)"</span>,</span>
+<span id="cb23-8"><a href=""></a>    <span class="at">y =</span> <span class="st">"Distance routière moyenne (km)"</span></span>
+<span id="cb23-9"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb23-10"><a href=""></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
+<span id="cb23-11"><a href=""></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="geodist_dupuism_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Le graphique a été sauvegardé dans 'graphique_distances_familles.png'</code></pre>
+</div>
+</div>
+
+</div></div>
+</section>
+
+
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="geodist_dupuism_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="geodist_dupuism_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="geodist_dupuism_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="geodist_dupuism_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="geodist_dupuism_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="geodist_dupuism_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="geodist_dupuism_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="geodist_dupuism_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="geodist_dupuism_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="geodist_dupuism_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"right","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true,"width":"wide"},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'print',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
