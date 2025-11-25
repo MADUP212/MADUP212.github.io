@@ -6,7 +6,7 @@ title: Présentations
 <div class="page-content">
   <div style="max-width: 700px; margin: 0 auto; padding: 2em;">
     <h2 style="text-align: center; margin-bottom: 0.3em; font-size: 2.2em; font-weight: 800;">Présentations</h2>
-    <p style="text-align: center; font-size: 1.2em; color: #555;">Résumé de lecture académique</p>
+    <p style="text-align: center; font-size: 1.2em; color: #555;">Présentations de Marc-Antoine Dupuis</p>
 
     <div class="presentation-list">
 
