@@ -22,6 +22,15 @@ Huth & Russett (1984) On Detterence
         <p>Résumé de lecture : Huth, P. & Russett, B. (1984). What makes deterrence work? Cases from 1900 to 1980.</p>
       </article>
 
+<h3>
+<a href="https://github.com/MADUP212/MADUP212.github.io/blob/c58bffdaf67a38730b5186e80f428b0925e7d14d/assets/presentations/huth_detterence_web.html" target="_blank">
+Huth & Russett (1984) On Detterence
+</a>
+        <p> Présentation de Geodist (package R).</p>
+      </article>
+</h3>
+      
+
     </div>
-  </div>
+  </div>  
 </div>
