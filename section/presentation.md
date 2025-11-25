@@ -23,7 +23,7 @@ Huth & Russett (1984) On Detterence
       </article>
 
 <h3>
-<a href="https://github.com/MADUP212/MADUP212.github.io/blob/c58bffdaf67a38730b5186e80f428b0925e7d14d/assets/presentations/huth_detterence_web.html" target="_blank">
+<a href="https://www.masdupuis.com/assets/presentations/geodist_dupuism.html#/title-slide" target="_blank">
 Geodist (package R)
 </a>
         <p> Présentation de Geodist (package R).</p>
