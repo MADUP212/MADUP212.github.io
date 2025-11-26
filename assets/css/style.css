@@ -1,186 +1,121 @@
-/* --- STYLES DE BASE DU SITE --- */
+/* --- VARIABLES NB --- */
 :root {
     --sidebar-width: 260px;
-    --sidebar-bg: #ffffff;
-    --accent-blue: #000000;
+    --sidebar-bg: #fff;
+    --accent-main: #111;
+    --text-main: #111;
+    --content-bg: #fff;
+    --panel-bg: #f8f8f8;
+    --border-color: #e2e2e2;
+    --main-radius: 22px;
+    --shadow: 0 2px 18px rgba(0,0,0,0.09);
 }
+
+/* --- POLICE & BG GÉNÉRAL --- */
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,700&display=swap');
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #ffffff;
-    color: #333;
+    font-family: 'IBM Plex Sans', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--panel-bg);
+    color: var(--accent-main);
     margin: 0;
+    font-size: 18px;
+    line-height: 1.7;
 }
-.main-content { padding: 60px 20px 20px; }
 
-/* --- STYLES DE LA BARRE LATÉRALE (SIDEBAR) --- */
-.menu-toggle {
-    position: fixed; top: 15px; left: 15px; z-index: 1001;
-    background: none; border: none; font-size: 1.5em; cursor: pointer; color: #343a40;
+/* CONTENU PRINCIPAL CENTRÉ QUARTO STYLE NB */
+.main-content, .page-content {
+    background: var(--content-bg);
+    max-width: 760px;
+    margin: 40px auto 24px;
+    box-shadow: var(--shadow);
+    border-radius: var(--main-radius);
+    padding: 2.6em 1.8em 2.5em 1.8em;
 }
+
+h1, h2, h3, h4 {
+    font-family: 'IBM Plex Sans', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 800;
+    color: var(--accent-main);
+    margin-bottom: 0.3em;
+}
+h2 {
+    font-size: 2.04em;
+    letter-spacing: 1.3px;
+    text-align: center;
+}
+h3 {
+    font-size: 1.23em;
+    color: var(--accent-main);
+}
+p {
+    color: #222; font-size: 1.085em; margin-top: 0.3em;
+}
+a {
+    color: var(--accent-main) !important;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+a:hover {
+    text-decoration: underline;
+    color: #444 !important;
+}
+
+/* --- SIDEBAR NB --- */
 .sidebar {
-    position: fixed; top: 0; left: 0; height: 100vh; width: var(--sidebar-width);
-    background-color: var(--sidebar-bg); border-right: 1px solid #dee2e6;
-    z-index: 1000; transform: translateX(-100%); transition: transform 0.3s ease-in-out;
-    overflow-y: auto;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
 }
-.sidebar.open { transform: translateX(0); }
-.sidebar-header { padding: 20px; text-align: center; border-bottom: 1px solid #dee2e6; }
-.sidebar-header h3 { margin: 0; color: #343a40; }
-.nav-list { list-style: none; padding: 0; margin: 20px 0; }
+.menu-toggle { color: #222; }
 
-.overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4);
-    z-index: 999; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s;
+/* --- ENTRÉES DE PRÉSENTATION NB --- */
+.presentation-entry {
+    background: var(--panel-bg);
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.11);
+    padding: 1.3em 1.3em 1em 1.3em;
+    margin: 1.2em 0;
+    border: 1.5px solid var(--border-color);
 }
-.overlay.open { opacity: 1; visibility: visible; }
-
-/* --- STYLES POUR LES ÉLÉMENTS DE LA BARRE LATÉRALE --- */
-
-/* Style commun pour aligner les liens ET les boutons accordéon */
-.nav-list > li > a,
-.nav-list > li > .accordion-sidebar {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 15px 20px;
-    color: #343a40;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1em;
-    text-align: left;
-    border: none;
-    background-color: transparent;
-    font-family: inherit;
-    cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
+.presentation-entry h3,
+.presentation-entry h3 a {
+    color: var(--accent-main);
 }
 
-/* Style spécifique au survol pour le lien "Accueil" */
-.nav-list > li > a:hover {
-    background-color: var(--accent-blue);
-    color: white;
-}
-
-/* Styles spécifiques aux boutons accordéon de la barre latérale */
-.accordion-sidebar:hover, .accordion-sidebar.active { 
-    background-color: #f1f1f1; 
-}
-.accordion-sidebar:after {
-    content: '\002B'; 
-    color: #777; 
-    font-weight: bold; 
-    float: right;
-}
-.accordion-sidebar.active:after { 
-    content: "\2212"; 
-}
-
-/* --- CORRECTION ESTHÉTIQUE POUR LES LIENS DANS LES PANNEAUX --- */
-.panel-sidebar {
-    padding: 0; 
-    background-color: #fafafa; 
-    max-height: 0;
-    overflow: hidden; 
-    transition: max-height 0.2s ease-out;
-}
-.panel-sidebar a {
-    display: block; /* Force chaque lien sur sa propre ligne */
-    padding: 15px 20px 15px 40px; /* Ajoute un padding cohérent et une indentation */
-    font-size: 0.95em;
-    color: #343a40; /* Couleur du texte assortie */
-    text-decoration: none; /* Enlève le soulignement */
-    transition: background-color 0.2s, color 0.2s;
-}
-.panel-sidebar a:hover {
-    background-color: #f1f1f1; /* Léger fond gris au survol */
-}
-
-/* --- STYLE 'JOURNALISTE' POUR L'ACCORDÉON DANS LES PAGES --- */
+/* --- ACCORDÉONS & PANELS NB --- */
 .page-content .accordion {
+    font-family: inherit;
     background-color: transparent;
-    color: #333;
-    cursor: pointer;
-    padding: 25px 10px;
-    width: 100%;
-    text-align: left;
-    border: none;
-    border-top: 1px solid #e0e0e0;
-    outline: none;
-    transition: background-color 0.3s ease;
-    font-size: 1.4em;
+    color: #222;
+    font-size: 1.15em;
     font-weight: 600;
-}
-.page-content .accordion:last-of-type,
-.page-content .accordion:last-of-type.active + .panel {
-    border-bottom: 1px solid #e0e0e0;
+    padding: 16px 12px;
+    border-top: 1px solid var(--border-color);
+    border-bottom: none;
+    transition: background 0.18s;
 }
 .page-content .accordion:hover, 
 .page-content .accordion.active {
-    background-color: #fafafa;
+    background-color: #f5f5f5;
 }
 .page-content .accordion:after {
     content: '\25B8';
     font-size: 0.7em;
-    color: #888;
+    color: #222;
     float: right;
-    margin-left: 15px;
-    transition: transform 0.3s ease;
+    margin-left: 13px;
+    transition: transform 0.18s;
 }
-.page-content .accordion.active:after {
-    transform: rotate(90deg);
-}
+.page-content .accordion.active:after { transform: rotate(90deg); }
 .page-content .panel {
-    padding: 25px 15px;
-    background-color: white;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-out;
+    padding: 22px 14px;
+    background-color: var(--panel-bg);
+    border-radius: 0 0 14px 14px;
+    border: none;
+    box-shadow: none;
 }
 
-/* --- CORRECTIF POUR LE TEXTE QUI DÉPASSE DANS LES PANNEAUX --- */
-.panel div[style*="display: flex"] {
-    width: 100%; /* S'assure que la ligne prend toute la largeur */
-}
+/* --- LIENS DANS PANNEAUX --- */
+.panel a { color: #111 !important; }
 
-/* --- STYLE JOURNALISTE POUR LA PAGE DE JEUX --- */
-
-.game-list {
-  margin-top: 2rem;
-}
-
-.game-entry {
-  padding: 1.5rem 0;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.game-entry:first-of-type {
-  border-top: 1px solid #e0e0e0;
-}
-
-.game-entry h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.5em;
-  font-weight: 600;
-}
-
-.game-entry h3 a {
-  text-decoration: none;
-  color: #333;
-  transition: color 0.2s ease;
-}
-
-.game-entry h3 a:hover {
-  color: #000;
-  text-decoration: underline;
-}
-
-.game-entry p {
-  margin: 0;
-  color: #666;
-  font-size: 1em;
-}
-
-.panel div[style*="display: flex"] > div:first-child {
-    min-width: 0; /* Permet au titre long de passer à la ligne au lieu de déborder */
-    word-wrap: break-word; /* Force la coupure des mots si nécessaire */
-}
+/* --- LISTES/JOURNAL NB --- */
+ul, ol { color: #222; }
