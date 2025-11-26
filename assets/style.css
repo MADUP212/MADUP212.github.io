@@ -171,15 +171,19 @@ a:hover {
 
 /* --- ENTRÉES DE PRÉSENTATION --- */
 .presentation-list {
-  margin-top: 1.7em;
+    max-width: 700px;
+    margin: 0 auto;          /* Centre la liste */
 }
+
 .presentation-entry {
-  background: #f8f8f8;
-  border-radius: 15px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.11);
-  padding: 1.3em 1.3em 1em 1.3em;
-  margin: 1.2em 0;
-  border: 1.5px solid var(--border-color);
+    background: #f3f7fa;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 1.3em 1.3em 1em 1.3em;
+    margin: 1.2em 0;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .presentation-entry h3, .presentation-entry h3 a {
   color: var(--accent-main);
@@ -192,9 +196,33 @@ a:hover {
   font-size: 1em;
   margin: 0.2em 0 0 0;
 }
+@media (max-width: 750px) {
+  .presentation-list, .presentation-entry {
+    max-width: 97vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+  }
+}
+.back-btn {
+    display: inline-block;
+    margin-bottom: 1.3em;
+    background: #222;
+    color: #fff;
+    padding: 0.6em 1.2em;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 1.08em;
+    transition: background 0.18s;
+}
+.back-btn:hover {
+    background: #444;
+}
+
 
 /* --- RESPONSIVE --- */
 @media (max-width: 900px) {
   .main-content, .page-content, .container { max-width: 97vw; padding: 7vw 3vw 5vw 3vw; }
   .sidebar { width: 80vw; min-width: 180px; }
 }
+
+
