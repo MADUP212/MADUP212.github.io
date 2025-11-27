@@ -1,194 +1,224 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Jeu du R</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background-color: #fdfbf7;
-      color: #333;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      flex-direction: column;
-      position: relative;
-    }
-    .back-button {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      color: #fff;
-      background-color: rgba(0,0,0,0.5);
-      padding: 8px 12px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 1em;
-      z-index: 10;
-    }
-    #game-container {
-      width: 600px;
-      height: 200px;
-      border: 2px solid #333;
-      position: relative;
-      overflow: hidden;
-      background-color: #f5f1e9;
-    }
-    #dino {
-      width: 50px;
-      height: 50px;
-      background: none;
-      position: absolute;
-      bottom: 0;
-      left: 10px;
-      font-size: 44px;
-      font-weight: bold;
-      color: #333;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      transition: height 0.2s, width 0.2s, font-size 0.2s;
-    }
-    .jump { animation: jump 0.6s linear; }
-    .crouch { height: 30px !important; font-size: 26px !important;}
-    @keyframes jump {
-      0% { bottom: 0; }
-      50% { bottom: 80px; }
-      100% { bottom: 0; }
-    }
-    .obstacle {
-      position: absolute;
-      bottom: 0;
-      right: -20px;
-      width: 20px;
-      height: 40px;
-      background: #333;
-      animation: moveObstacle 2s linear infinite;
-    }
-    @keyframes moveObstacle {
-      0% { right: -20px; }
-      100% { right: 620px; }
-    }
-    #ground { width: 100%; height: 2px; background-color: #333; position: absolute; bottom: 0; }
-    #score { position: absolute; top: 10px; right: 10px; font-size: 1.5em; font-weight: bold;}
-    #message-screen {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      font-size: 1.5em; font-weight: bold; text-align: center;
-      background: rgba(255,255,255, 0.7); padding: 1em 2em; border-radius: 1em;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Jeu du R</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="/assets/style.css">
+    <style>
+        body {
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #fff;
+            color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        #game-container {
+            width: 600px;
+            height: 200px;
+            border: 2px solid #000;
+            position: relative;
+            overflow: hidden;
+            background-color: #f8f8f8;
+        }
+        
+        #dino {
+            width: 50px;
+            height: 50px;
+            background: none;
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            font-size: 44px;
+            font-weight: bold;
+            color: #000;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            transition: height 0.2s, width 0.2s, font-size 0.2s;
+        }
+        
+        .jump { animation: jump 0.6s linear; }
+        .crouch { height: 30px !important; font-size: 26px !important;}
+        
+        @keyframes jump {
+            0% { bottom: 0; }
+            50% { bottom: 80px; }
+            100% { bottom: 0; }
+        }
+        
+        .obstacle {
+            position: absolute;
+            bottom: 0;
+            right: -20px;
+            width: 20px;
+            height: 40px;
+            background: #000;
+            animation: moveObstacle 2s linear infinite;
+        }
+        
+        @keyframes moveObstacle {
+            0% { right: -20px; }
+            100% { right: 620px; }
+        }
+        
+        #ground { 
+            width: 100%; 
+            height: 2px; 
+            background-color: #000; 
+            position: absolute; 
+            bottom: 0; 
+        }
+        
+        #score { 
+            position: absolute; 
+            top: 10px; 
+            right: 10px; 
+            font-size: 1.5em; 
+            font-weight: bold;
+            color: #000;
+        }
+        
+        #message-screen {
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%);
+            font-size: 1.5em; 
+            font-weight: bold; 
+            text-align: center;
+            background: rgba(255,255,255, 0.95); 
+            padding: 1em 2em; 
+            border: 2px solid #000;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 <body>
-  <a href="javascript:history.back()" class="back-button">← Retour</a>
-  <div id="game-container">
-    <div id="dino">R</div>
-    <div id="ground"></div>
-    <div id="score">0</div>
-    <div id="message-screen">Appuyez sur Espace pour commencer</div>
-  </div>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const dino = document.getElementById('dino');
-      const gameContainer = document.getElementById('game-container');
-      const scoreDisplay = document.getElementById('score');
-      const messageScreen = document.getElementById('message-screen');
-      let isJumping = false;
-      let isCrouching = false;
-      let isGameOver = true;
-      let score = 0;
-      let scoreInterval;
-      let obstacleInterval;
-      function startGame() {
-        isGameOver = false;
-        score = 0;
-        scoreDisplay.textContent = score;
-        messageScreen.style.display = 'none';
-        document.querySelectorAll('.obstacle').forEach(o => o.remove());
-        scoreInterval = setInterval(updateScore, 100);
-        obstacleInterval = setTimeout(spawnObstacle, 1000 + Math.random() * 2000);
-        requestAnimationFrame(gameLoop);
-      }
-      function jump() {
-        if (isJumping || isCrouching || isGameOver) return;
-        isJumping = true;
-        dino.classList.add('jump');
-        setTimeout(() => {
-          dino.classList.remove('jump');
-          isJumping = false;
-        }, 600);
-      }
-      function crouch(enable) {
-        if (isJumping || isGameOver) return;
-        if (enable) {
-          isCrouching = true;
-          dino.classList.add('crouch');
-        } else {
-          isCrouching = false;
-          dino.classList.remove('crouch');
-        }
-      }
-      document.addEventListener('keydown', (e) => {
-        if (e.code === 'Space' || e.code === 'ArrowUp') {
-          e.preventDefault();
-          if (isGameOver) startGame();
-          else jump();
-        } else if (e.code === 'ArrowDown') {
-          e.preventDefault();
-          crouch(true);
-        }
-      });
-      document.addEventListener('keyup', (e) => {
-        if (e.code === 'ArrowDown') {
-          crouch(false);
-        }
-      });
-      function updateScore() {
-        score++;
-        scoreDisplay.textContent = score;
-      }
-      function spawnObstacle() {
-        if (isGameOver) return;
-        const obstacle = document.createElement('div');
-        obstacle.classList.add('obstacle');
-        gameContainer.appendChild(obstacle);
-        let moveDuration = 2000;
-        obstacle.style.animation = `moveObstacle ${moveDuration}ms linear 1`;
-        setTimeout(() => {
-          if (obstacle.parentNode) obstacle.parentNode.removeChild(obstacle);
-        }, moveDuration);
-        obstacleInterval = setTimeout(spawnObstacle, 1000 + Math.random() * 2000);
-      }
-      function gameLoop() {
-        if (isGameOver) return;
-        const dinoRect = dino.getBoundingClientRect();
-        document.querySelectorAll('.obstacle').forEach(obstacle => {
-          const obstacleRect = obstacle.getBoundingClientRect();
-          if (
-            dinoRect.right > obstacleRect.left &&
-            dinoRect.left < obstacleRect.right &&
-            dinoRect.bottom > obstacleRect.top &&
-            dinoRect.top < obstacleRect.bottom
-          ) {
-            endGame();
-            return;
-          }
+    <a href="/" class="back-button" onclick="if(history.length > 1) { history.go(-1); return false; } else { return true; }">← Retour</a>
+    
+    <div id="game-container">
+        <div id="dino">R</div>
+        <div id="ground"></div>
+        <div id="score">0</div>
+        <div id="message-screen">Appuyez sur Espace pour commencer</div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dino = document.getElementById('dino');
+            const gameContainer = document.getElementById('game-container');
+            const scoreDisplay = document.getElementById('score');
+            const messageScreen = document.getElementById('message-screen');
+            let isJumping = false;
+            let isCrouching = false;
+            let isGameOver = true;
+            let score = 0;
+            let scoreInterval;
+            let obstacleInterval;
+            
+            function startGame() {
+                isGameOver = false;
+                score = 0;
+                scoreDisplay.textContent = score;
+                messageScreen.style.display = 'none';
+                document.querySelectorAll('.obstacle').forEach(o => o.remove());
+                scoreInterval = setInterval(updateScore, 100);
+                obstacleInterval = setTimeout(spawnObstacle, 1000 + Math.random() * 2000);
+                requestAnimationFrame(gameLoop);
+            }
+            
+            function jump() {
+                if (isJumping || isCrouching || isGameOver) return;
+                isJumping = true;
+                dino.classList.add('jump');
+                setTimeout(() => {
+                    dino.classList.remove('jump');
+                    isJumping = false;
+                }, 600);
+            }
+            
+            function crouch(enable) {
+                if (isJumping || isGameOver) return;
+                if (enable) {
+                    isCrouching = true;
+                    dino.classList.add('crouch');
+                } else {
+                    isCrouching = false;
+                    dino.classList.remove('crouch');
+                }
+            }
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.code === 'Space' || e.code === 'ArrowUp') {
+                    e.preventDefault();
+                    if (isGameOver) startGame();
+                    else jump();
+                } else if (e.code === 'ArrowDown') {
+                    e.preventDefault();
+                    crouch(true);
+                }
+            });
+            
+            document.addEventListener('keyup', (e) => {
+                if (e.code === 'ArrowDown') {
+                    crouch(false);
+                }
+            });
+            
+            function updateScore() {
+                score++;
+                scoreDisplay.textContent = score;
+            }
+            
+            function spawnObstacle() {
+                if (isGameOver) return;
+                const obstacle = document.createElement('div');
+                obstacle.classList.add('obstacle');
+                gameContainer.appendChild(obstacle);
+                let moveDuration = 2000;
+                obstacle.style.animation = `moveObstacle ${moveDuration}ms linear 1`;
+                setTimeout(() => {
+                    if (obstacle.parentNode) obstacle.parentNode.removeChild(obstacle);
+                }, moveDuration);
+                obstacleInterval = setTimeout(spawnObstacle, 1000 + Math.random() * 2000);
+            }
+            
+            function gameLoop() {
+                if (isGameOver) return;
+                const dinoRect = dino.getBoundingClientRect();
+                document.querySelectorAll('.obstacle').forEach(obstacle => {
+                    const obstacleRect = obstacle.getBoundingClientRect();
+                    if (
+                        dinoRect.right > obstacleRect.left &&
+                        dinoRect.left < obstacleRect.right &&
+                        dinoRect.bottom > obstacleRect.top &&
+                        dinoRect.top < obstacleRect.bottom
+                    ) {
+                        endGame();
+                        return;
+                    }
+                });
+                requestAnimationFrame(gameLoop);
+            }
+            
+            function endGame() {
+                isGameOver = true;
+                clearInterval(scoreInterval);
+                clearTimeout(obstacleInterval);
+                document.querySelectorAll('.obstacle').forEach(o => {
+                    o.style.animationPlayState = 'paused';
+                });
+                messageScreen.innerHTML = `Partie terminée ! Score : ${score}<br>Appuyez sur Espace pour rejouer`;
+                messageScreen.style.display = 'block';
+            }
         });
-        requestAnimationFrame(gameLoop);
-      }
-      function endGame() {
-        isGameOver = true;
-        clearInterval(scoreInterval);
-        clearTimeout(obstacleInterval);
-        document.querySelectorAll('.obstacle').forEach(o => {
-          o.style.animationPlayState = 'paused';
-        });
-        messageScreen.innerHTML = `Partie terminée ! Score : ${score}<br>Appuyez sur Espace pour rejouer`;
-        messageScreen.style.display = 'block';
-      }
-    });
-  </script>
+    </script>
 </body>
 </html>
