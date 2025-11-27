@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <link rel="stylesheet" href="/assets/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tableau de Bord AGILE - Synthèse de Maîtrise</title>
@@ -166,8 +167,7 @@
 <body>
     <div class="container">
         <!-- === BOUTON RETOUR CORRIGÉ === -->
-        <a href="javascript:history.back()" class="back-button">← Retour</a>
-        
+<a href="/" class="back-button" onclick="if(history.length > 1) { history.go(-1); return false; } else { return true; }">← Retour</a>
         <header>
             <h1>Calendrier AGILE pour Synthèse de Maîtrise</h1>
             <p>Plan de rédaction sur 4 mois (16 semaines)</p>
