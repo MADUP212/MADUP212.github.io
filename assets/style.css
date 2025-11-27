@@ -345,17 +345,21 @@ hr {
 .increment-links a {
     display: inline-block;
     margin: 0.5rem;
-    padding: 0.6rem 1.2rem;
-    background-color: #333;
-    color: #fff;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
     text-decoration: none;
+    font-size: 1em;
+    font-weight: 500;
     border-radius: 4px;
-    font-weight: bold;
-    transition: background-color 0.2s;
+    transition: all 0.2s ease;
 }
 
 .increment-links a:hover {
-    background-color: #555;
+    background-color: #000;
+    color: #fff;
 }
+
 
 
