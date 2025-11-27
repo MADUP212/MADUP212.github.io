@@ -1,23 +1,47 @@
----
-layout: default
-title: Contact
----
-
-<div class="page-content">
-
-  <!-- Le bouton accordéon a été retiré et le formulaire est maintenant dans un conteneur centré -->
-  <div style="max-width: 700px; margin: 2em auto;">
-    <hr>
-    <h2 style="text-align: center;">Formulaire de Contact</h2>
-    <form action="https://formspree.io/f/xovkqzyo" method="POST">
-      <label for="email">Votre courriel:</label>
-      <input type="email" id="email" name="email" required="" style="width: 100%; padding: 8px; margin-bottom: 1em; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
-
-      <label for="message">Votre message :</label>
-      <textarea id="message" name="message" required="" style="width: 100%; height: 150px; padding: 8px; margin-bottom: 1em; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;"></textarea>
-
-      <button type="submit" style="background-color: #333; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;">Envoyer</button>
-    </form>
-  </div>
-
-</div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="icon" type="image/jpeg" href="/assets/r_de_chaud.jpg">
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-button">← Retour</a>
+    
+    <div class="page-container">
+        <h1>Contact</h1>
+        
+        <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 2rem 0;">
+        
+        <h2>Formulaire de Contact</h2>
+        
+        <form action="https://formspree.io/f/xovkqzyo" method="POST" style="max-width: 600px; margin: 2em auto;">
+            <div style="margin-bottom: 1.5rem;">
+                <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: #000;">Votre courriel:</label>
+                <input type="email" 
+                       id="email" 
+                       name="email" 
+                       required 
+                       style="width: 100%; padding: 10px; border: 2px solid #000; border-radius: 4px; box-sizing: border-box; font-size: 1em; font-family: inherit;">
+            </div>
+            
+            <div style="margin-bottom: 1.5rem;">
+                <label for="message" style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: #000;">Votre message:</label>
+                <textarea id="message" 
+                          name="message" 
+                          required 
+                          style="width: 100%; height: 150px; padding: 10px; border: 2px solid #000; border-radius: 4px; box-sizing: border-box; font-size: 1em; font-family: inherit; resize: vertical;"></textarea>
+            </div>
+            
+            <button type="submit" 
+                    style="display: inline-block; padding: 10px 20px; background-color: #fff; color: #000; border: 2px solid #000; text-decoration: none; font-size: 1em; font-weight: 500; border-radius: 4px; cursor: pointer; transition: all 0.2s ease;"
+                    onmouseover="this.style.backgroundColor='#000'; this.style.color='#fff';"
+                    onmouseout="this.style.backgroundColor='#fff'; this.style.color='#000';">
+                Envoyer
+            </button>
+        </form>
+    </div>
+</body>
+</html>
