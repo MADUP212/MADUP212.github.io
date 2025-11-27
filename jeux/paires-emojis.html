@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Paires d'Emojis</title>
+    <link rel="stylesheet" href="/assets/style.css">
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #fdfbf7;
-            color: #333;
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #fff;
+            color: #000;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -18,27 +19,19 @@
             position: relative;
             text-align: center;
         }
-        .back-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            color: #fff;
-            background-color: rgba(0,0,0,0.5);
-            padding: 8px 12px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1em;
-            z-index: 10;
-        }
+        
         .game-container {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+        
         h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
+            color: #000;
         }
+        
         .stats {
             display: flex;
             justify-content: space-around;
@@ -46,8 +39,9 @@
             max-width: 340px;
             margin-bottom: 20px;
             font-size: 1.2rem;
-            color: #555;
+            color: #000;
         }
+        
         .board {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -56,17 +50,20 @@
             max-width: 340px;
             perspective: 1000px;
         }
+        
         .card {
             width: 100%;
             aspect-ratio: 1 / 1;
             position: relative;
-            transform-style: preserve-3d; /* <-- CORRECTION ICI */
+            transform-style: preserve-3d;
             transition: transform 0.6s;
             cursor: pointer;
         }
+        
         .card.is-flipped {
             transform: rotateY(180deg);
         }
+        
         .card-face {
             position: absolute;
             width: 100%;
@@ -79,30 +76,37 @@
             font-size: 2.5em;
             box-sizing: border-box;
         }
+        
         .card-front {
             background-color: #fff;
-            border: 2px solid #333;
+            border: 2px solid #000;
             transform: rotateY(180deg);
-            color: #333;
+            color: #000;
         }
+        
         .card-back {
-            background-color: #333;
-            border: 2px solid #333;
+            background-color: #000;
+            border: 2px solid #000;
         }
+        
         #restart-btn {
             font-size: 1.2em;
             padding: 10px 25px;
             margin-top: 25px;
-            border-radius: 5px;
-            border: none;
-            background-color: #333;
-            color: white;
+            border-radius: 4px;
+            border: 2px solid #000;
+            background-color: #fff;
+            color: #000;
             cursor: pointer;
-            transition: background-color 0.2s;
+            font-weight: 500;
+            transition: all 0.2s ease;
         }
+        
         #restart-btn:hover {
-            background-color: #555;
+            background-color: #000;
+            color: #fff;
         }
+        
         @media (max-width: 420px) {
             .card-face { font-size: 2em; }
             h1 { font-size: 2em; }
@@ -111,9 +115,8 @@
     </style>
 </head>
 <body>
-
-    <a href="javascript:history.back()" class="back-button">← Retour</a>
-
+    <a href="/" class="back-button" onclick="if(history.length > 1) { history.go(-1); return false; } else { return true; }">← Retour</a>
+    
     <div class="game-container">
         <h1>Paires d'Emojis</h1>
         <div class="stats">
@@ -123,14 +126,13 @@
         <div id="game-board" class="board"></div>
         <button id="restart-btn">Recommencer</button>
     </div>
-
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const gameBoard = document.getElementById('game-board');
             const movesStat = document.getElementById('moves-stat');
             const timerStat = document.getElementById('timer-stat');
             const restartBtn = document.getElementById('restart-btn');
-
             const emojis = ['😊', '😊', '😎', '😎', '😂', '😂', '😍', '😍', '🤔', '🤔', '🥳', '🥳', '🤯', '🤯', '😇', '😇'];
             
             let flippedCards = [];
@@ -139,7 +141,7 @@
             let timer = 0;
             let timerInterval = null;
             let isBoardLocked = false;
-
+            
             function startGame() {
                 flippedCards = [];
                 matchedPairs = 0;
@@ -154,25 +156,23 @@
                     timer++;
                     timerStat.textContent = `Temps : ${timer}s`;
                 }, 1000);
-
+                
                 emojis.sort(() => 0.5 - Math.random());
-
                 gameBoard.innerHTML = '';
+                
                 emojis.forEach(emoji => {
                     const card = document.createElement('div');
                     card.classList.add('card');
                     card.dataset.emoji = emoji;
-
                     card.innerHTML = `
                         <div class="card-face card-front">${emoji}</div>
                         <div class="card-face card-back"></div>
                     `;
-
                     card.addEventListener('click', handleCardClick);
                     gameBoard.appendChild(card);
                 });
             }
-
+            
             function handleCardClick(event) {
                 const clickedCard = event.currentTarget;
                 if (isBoardLocked || clickedCard.classList.contains('is-flipped') || clickedCard.classList.contains('is-matched')) {
@@ -185,16 +185,15 @@
                     checkForMatch();
                 }
             }
-
+            
             function flipCard(card) {
                 card.classList.add('is-flipped');
                 flippedCards.push(card);
             }
-
+            
             function checkForMatch() {
                 isBoardLocked = true;
                 const [card1, card2] = flippedCards;
-
                 if (card1.dataset.emoji === card2.dataset.emoji) {
                     card1.classList.add('is-matched');
                     card2.classList.add('is-matched');
@@ -209,7 +208,7 @@
                     }, 1000);
                 }
             }
-
+            
             function resetFlippedCards() {
                 flippedCards = [];
                 isBoardLocked = false;
@@ -225,7 +224,6 @@
             }
             
             restartBtn.addEventListener('click', startGame);
-
             startGame();
         });
     </script>
