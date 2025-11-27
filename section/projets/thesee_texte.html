@@ -330,11 +330,32 @@ float: none;
 display: none;
 }
 </style>
+<style>
+/* Justifier le texte */
+body p,
+body li,
+body div.quarto-text-content p {
+    text-align: justify !important;
+}
 
-<!-- code folding -->
+/* Réduire la taille des notes de bas de page */
+.footnotes,
+.footnotes p,
+.footnotes li,
+aside.footnotes,
+section.footnotes,
+#footnotes,
+.footnote-ref,
+sup a {
+    font-size: 0.85em !important;
+}
 
-
-
+.footnotes {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e0e0e0;
+}
+</style>
 
 </head>
 <link rel="stylesheet" href="/assets/style.css">
