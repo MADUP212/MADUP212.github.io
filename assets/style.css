@@ -404,4 +404,26 @@ hr {
     background-color: #fff;
 }
 
+/* Force le style du bouton retour même dans les pages Quarto */
+body a.back-button,
+body a.back-button:visited,
+body a.back-button:link {
+    display: inline-block !important;
+    margin-bottom: 2rem;
+    padding: 10px 20px;
+    color: #000 !important;
+    background-color: #fff !important;
+    border: 2px solid #000 !important;
+    text-decoration: none !important;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+body a.back-button:hover {
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
 
