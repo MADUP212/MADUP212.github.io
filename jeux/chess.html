@@ -65,8 +65,8 @@
             transition: background 0.15s;
         }
         
-        .white { background: #eeeed2; }
-        .black-square { background: #769656; }
+.white { background: #e0e0e0; }
+.black-square { background: #606060; }
         
         .case:hover {
             opacity: 0.85;
@@ -165,8 +165,7 @@
     </style>
 </head>
 <body>
-    <a href="javascript:history.back()" class="back-button">← Retour</a>
-    
+<a href="/" class="back-button" onclick="if(history.length > 1) { history.go(-1); return false; } else { return true; }">← Retour</a>    
     <div id="container">
         <div id="game-section">
             <h2>Jeu d'échecs</h2>
