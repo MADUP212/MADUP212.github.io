@@ -4,33 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="/assets/style.css">
     <style>
         body {
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
-            background-color: #fdfbf7; /* Beige clair */
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            color: #333;
+            background-color: #fff;
+            color: #000;
             flex-direction: column;
             position: relative;
         }
-        .back-button {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            color: #fff;
-            background-color: rgba(0,0,0,0.6);
-            padding: 8px 12px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1em;
-        }
+        
         h1 {
             margin-bottom: 20px;
+            color: #000;
         }
+        
         #gameBoard {
             display: grid;
             grid-template-columns: repeat(3, 100px);
@@ -38,11 +31,12 @@
             gap: 5px;
             margin-bottom: 20px;
         }
+        
         .cell {
             width: 100px;
             height: 100px;
             background-color: #fff;
-            border: 2px solid #333;
+            border: 2px solid #000;
             border-radius: 5px;
             display: flex;
             justify-content: center;
@@ -51,34 +45,41 @@
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.3s;
+            color: #000;
         }
+        
         .cell:hover {
             background-color: #f0f0f0;
         }
+        
         #status {
             font-size: 1.5em;
             height: 30px;
             margin-bottom: 10px;
+            color: #000;
         }
+        
         #restartBtn {
             font-size: 1.2em;
             padding: 10px 20px;
-            border-radius: 5px;
-            border: none;
-            background-color: #333;
-            color: white;
+            border-radius: 4px;
+            border: 2px solid #000;
+            background-color: #fff;
+            color: #000;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: all 0.2s ease;
+            font-weight: 500;
         }
+        
         #restartBtn:hover {
-            background-color: #555;
+            background-color: #000;
+            color: #fff;
         }
     </style>
 </head>
 <body>
+    <a href="/" class="back-button" onclick="if(history.length > 1) { history.go(-1); return false; } else { return true; }">← Retour</a>
     
-    <a href="javascript:history.back()" class="back-button">← Retour</a>
-
     <h1>Tic-Tac-Toe</h1>
     <div id="gameBoard">
         <div class="cell" data-index="0"></div>
@@ -93,34 +94,29 @@
     </div>
     <p id="status"></p>
     <button id="restartBtn">Recommencer</button>
-
+    
     <script>
         const cells = document.querySelectorAll('.cell');
         const statusText = document.getElementById('status');
         const restartBtn = document.getElementById('restartBtn');
-
         let playerSymbol;
         let aiSymbol;
         let gameActive = true;
         let boardState = ["", "", "", "", "", "", "", "", ""];
         let currentPlayer;
-
         const winningConditions = [
             [0, 1, 2], [3, 4, 5], [6, 7, 8],
             [0, 3, 6], [1, 4, 7], [2, 5, 8],
             [0, 4, 8], [2, 4, 6]
         ];
-
+        
         function handleCellClick(event) {
             if (currentPlayer !== playerSymbol || !gameActive) return;
-
             const clickedCell = event.target;
             const clickedCellIndex = parseInt(clickedCell.getAttribute('data-index'));
-
             if (boardState[clickedCellIndex] !== "") {
                 return;
             }
-
             updateCell(clickedCell, clickedCellIndex, playerSymbol);
             if (checkEndCondition()) return;
             
@@ -128,7 +124,7 @@
             statusText.textContent = `Tour de l'ordinateur (${aiSymbol})`;
             setTimeout(aiTurn, 500);
         }
-
+        
         function updateCell(cellElement, index, symbol) {
             boardState[index] = symbol;
             cellElement.textContent = symbol;
@@ -137,7 +133,6 @@
         function checkEndCondition() {
             let roundWon = false;
             let winner = null;
-
             for (let i = 0; i < winningConditions.length; i++) {
                 const [a, b, c] = winningConditions[i];
                 if (boardState[a] && boardState[a] === boardState[b] && boardState[a] === boardState[c]) {
@@ -146,45 +141,37 @@
                     break;
                 }
             }
-
             if (roundWon) {
                 statusText.textContent = `${winner} a gagné !`;
                 gameActive = false;
                 return true;
             }
-
             if (!boardState.includes("")) {
                 statusText.textContent = "Égalité !";
                 gameActive = false;
                 return true;
             }
-            
             return false;
         }
-
+        
         function aiTurn() {
             if (!gameActive) return;
-            
             const bestMove = findBestMove(boardState);
             const aiCell = document.querySelector(`.cell[data-index='${bestMove}']`);
-            
             updateCell(aiCell, bestMove, aiSymbol);
             if (checkEndCondition()) return;
-
             currentPlayer = playerSymbol;
             statusText.textContent = `C'est à votre tour (${playerSymbol})`;
         }
-
+        
         function findBestMove(board) {
             let bestVal = -Infinity;
             let bestMove = -1;
-
             for (let i = 0; i < board.length; i++) {
                 if (board[i] === "") {
                     board[i] = aiSymbol;
                     let moveVal = minimax(board, 0, false);
                     board[i] = "";
-
                     if (moveVal > bestVal) {
                         bestMove = i;
                         bestVal = moveVal;
@@ -193,14 +180,12 @@
             }
             return bestMove;
         }
-
+        
         function minimax(board, depth, isMax) {
             let score = evaluate(board);
-
             if (score === 10) return score - depth;
             if (score === -10) return score + depth;
             if (!board.includes("")) return 0;
-
             if (isMax) {
                 let best = -Infinity;
                 for (let i = 0; i < board.length; i++) {
@@ -223,7 +208,7 @@
                 return best;
             }
         }
-
+        
         function evaluate(board) {
             for (let i = 0; i < winningConditions.length; i++) {
                 const [a, b, c] = winningConditions[i];
@@ -239,7 +224,6 @@
             gameActive = true;
             boardState = ["", "", "", "", "", "", "", "", ""];
             cells.forEach(cell => cell.textContent = "");
-
             if (Math.random() > 0.5) {
                 playerSymbol = 'X';
                 aiSymbol = 'O';
@@ -253,11 +237,9 @@
                 setTimeout(aiTurn, 500);
             }
         }
-
+        
         cells.forEach(cell => cell.addEventListener('click', handleCellClick));
         restartBtn.addEventListener('click', startGame);
-        
-        // Démarrer la première partie
         startGame();
     </script>
 </body>
