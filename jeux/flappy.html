@@ -38,10 +38,7 @@
             background-color: #f8f8f8;
             display: none;
         }
-        h1, h2, p {
-            color: #000;
-            margin: 0;
-        }
+        h1, h2, p { color: #000; margin: 0; }
         #startScreen {
             padding: 30px;
             background-color: #fff;
@@ -93,13 +90,8 @@
             justify-content: center;
             gap: 15px;
         }
-        #speedOptions label {
-            cursor: pointer;
-            color: #000;
-        }
-        #speedOptions input {
-            margin-right: 5px;
-        }
+        #speedOptions label { cursor: pointer; color: #000; }
+        #speedOptions input { margin-right: 5px; }
         #highScores {
             width: 100%;
             max-width: 320px;
@@ -125,7 +117,7 @@
 </head>
 <body>
     <div class="game-wrapper">
-        <a href="/" class="back-button" onclick="if(history.length > 1) { history.go(-1); return false; } else { return true; }">← Retour</a>
+        <a href="javascript:history.back()" class="back-button">← Retour</a>
         
         <div id="highScores">
             <h2>Meilleurs Scores</h2>
