@@ -1,188 +1,191 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jeu d'échecs avec IA</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body { 
-      background: #312e2b; 
-      color: #fff; 
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
-    
-    #container {
-      display: flex;
-      gap: 40px;
-      align-items: center;
-      max-width: 1400px;
-      width: 100%;
-    }
-    
-    #game-section {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    h2 {
-      margin-bottom: 20px;
-      font-size: 2em;
-      color: #fff;
-    }
-    
-    #chessboard {
-      display: grid;
-      grid-template-columns: repeat(8, 80px);
-      grid-template-rows: repeat(8, 80px);
-      gap: 0;
-      border: 3px solid #000;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-    }
-    
-    .case {
-      width: 80px; 
-      height: 80px;
-      display: flex; 
-      align-items: center; 
-      justify-content: center;
-      font-size: 3.5em;
-      cursor: pointer;
-      user-select: none;
-      transition: background 0.15s;
-    }
-    
-    .white { background: #eeeed2; }
-    .black-square { background: #769656; }
-    
-    .case:hover {
-      opacity: 0.85;
-    }
-    
-    .selected { 
-      box-shadow: inset 0 0 0 3px #f6f669;
-    }
-    
-    #info {
-      margin-top: 20px;
-      font-size: 1.2em;
-      color: #fff;
-      min-height: 30px;
-    }
-    
-    #sidebar {
-      background: #262421;
-      border: 2px solid #000;
-      padding: 30px;
-      min-width: 280px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-    
-    #sidebar h3 {
-      margin-top: 0;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #769656;
-      padding-bottom: 15px;
-      font-size: 1.5em;
-      color: #fff;
-    }
-    
-    .info-line {
-      margin: 15px 0;
-      font-weight: bold;
-      font-size: 1.1em;
-      color: #e0e0e0;
-    }
-    
-    .info-line span {
-      color: #f6f669;
-      font-size: 1.2em;
-    }
-    
-    #status {
-      margin-top: 20px;
-      font-size: 1em;
-      color: #b8b8b8;
-    }
-    
-    #status p {
-      margin: 10px 0;
-    }
-    
-    #status span {
-      color: #fff;
-      font-weight: bold;
-    }
-    
-    button {
-      margin-top: 20px;
-      padding: 12px 30px;
-      background: #769656;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      font-size: 1.1em;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: background 0.2s;
-    }
-    
-    button:hover {
-      background: #5f7a45;
-    }
-    
-    @media (max-width: 1024px) {
-      #container {
-        flex-direction: column;
-      }
-      
-      #chessboard {
-        grid-template-columns: repeat(8, 60px);
-        grid-template-rows: repeat(8, 60px);
-      }
-      
-      .case {
-        width: 60px;
-        height: 60px;
-        font-size: 2.5em;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu d'échecs avec IA</title>
+    <link rel="stylesheet" href="/assets/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body { 
+            background: #fff; 
+            color: #000; 
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        #container {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            max-width: 1400px;
+            width: 100%;
+        }
+        
+        #game-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+            font-size: 2em;
+            color: #000;
+        }
+        
+        #chessboard {
+            display: grid;
+            grid-template-columns: repeat(8, 80px);
+            grid-template-rows: repeat(8, 80px);
+            gap: 0;
+            border: 3px solid #000;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .case {
+            width: 80px; 
+            height: 80px;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            font-size: 3.5em;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.15s;
+        }
+        
+        .white { background: #eeeed2; }
+        .black-square { background: #769656; }
+        
+        .case:hover {
+            opacity: 0.85;
+        }
+        
+        .selected { 
+            box-shadow: inset 0 0 0 3px #000;
+        }
+        
+        #info {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #000;
+            min-height: 30px;
+        }
+        
+        #sidebar {
+            background: #f8f8f8;
+            border: 2px solid #000;
+            padding: 30px;
+            min-width: 280px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        #sidebar h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 15px;
+            font-size: 1.5em;
+            color: #000;
+        }
+        
+        .info-line {
+            margin: 15px 0;
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #000;
+        }
+        
+        .info-line span {
+            color: #000;
+            font-size: 1.2em;
+        }
+        
+        #status {
+            margin-top: 20px;
+            font-size: 1em;
+            color: #333;
+        }
+        
+        #status p {
+            margin: 10px 0;
+        }
+        
+        #status span {
+            color: #000;
+            font-weight: bold;
+        }
+        
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #fff;
+            color: #000;
+            border: 2px solid #000;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        button:hover {
+            background: #000;
+            color: #fff;
+        }
+        
+        @media (max-width: 1024px) {
+            #container {
+                flex-direction: column;
+            }
+            
+            #chessboard {
+                grid-template-columns: repeat(8, 60px);
+                grid-template-rows: repeat(8, 60px);
+            }
+            
+            .case {
+                width: 60px;
+                height: 60px;
+                font-size: 2.5em;
+            }
+        }
+    </style>
 </head>
 <body>
-      <a href="javascript:history.back()" class="back-button" style="position: fixed; top: 20px; left: 20px; display: inline-block; padding: 10px 20px; color: #000; background-color: #fff; border: 2px solid #000; text-decoration: none; font-size: 1em; font-weight: 500; border-radius: 4px; transition: all 0.2s ease; z-index: 1000;">← Retour</a>
-  <div id="container">
-    <div id="game-section">
-      <h2>Jeu d'échecs</h2>
-      <div id="chessboard"></div>
-      <p id="info">Sélectionnez une pièce blanche</p>
-      <button onclick="resetGame()">Nouvelle partie</button>
+    <a href="javascript:history.back()" class="back-button">← Retour</a>
+    
+    <div id="container">
+        <div id="game-section">
+            <h2>Jeu d'échecs</h2>
+            <div id="chessboard"></div>
+            <p id="info">Sélectionnez une pièce blanche</p>
+            <button onclick="resetGame()">Nouvelle partie</button>
+        </div>
+        
+        <div id="sidebar">
+            <h3>Statistiques IA</h3>
+            <div class="info-line">ELO: <span id="elo">1500</span></div>
+            <div class="info-line">Niveau: <span id="level">Normal</span></div>
+            <div id="status">
+                <p>Parties jouées: <span id="games">0</span></p>
+                <p>Victoires joueur: <span id="wins">0</span></p>
+                <p>Défaites joueur: <span id="losses">0</span></p>
+            </div>
+        </div>
     </div>
-    <div id="sidebar">
-      <h3>Statistiques IA</h3>
-      <div class="info-line">ELO: <span id="elo">1500</span></div>
-      <div class="info-line">Niveau: <span id="level">Normal</span></div>
-      <div id="status">
-        <p>Parties jouées: <span id="games">0</span></p>
-        <p>Victoires joueur: <span id="wins">0</span></p>
-        <p>Défaites joueur: <span id="losses">0</span></p>
-      </div>
-    </div>
-  </div>
-
   <script>
     // Pièces Unicode - BLANCS en majuscules (pièces blanches), NOIRS en minuscules (pièces noires)
     const pieces = {
