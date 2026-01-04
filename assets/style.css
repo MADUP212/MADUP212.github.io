@@ -1,0 +1,159 @@
+/* --- style.css - Thème Bloc-notes Windows --- */
+
+/* Réinitialisation et fond d'écran */
+body {
+    background-color: #008080; /* Bleu sarcelle Windows */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+/* La fenêtre principale */
+.notepad-window {
+    background-color: #c0c0c0; /* Gris Windows */
+    width: 900px;
+    max-width: 100%;
+    border: 2px solid #dfdfdf;
+    box-shadow: 
+        inset -1px -1px #0a0a0a, 
+        inset 1px 1px #dfdfdf, 
+        inset -2px -2px #808080, 
+        inset 2px 2px #ffffff,
+        4px 4px 10px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Barre de titre */
+.title-bar {
+    background: linear-gradient(90deg, #000080, #1084d0);
+    padding: 3px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.title-icon {
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    margin-right: 5px;
+    display: inline-block;
+    /* Icône encodée en base64 pour ne pas dépendre d'un fichier externe */
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABlBMVEUAAAD///+l2Z/dAAAAAnRSTlP/AOW3ME4AAAAiSURBVHgBY2CQAQYWMGAigInBQWYwIxM2Q0zQVHCoHwcAAOkwAONCw21iAAAAAElFTkSuQmCC');
+    background-size: cover;
+    image-rendering: pixelated;
+}
+
+.window-controls { display: flex; gap: 2px; }
+.control-btn {
+    width: 16px; height: 14px;
+    background-color: #c0c0c0;
+    border: 1px solid #fff; border-bottom-color: #404040; border-right-color: #404040;
+    font-size: 10px; line-height: 10px; text-align: center; color: black;
+    cursor: pointer; box-shadow: inset 1px 1px #fff;
+}
+
+/* Barre de menu */
+.menu-bar {
+    padding: 2px 0;
+    display: flex;
+    gap: 0px;
+    border-bottom: 1px solid #808080;
+}
+
+.menu-item, .menu-link {
+    padding: 2px 8px;
+    color: black;
+    font-size: 13px;
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.menu-item:hover, .menu-link:hover {
+    background-color: #000080;
+    color: white;
+}
+
+/* Menu déroulant */
+.menu-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #c0c0c0;
+    border: 2px solid;
+    border-color: #fff #808080 #808080 #fff;
+    min-width: 180px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+
+.menu-item:hover .menu-dropdown { display: block; }
+
+.dropdown-link {
+    display: block;
+    padding: 5px 15px;
+    text-decoration: none;
+    color: black;
+    font-family: sans-serif;
+    font-size: 12px;
+}
+.dropdown-link:hover {
+    background-color: #000080;
+    color: white;
+}
+
+/* Zone de contenu */
+.content-area {
+    background-color: white;
+    border: 2px solid;
+    border-color: #808080 #dfdfdf #dfdfdf #808080;
+    margin: 2px;
+    height: 600px;
+    overflow-y: scroll;
+    padding: 15px;
+    font-family: 'Lucida Console', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    color: black;
+}
+
+/* Styles spécifiques au contenu */
+.quote-section {
+    border-bottom: 1px dashed #000;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    display: flex; flex-direction: column; align-items: center;
+}
+.bossuet-image {
+    max-width: 150px;
+    filter: grayscale(100%);
+    border: 1px solid #000;
+    margin-bottom: 15px;
+}
+.bossuet-quote {
+    font-style: italic; margin: 0 20px; text-align: center;
+    border-left: 2px solid #ccc; padding-left: 10px;
+}
+h2 {
+    font-size: 16px; text-transform: uppercase;
+    border-bottom: 1px solid #000; padding-bottom: 5px; margin-top: 30px;
+}
+a.content-link { color: blue; text-decoration: underline; }
+a.content-link:hover { background-color: blue; color: white; text-decoration: none; }
+
+/* Scrollbar rétro (Chrome/Safari/Edge) */
+.content-area::-webkit-scrollbar { width: 16px; }
+.content-area::-webkit-scrollbar-track { background: #dfdfdf; border-left: 1px solid white; }
+.content-area::-webkit-scrollbar-thumb { background-color: #c0c0c0; border: 2px solid; border-color: #fff #808080 #808080 #fff; }
