@@ -1,6 +1,6 @@
-/* --- style.css - Version minimaliste blanche --- */
+/* --- style.css - Version épurée, fond blanc --- */
 
-/* Base globale */
+/* Reset minimal */
 *,
 *::before,
 *::after {
@@ -8,93 +8,84 @@
 }
 
 body {
-    margin: 0;
-    min-height: 100vh;
-    background-color: #f5f5f7; /* Blanc/gris très pâle type Apple */
-    color: #1d1d1f;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui,
-                 "Segoe UI", Roboto, sans-serif;
+    background-color: #ffffff; /* Fond unique blanc */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
     padding: 24px 16px;
+    color: #111111;
 }
 
-/* Conteneur principal (anciennement fenêtre bloc-notes) */
+/* Conteneur principal (l'ancienne fenêtre) */
 .notepad-window {
     background-color: #ffffff;
-    width: 100%;
-    max-width: 860px;
-    border-radius: 18px;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+    width: 900px;
+    max-width: 100%;
+    border-radius: 16px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.10);
     display: flex;
     flex-direction: column;
     overflow: hidden;
 }
 
-/* Barre supérieure (devient un header simple) */
+/* Barre supérieure : on supprime l'effet titre Windows */
 .title-bar {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 14px 24px;
-    border-bottom: 1px solid #d2d2d7;
+    align-items: center;
+    padding: 14px 20px;
     background-color: #ffffff;
-    color: #1d1d1f;
+    border-bottom: 1px solid #e0e0e0;
+    color: #111111;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 14px;
     letter-spacing: 0.03em;
 }
 
-/* On garde l’icône mais en plus discret, ou on la masque si tu préfères */
+/* On peut garder l’icône ou la neutraliser */
 .title-icon {
     width: 18px;
     height: 18px;
     margin-right: 8px;
     border-radius: 4px;
-    background-color: transparent;
     background-size: cover;
 }
 
-/* Boutons de fenêtre: on les simplifie / ou on les masque pour le minimalisme */
+/* Contrôles de fenêtre : style bloc-note supprimé (ou complètement caché) */
 .window-controls {
-    display: flex;
-    gap: 6px;
+    display: none; /* On les enlève visuellement */
 }
 
 .control-btn {
-    width: 10px;
-    height: 10px;
-    border-radius: 999px;
-    border: none;
-    background-color: #d2d2d7;
-    cursor: default;
-    padding: 0;
+    display: none;
 }
 
-/* Barre de menu = petite navigation horizontale */
+/* Barre de menu simplifiée */
 .menu-bar {
+    padding: 8px 20px 6px;
     display: flex;
     gap: 16px;
-    padding: 10px 24px 6px;
-    border-bottom: 1px solid #e5e5ea;
+    border-bottom: 1px solid #f0f0f0;
     background-color: #ffffff;
-    font-size: 14px;
 }
 
-/* Liens de menu */
 .menu-item,
 .menu-link {
     padding: 4px 0;
-    color: #1d1d1f;
+    color: #111111;
     font-size: 14px;
-    text-decoration: none;
-    position: relative;
     cursor: pointer;
+    position: relative;
+    text-decoration: none;
 }
 
 .menu-item:hover,
 .menu-link:hover {
-    color: #0071e3; /* Bleu Apple */
+    color: #0071e3;
     background-color: transparent;
 }
 
@@ -116,145 +107,133 @@ body {
     width: 100%;
 }
 
-/* Si tu n’utilises pas les menus déroulants, on les masque complètement */
+/* Menus déroulants : désactivés si non utilisés */
 .menu-dropdown {
     display: none;
 }
 
-/* Zone de contenu principale */
+/* Zone de contenu */
 .content-area {
     background-color: #ffffff;
     border: none;
     margin: 0;
-    padding: 28px 32px 32px;
-    font-family: inherit;
-    font-size: 16px;
+    padding: 24px 26px 26px;
+    height: auto;          /* plus de hauteur fixe */
+    overflow-y: visible;   /* plus de scroll interne forcé */
+    font-family: 'Lucida Console', 'Courier New', monospace;
+    font-size: 14px;
     line-height: 1.6;
-    color: #1d1d1f;
-    overflow-y: visible;
-    height: auto;
+    color: #111111;
 }
 
-/* Typographie du contenu */
-h1, h2, h3 {
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    margin-top: 0;
-    color: #1d1d1f;
-}
-
-h1 {
-    font-size: 28px;
-    margin-bottom: 12px;
-}
-
-h2 {
-    font-size: 20px;
-    margin-top: 32px;
-    margin-bottom: 10px;
-    border-bottom: none; /* on enlève la ligne noire */
-}
-
-h3 {
-    font-size: 17px;
-    margin-top: 24px;
-    margin-bottom: 8px;
-}
-
-p {
-    margin: 0 0 14px;
-}
-
-/* Liens dans le contenu */
-a,
-a.content-link {
-    color: #0071e3;
-    text-decoration: none;
-}
-
-a:hover,
-a.content-link:hover {
-    text-decoration: underline;
-}
-
-/* Bloc citation / section image d’accueil */
+/* Section citation / image */
 .quote-section {
-    border-bottom: 1px solid #e5e5ea;
-    padding-bottom: 24px;
-    margin-bottom: 28px;
+    border-bottom: 1px solid #f0f0f0; /* plus de pointillés agressifs */
+    padding-bottom: 20px;
+    margin-bottom: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
 }
 
 .bossuet-image {
-    max-width: 120px;
+    max-width: 140px;
+    filter: grayscale(100%);
     border-radius: 50%;
     border: none;
     margin-bottom: 16px;
-    filter: grayscale(100%);
 }
 
 .bossuet-quote {
     font-style: italic;
-    margin: 0;
+    margin: 0 20px;
+    text-align: center;
+    border-left: none;
+    padding-left: 0;
     max-width: 520px;
-    color: #515154;
 }
 
-/* Divers */
-strong {
-    font-weight: 600;
+/* Titres et texte */
+h2 {
+    font-size: 16px;
+    text-transform: uppercase;
+    border-bottom: none; /* on retire la barre noire */
+    padding-bottom: 0;
+    margin-top: 28px;
+    margin-bottom: 8px;
+    letter-spacing: 0.06em;
 }
 
-/* Scrollbar: on laisse le style par défaut pour ne pas casser le minimalisme */
+p {
+    margin: 0 0 12px;
+}
 
-/* Responsive : mobile / tablettes étroites */
+/* Liens dans le contenu */
+a.content-link,
+a {
+    color: #0071e3;
+    text-decoration: none;
+}
+
+a.content-link:hover,
+a:hover {
+    text-decoration: underline;
+}
+
+/* Bas de page / barre d'état : on supprime "Prêt" + "Ln 1, Col 1" */
+.status-bar {
+    display: none;
+}
+
+/* Scrollbars : style natif du navigateur pour rester minimaliste */
+.content-area::-webkit-scrollbar {
+    width: 10px;
+}
+.content-area::-webkit-scrollbar-track {
+    background: transparent;
+}
+.content-area::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.15);
+    border-radius: 999px;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
     body {
         padding: 16px 10px;
+        align-items: stretch;
     }
 
     .notepad-window {
-        border-radius: 16px;
-        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.10);
+        width: 100%;
+        max-width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        border-left: none;
+        border-right: none;
     }
 
     .title-bar {
-        padding: 12px 18px;
-        font-size: 14px;
+        padding: 12px 16px;
     }
 
     .menu-bar {
-        padding: 8px 18px 4px;
-        gap: 12px;
+        padding: 8px 16px 4px;
         overflow-x: auto;
     }
 
     .content-area {
-        padding: 22px 18px 24px;
-        font-size: 15px;
-    }
-
-    h1 {
-        font-size: 24px;
-    }
-
-    h2 {
-        font-size: 18px;
+        padding: 20px 16px 22px;
+        font-size: 13px;
     }
 }
 
-/* Écrans très petits */
 @media (max-width: 480px) {
-    .notepad-window {
-        border-radius: 0; /* plein écran sur très petit mobile */
-        box-shadow: none;
-    }
-
     body {
         padding: 0;
-        background-color: #ffffff;
+    }
+
+    .content-area {
+        padding: 18px 14px 20px;
     }
 }
