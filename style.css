@@ -1,4 +1,4 @@
-/* --- style.css - Version épurée, fond blanc --- */
+/* --- style.css - Version épurée, fond blanc, sans-serif --- */
 
 /* Reset minimal */
 *,
@@ -8,18 +8,20 @@
 }
 
 body {
-    background-color: #ffffff; /* Fond unique blanc */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    background-color: #ffffff;
+    color: #111111;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+                 "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
+    /* stack proche de celle d'Apple / system font stack */
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    min-height: 100vh;
-    margin: 0;
     padding: 24px 16px;
-    color: #111111;
 }
 
-/* Conteneur principal (l'ancienne fenêtre) */
+/* Conteneur principal */
 .notepad-window {
     background-color: #ffffff;
     width: 900px;
@@ -32,7 +34,7 @@ body {
     overflow: hidden;
 }
 
-/* Barre supérieure : on supprime l'effet titre Windows */
+/* Barre supérieure */
 .title-bar {
     display: flex;
     justify-content: space-between;
@@ -46,7 +48,7 @@ body {
     letter-spacing: 0.03em;
 }
 
-/* On peut garder l’icône ou la neutraliser */
+/* Icône (optionnelle) */
 .title-icon {
     width: 18px;
     height: 18px;
@@ -55,22 +57,20 @@ body {
     background-size: cover;
 }
 
-/* Contrôles de fenêtre : style bloc-note supprimé (ou complètement caché) */
-.window-controls {
-    display: none; /* On les enlève visuellement */
-}
-
+/* Contrôles de fenêtre supprimés */
+.window-controls,
 .control-btn {
     display: none;
 }
 
-/* Barre de menu simplifiée */
+/* Barre de menu */
 .menu-bar {
     padding: 8px 20px 6px;
     display: flex;
     gap: 16px;
     border-bottom: 1px solid #f0f0f0;
     background-color: #ffffff;
+    font-size: 14px;
 }
 
 .menu-item,
@@ -107,33 +107,34 @@ body {
     width: 100%;
 }
 
-/* Menus déroulants : désactivés si non utilisés */
+/* Menus déroulants désactivés */
 .menu-dropdown {
     display: none;
 }
 
-/* Zone de contenu */
+/* Zone de contenu : SANS-SERIF maintenant */
 .content-area {
     background-color: #ffffff;
     border: none;
     margin: 0;
     padding: 24px 26px 26px;
-    height: auto;          /* plus de hauteur fixe */
-    overflow-y: visible;   /* plus de scroll interne forcé */
-    font-family: 'Lucida Console', 'Courier New', monospace;
-    font-size: 14px;
-    line-height: 1.6;
+    height: auto;
+    overflow-y: visible;
+    font-family: inherit;   /* hérite de body => sans-serif Apple-like */
+    font-size: 15px;
+    line-height: 1.7;
     color: #111111;
 }
 
 /* Section citation / image */
 .quote-section {
-    border-bottom: 1px solid #f0f0f0; /* plus de pointillés agressifs */
+    border-bottom: 1px solid #f0f0f0;
     padding-bottom: 20px;
     margin-bottom: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 .bossuet-image {
@@ -147,21 +148,20 @@ body {
 .bossuet-quote {
     font-style: italic;
     margin: 0 20px;
-    text-align: center;
-    border-left: none;
-    padding-left: 0;
     max-width: 520px;
+    color: #555555;
 }
 
 /* Titres et texte */
 h2 {
     font-size: 16px;
     text-transform: uppercase;
-    border-bottom: none; /* on retire la barre noire */
+    border-bottom: none;
     padding-bottom: 0;
     margin-top: 28px;
     margin-bottom: 8px;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
+    font-weight: 600;
 }
 
 p {
@@ -180,12 +180,12 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Bas de page / barre d'état : on supprime "Prêt" + "Ln 1, Col 1" */
+/* Barre d'état bas de page supprimée */
 .status-bar {
     display: none;
 }
 
-/* Scrollbars : style natif du navigateur pour rester minimaliste */
+/* Scrollbars (optionnel, sinon tu peux supprimer tout ce bloc) */
 .content-area::-webkit-scrollbar {
     width: 10px;
 }
@@ -224,7 +224,7 @@ a:hover {
 
     .content-area {
         padding: 20px 16px 22px;
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
