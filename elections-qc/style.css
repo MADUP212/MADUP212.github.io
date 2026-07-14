@@ -1,11 +1,13 @@
 /* Design System & Aesthetics - Carte Électorale du Québec */
 :root {
-  --bg-primary: #090d16;
-  --bg-panel: rgba(15, 23, 42, 0.65);
-  --border-panel: rgba(255, 255, 255, 0.08);
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
+  --bg-primary: #edf2f7;
+  --bg-panel: rgba(255, 255, 255, 0.94);
+  --border-panel: #d7dee8;
+  --text-primary: #172033;
+  --text-secondary: #475569;
   --text-muted: #64748b;
+  --surface: #ffffff;
+  --surface-muted: #f1f5f9;
   
   /* Couleurs des Partis Demandées */
   --color-pcq: #0c2340;       /* Bleu foncé */
@@ -16,7 +18,7 @@
   --color-autres: #64748b;    /* Gris */
   --color-canadien: #b19cd9;  /* Mauve */
   
-  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 12px 30px -12px rgba(15, 23, 42, 0.28), 0 5px 12px -8px rgba(15, 23, 42, 0.18);
   --font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -24,6 +26,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+[hidden] {
+  display: none !important;
 }
 
 body {
@@ -54,7 +60,7 @@ body {
   display: flex;
   flex-direction: column;
   z-index: 10;
-  box-shadow: 4px 0 25px rgba(0, 0, 0, 0.5);
+  box-shadow: 8px 0 28px rgba(15, 23, 42, 0.1);
 }
 
 .sidebar-header {
@@ -66,7 +72,7 @@ body {
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: -0.5px;
-  background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+  background: linear-gradient(135deg, #0f172a 30%, #475569 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 6px;
@@ -104,7 +110,7 @@ body {
 /* Toggle Switch */
 .switch-container {
   display: flex;
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--surface-muted);
   border: 1px solid var(--border-panel);
   padding: 4px;
   border-radius: 9999px;
@@ -127,9 +133,19 @@ body {
 }
 
 .switch-btn.active {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  color: var(--text-primary);
+  background: var(--surface);
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.12);
+}
+
+.scale-switch .switch-btn {
+  padding-inline: 8px;
+  font-size: 0.82rem;
+}
+
+#municipality-size-control .switch-btn {
+  padding-inline: 9px;
+  font-size: 0.82rem;
 }
 
 /* Seat Summary Grid */
@@ -140,7 +156,7 @@ body {
 }
 
 .seat-card {
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--surface);
   border: 1px solid var(--border-panel);
   border-radius: 12px;
   padding: 12px;
@@ -174,12 +190,12 @@ body {
 .seat-count {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 /* Detail Panel */
 .detail-panel {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--surface-muted);
   border: 1px dashed var(--border-panel);
   border-radius: 16px;
   padding: 20px;
@@ -193,7 +209,7 @@ body {
 }
 
 .detail-panel.active {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--surface);
   border-style: solid;
   align-items: flex-start;
   text-align: left;
@@ -224,7 +240,7 @@ body {
 .detail-title {
   font-size: 1.35rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 4px;
 }
 
@@ -254,7 +270,7 @@ body {
 
 .detail-value {
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 /* Party Badge */
@@ -265,7 +281,7 @@ body {
   border-radius: 9999px;
   font-size: 0.8rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--badge-text, #ffffff);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   background-color: var(--badge-color, var(--text-muted));
 }
@@ -274,7 +290,7 @@ body {
 .map-container {
   flex-grow: 1;
   height: 100%;
-  background-color: #0b0e14;
+  background-color: #e5e7eb;
 }
 
 #map {
@@ -293,14 +309,14 @@ body {
 }
 
 .leaflet-bar a {
-  background-color: #1e293b !important;
-  color: #f8fafc !important;
+  background-color: var(--surface) !important;
+  color: var(--text-primary) !important;
   border-bottom: 1px solid var(--border-panel) !important;
   transition: background-color 0.2s ease;
 }
 
 .leaflet-bar a:hover {
-  background-color: #334155 !important;
+  background-color: var(--surface-muted) !important;
 }
 
 .leaflet-popup-content-wrapper {
@@ -312,7 +328,7 @@ body {
 }
 
 .leaflet-popup-tip {
-  background: rgba(15, 23, 42, 0.8) !important;
+  background: var(--surface) !important;
   border: 1px solid var(--border-panel) !important;
 }
 
@@ -362,4 +378,154 @@ body {
   height: 14px;
   border-radius: 4px;
   flex-shrink: 0;
+}
+
+.legend-color-point {
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.16);
+}
+
+.population-legend {
+  border-top: 1px solid var(--border-panel);
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.population-legend-item {
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8rem;
+}
+
+.population-symbol-wrap {
+  width: 54px;
+  display: inline-flex;
+  flex: 0 0 54px;
+  align-items: center;
+  justify-content: center;
+}
+
+.population-symbol {
+  display: inline-block;
+  flex: 0 0 auto;
+  border: 1px solid #475569;
+  border-radius: 50%;
+  background: rgba(148, 163, 184, 0.55);
+  box-shadow: 0 0 0 1px rgba(23, 32, 51, 0.18);
+}
+
+.legend-note {
+  max-width: 190px;
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  line-height: 1.3;
+}
+
+.point-map-legend {
+  border-top: 1px solid var(--border-panel);
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.point-map-legend strong {
+  display: block;
+  color: var(--text-primary);
+  font-size: 0.8rem;
+}
+
+.point-only-mode {
+  background:
+    radial-gradient(circle at 72% 28%, rgba(255, 255, 255, 0.92), transparent 36%),
+    linear-gradient(145deg, #f7f4ed 0%, #edf2f7 62%, #e4e8ee 100%) !important;
+}
+
+.leaflet-tooltip {
+  border: 1px solid var(--border-panel);
+  border-radius: 8px;
+  color: var(--text-primary);
+  box-shadow: var(--shadow-lg);
+  font-family: var(--font-family);
+}
+
+.population-point {
+  filter: drop-shadow(0 1px 2px rgba(15, 23, 42, 0.35));
+  transition: fill-opacity 0.15s ease, stroke-width 0.15s ease;
+}
+
+.population-point:hover {
+  fill-opacity: 1;
+  stroke-width: 2.5px;
+}
+
+.population-tooltip-party,
+.population-tooltip-value {
+  display: block;
+  margin-top: 4px;
+}
+
+.population-tooltip-party {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.population-tooltip-party > span {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 5px;
+  border-radius: 50%;
+}
+
+.population-tooltip-value {
+  color: var(--text-primary);
+  font-size: 0.8rem;
+}
+
+.summary-card {
+  background: var(--surface);
+  border: 1px solid var(--border-panel);
+  padding: 14px 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 760px) {
+  body {
+    overflow: auto;
+  }
+
+  .dashboard {
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: 46vh;
+    min-height: 330px;
+    border-right: 0;
+    border-bottom: 1px solid var(--border-panel);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
+  }
+
+  .sidebar-header,
+  .sidebar-content {
+    padding: 18px;
+  }
+
+  .sidebar-content {
+    gap: 18px;
+  }
+
+  .map-container {
+    height: 54vh;
+    min-height: 420px;
+  }
 }

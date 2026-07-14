@@ -16,7 +16,7 @@
         crossorigin="" />
         
   <!-- Styles Personnalisés -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20260714-city-points">
 </head>
 <body>
 
@@ -41,18 +41,27 @@
         <!-- Sélecteur d'échelle géographique -->
         <div class="control-group">
           <span class="control-label">Échelle géographique</span>
+          <div class="switch-container scale-switch">
+            <button class="switch-btn switch-scale-btn" data-scale="riding">Circonscriptions</button>
+            <button class="switch-btn switch-scale-btn active" data-scale="municipality">Municipalités</button>
+            <button class="switch-btn switch-scale-btn" data-scale="dots">Points</button>
+          </div>
+        </div>
+
+        <div class="control-group" id="municipality-size-control">
+          <span class="control-label">Taille des points</span>
           <div class="switch-container">
-            <button class="switch-btn switch-scale-btn active" data-scale="riding">Circonscriptions</button>
-            <button class="switch-btn switch-scale-btn" data-scale="municipality">Municipalités</button>
+            <button class="switch-btn switch-size-btn active" data-size-mode="strict">Strictement proportionnel</button>
+            <button class="switch-btn switch-size-btn" data-size-mode="visible">Tous les points visibles</button>
           </div>
         </div>
 
         <!-- Statistiques Provinciales Clés -->
         <div class="control-group">
           <span class="control-label">Participation Provinciale</span>
-          <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-panel); padding: 14px 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center;">
+          <div class="summary-card">
             <span style="font-size: 0.95rem; color: var(--text-secondary);">Taux de participation global</span>
-            <span id="provincial-turnout" style="font-size: 1.5rem; font-weight: 700; color: #34d399;">-- %</span>
+            <span id="provincial-turnout" style="font-size: 1.5rem; font-weight: 700; color: #047857;">-- %</span>
           </div>
         </div>
 
@@ -95,14 +104,14 @@
 
         <!-- Panneau des détails de la circonscription -->
         <div class="control-group" style="flex-grow: 1; display: flex; flex-direction: column;">
-          <span class="control-label">Détails de la circonscription</span>
+          <span class="control-label" id="details-panel-label">Détails de la municipalité</span>
           <div class="detail-panel" id="detail-panel">
             <div class="detail-placeholder">
               <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25s-7.5-4.108-7.5-11.25S12 2.25 12 2.25c3.769 0 7.5 2.62 7.5 8.25z" />
               </svg>
-              <div>Survolez ou cliquez sur une circonscription pour afficher ses résultats détaillés.</div>
+              <div>Survolez ou cliquez sur une municipalité pour afficher ses résultats détaillés.</div>
             </div>
           </div>
         </div>
@@ -123,8 +132,10 @@
   <!-- Données de la carte (electionsMapData) -->
   <script src="complete/map_data.js"></script>
   <script src="complete/municipal_map_data.js"></script>
+  <script src="complete/population.js?v=20260714-strict"></script>
+  <script src="complete/dots.js?v=20260714-city-points"></script>
 
   <!-- Code Applicatif -->
-  <script src="app.js"></script>
+  <script src="app.js?v=20260714-montreal-focus"></script>
 </body>
 </html>
