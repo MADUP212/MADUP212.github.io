@@ -1,0 +1,38 @@
+<script>
+(() => {
+  let layoutFrame;
+
+  const updateLayout = () => {
+    window.cancelAnimationFrame(layoutFrame);
+    layoutFrame = window.requestAnimationFrame(() => {
+      if (window.Reveal && Reveal.isReady()) {
+        Reveal.layout();
+      }
+    });
+  };
+
+  const scheduleLayouts = () => {
+    updateLayout();
+    window.setTimeout(updateLayout, 100);
+    window.setTimeout(updateLayout, 350);
+  };
+
+  const bindReveal = () => {
+    if (!window.Reveal) {
+      window.setTimeout(bindReveal, 50);
+      return;
+    }
+
+    Reveal.on("ready", scheduleLayouts);
+    if (Reveal.isReady()) scheduleLayouts();
+  };
+
+  document.addEventListener("fullscreenchange", scheduleLayouts);
+  document.addEventListener("webkitfullscreenchange", scheduleLayouts);
+  window.addEventListener("resize", scheduleLayouts);
+  window.visualViewport?.addEventListener("resize", scheduleLayouts);
+
+  new ResizeObserver(scheduleLayouts).observe(document.documentElement);
+  bindReveal();
+})();
+</script>
