@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marc-Antoine Dupuis - Accueil</title>
+    <title>Marc-Antoine S. Dupuis — Politologue</title>
+    <meta name="description" content="Marc-Antoine S. Dupuis, étudiant à la maîtrise en science politique à l'Université Laval, chercheur étudiant au Centre d'analyse des politiques publiques et militaire de réserve.">
+    <meta property="og:title" content="Marc-Antoine S. Dupuis — Politologue">
+    <meta property="og:description" content="Recherches sur les politiques publiques canadiennes et québécoises, le recensement canadien et la stratification sociale.">
+    <meta property="og:image" content="assets/profile-photo.png">
+    <meta property="og:type" content="website">
+    <link rel="alternate" hreflang="en" href="en/index.html">
+    <link rel="canonical" href="https://www.masdupuis.com/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="icon" type="image/jpeg" href="assets/favicon.png">
 </head>
 <body>
     <div class="page-shell">
@@ -29,14 +39,14 @@
                     <p class="section-label">Accueil</p>
                     <h1>Marc-Antoine S. Dupuis</h1>
                     <p class="hero-lead">
-                        Étudiant à la maîtrise en science politique à l’Université Laval, chercheur étudiant
-                        au Centre d’analyse des politiques publiques et militaire de réserve au sein de la
+                        Étudiant à la maîtrise en science politique à l'Université Laval, chercheur étudiant
+                        au Centre d'analyse des politiques publiques et militaire de réserve au sein de la
                         logistique des Forces armées canadiennes.
                     </p>
                     <blockquote class="hero-quote">
                         <p>
-                            À la fois militaire et étudiant-chercheur, je m’intéresse aux politiques publiques
-                            canadiennes et québécoises ainsi qu’aux enjeux sociaux et économiques. Mes
+                            À la fois militaire et étudiant-chercheur, je m'intéresse aux politiques publiques
+                            canadiennes et québécoises ainsi qu'aux enjeux sociaux et économiques. Mes
                             recherches actuelles portent sur les données du recensement canadien et sur la
                             stratification sociale.
                         </p>
@@ -50,41 +60,50 @@
                 </div>
             </section>
 
-            <section class="projects-section" style="padding-top: 34px;">
+            <section class="projects-section">
                 <p class="section-label">Projets</p>
-                <div style="margin-top: 16px; padding: 24px; border: 1px solid var(--rule, #e5e7eb); background-color: #fafafa; border-radius: 4px; display: flex; gap: 24px; align-items: center; max-width: 650px;">
-                    <div style="flex-shrink: 0;">
-                        <img src="assets/elections_qc.png" alt="Élections QC" style="max-width: 140px; height: auto; border-radius: 2px;">
-                    </div>
-                    <div>
-                        <h2 style="font-family: var(--serif, serif); font-size: 1.5rem; color: var(--accent, #6B1E2A); margin: 0 0 8px 0; font-weight: 600;">Élections du Québec (2018-2022)</h2>
-                        <p style="margin: 0 0 16px 0; font-family: var(--sans-serif, sans-serif); color: #555; line-height: 1.5;">
-                            Carte interactive et analyse des résultats électoraux au Québec pour les élections générales de 2018 et 2022.
-                        </p>
-                        <a href="elections-qc/index.html" style="display: inline-block; padding: 8px 16px; background-color: var(--accent, #6B1E2A); color: white; text-decoration: none; border-radius: 4px; font-weight: 500; font-size: 0.95rem;">Explorer la carte</a>
-                    </div>
-                </div>
-            </section>
+                <div class="project-list">
+                    <article class="project-card">
+                        <img src="assets/elections_qc.png" alt="Carte des élections du Québec" class="project-thumb">
+                        <div>
+                            <h2 class="project-title">Élections du Québec (2018-2022)</h2>
+                            <p class="project-text">
+                                Carte interactive et analyse des résultats électoraux au Québec pour les élections
+                                générales de 2018 et 2022.
+                            </p>
+                            <a href="elections-qc/index.html" class="project-link">Explorer la carte</a>
+                        </div>
+                    </article>
 
-            <section class="presentation-section" style="padding-top: 34px;">
-                <p class="section-label">Présentation</p>
-                <div style="margin-top: 16px; padding: 24px; border: 1px solid var(--rule, #e5e7eb); background-color: #fafafa; border-radius: 4px; display: flex; gap: 24px; align-items: center; max-width: 650px;">
-                    <div style="flex-shrink: 0;">
-                        <img src="presentation_eiom/eiom-logo.png" alt="EIOM Logo" style="max-width: 140px; height: auto;">
-                    </div>
-                    <div>
-                        <h2 style="font-family: var(--serif, serif); font-size: 1.75rem; color: var(--accent, #6B1E2A); margin: 0 0 8px 0; font-weight: 600;">EIOM 2026</h2>
-                        <p style="margin: 0 0 16px 0; font-family: var(--sans-serif, sans-serif); color: #555; line-height: 1.5;">
-                            Une introduction aux langages de balisage (Markdown, LaTeX, Quarto, HTML) en sciences sociales.
-                        </p>
-                        <a href="presentation_eiom/presentation.html#/questions" style="display: inline-block; padding: 8px 16px; background-color: var(--accent, #6B1E2A); color: white; text-decoration: none; border-radius: 4px; font-weight: 500; font-size: 0.95rem;">Voir la présentation</a>
-                    </div>
+                    <article class="project-card">
+                        <img src="presentation_eiom/eiom-logo.png" alt="Logo EIOM" class="project-thumb">
+                        <div>
+                            <h2 class="project-title">EIOM 2026</h2>
+                            <p class="project-text">
+                                Une introduction aux langages de balisage (Markdown, LaTeX, Quarto, HTML) en sciences
+                                sociales.
+                            </p>
+                            <a href="presentation_eiom/presentation.html#/questions" class="project-link">Voir la présentation</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <img src="assets/datagotchi-logo.png" alt="Logo du Professeur Datagotchi" class="project-thumb">
+                        <div>
+                            <h2 class="project-title">Professeur Datagotchi</h2>
+                            <p class="project-text">
+                                Chatbot RAG qui répond, dans la peau du Professeur Datagotchi, à des questions sur ce
+                                que les cinq chefs de parti québécois ont dit en entrevue en vue de l'élection
+                                générale de 2026.
+                            </p>
+                            <a href="https://professeur-datagotchi.vitrine-api-worker.workers.dev/" target="_blank" class="project-link">Discuter avec le chatbot</a>
+                        </div>
+                    </article>
                 </div>
             </section>
         </main>
 
-        <footer class="site-footer">&copy; 2025-2026 Marc-Antoine Dupuis Tous droits réservés.</footer>
+        <footer class="site-footer">&copy; 2025-2026 Marc-Antoine Dupuis. Tous droits réservés.</footer>
     </div>
-
 </body>
 </html>

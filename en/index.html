@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marc-Antoine Dupuis - Home</title>
+    <title>Marc-Antoine S. Dupuis — Political Scientist</title>
+    <meta name="description" content="Marc-Antoine S. Dupuis, Master's student in Political Science at Laval University, student researcher at the Center for Public Policy Analysis, and reserve soldier.">
+    <meta property="og:title" content="Marc-Antoine S. Dupuis — Political Scientist">
+    <meta property="og:description" content="Research on Canadian and Quebec public policy, census data, and social stratification.">
+    <meta property="og:image" content="../assets/profile-photo.png">
+    <meta property="og:type" content="website">
+    <link rel="alternate" hreflang="fr" href="../index.html">
+    <link rel="canonical" href="https://www.masdupuis.com/en/index.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
-    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <link rel="icon" type="image/jpeg" href="../assets/favicon.png">
 </head>
 <body>
     <div class="page-shell">
@@ -15,7 +25,7 @@
                 <p class="brand-title">Political Scientist</p>
             </div>
 
-            <nav class="site-nav" aria-label="Navigation principale">
+            <nav class="site-nav" aria-label="Main navigation">
                 <a href="../assets/cv_en_2026.pdf" target="_blank" class="menu-link">CV</a>
                 <a href="https://www.linkedin.com/in/marc-antoine-dupuis-a6a069233/" target="_blank" class="menu-link">LinkedIn</a>
                 <a href="https://github.com/MADUP212" target="_blank" class="menu-link">Github</a>
@@ -29,32 +39,58 @@
                     <p class="section-label">Welcome</p>
                     <h1>Marc-Antoine S. Dupuis</h1>
                     <p class="hero-lead">
-                        Master’s student in Political Science at Laval University, student researcher at the Center for Public Policy Analysis, and reserve soldier in the logistics branch of the Canadian Armed Forces.
+                        Master's student in Political Science at Laval University, student researcher at the Center
+                        for Public Policy Analysis, and reserve soldier in the logistics branch of the Canadian
+                        Armed Forces.
                     </p>
                     <blockquote class="hero-quote">
                         <p>
-                            Both as a soldier and student researcher, I focus on Canadian and Quebec public policies, as well as social and economic issues. My current research projects analyze Canadian census data and social stratification.
+                            Both as a soldier and student researcher, I focus on Canadian and Quebec public
+                            policies, as well as social and economic issues. My current research projects analyze
+                            Canadian census data and social stratification.
                         </p>
                     </blockquote>
                 </div>
 
                 <div class="hero-media">
                     <div class="portrait-frame">
-                        <img src="/assets/profile-photo.png" alt="Portrait of Marc-Antoine S. Dupuis" class="portrait-image">
+                        <img src="../assets/profile-photo.png" alt="Portrait of Marc-Antoine S. Dupuis" class="portrait-image">
                     </div>
                 </div>
             </section>
 
-            <section class="projects-section" style="padding-top: 34px;">
+            <section class="projects-section">
                 <p class="section-label">Projects</p>
-                <div style="margin-top: 16px; padding-left: 18px; border-left: 2px solid var(--accent-soft);">
-                    <a href="/elections-qc/index.html" style="text-decoration: underline; color: var(--accent); font-family: var(--serif); font-size: 1.25rem; font-weight: 500;">Quebec General Elections Interactive Map (2018-2022)</a>
+                <div class="project-list">
+                    <article class="project-card">
+                        <img src="../assets/elections_qc.png" alt="Quebec elections map" class="project-thumb">
+                        <div>
+                            <h2 class="project-title">Quebec General Elections (2018-2022)</h2>
+                            <p class="project-text">
+                                Interactive map and analysis of Quebec's general election results for 2018 and
+                                2022.
+                            </p>
+                            <a href="../elections-qc/index.html" class="project-link">Explore the map</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <img src="../assets/datagotchi-logo.png" alt="Professeur Datagotchi logo" class="project-thumb">
+                        <div>
+                            <h2 class="project-title">Professeur Datagotchi</h2>
+                            <p class="project-text">
+                                A RAG chatbot that answers, in the voice of Professeur Datagotchi, questions about
+                                what Quebec's five party leaders said in interviews ahead of the 2026 general
+                                election.
+                            </p>
+                            <a href="https://professeur-datagotchi.vitrine-api-worker.workers.dev/" target="_blank" class="project-link">Chat with the bot</a>
+                        </div>
+                    </article>
                 </div>
             </section>
         </main>
 
-        <footer class="site-footer">&copy; 2025-2026 Marc-Antoine Dupuis All rights reserved.</footer>
+        <footer class="site-footer">&copy; 2025-2026 Marc-Antoine Dupuis. All rights reserved.</footer>
     </div>
-
 </body>
 </html>
