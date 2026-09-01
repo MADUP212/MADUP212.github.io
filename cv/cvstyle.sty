@@ -1,0 +1,58 @@
+% cvstyle.sty — mise en page du CV de Marc-Antoine Dupuis
+% Palatino (TeX Gyre Pagella), colonne de dates à gauche,
+% titres de section précédés d'un filet. Compilation : xelatex.
+\ProvidesPackage{cvstyle}[2026/09/01 CV layout]
+
+\usepackage[letterpaper,left=43.94pt,right=41pt,top=48pt,bottom=32pt]{geometry}
+\usepackage{fontspec}
+\usepackage{microtype}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+
+\setmainfont{TeX Gyre Pagella}[Ligatures=TeX]
+
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+\raggedbottom
+
+% --- Géométrie des deux colonnes -------------------------------------------
+\newlength{\cvindent}\setlength{\cvindent}{71.25pt} % dates | contenu
+\newlength{\cvdatewidth}\setlength{\cvdatewidth}{64pt}
+\newlength{\cvgap}\setlength{\cvgap}{7.25pt}
+\newlength{\cvbodywidth}
+\setlength{\cvbodywidth}{\dimexpr\textwidth-\cvindent\relax}
+
+% --- Titres de section ------------------------------------------------------
+\titleformat{\section}
+  {\normalfont\fontsize{12}{14}\selectfont\bfseries}
+  {}{0pt}
+  {\makebox[\cvindent][l]{\rule[0.2em]{2cm}{1.1pt}}}
+\titlespacing*{\section}{0pt}{5pt plus 1pt minus 1pt}{1.5pt}
+
+% --- Entrées ----------------------------------------------------------------
+% \cventry{date}{titre}{détail}  — le détail peut être vide.
+\newcommand{\cventry}[3]{%
+  \par\noindent
+  \hangindent=\cvindent \hangafter=1
+  \makebox[\cvindent][l]{\small #1}%
+  #2%
+  \def\cvtmp{#3}\ifx\cvtmp\empty\else\\ #3\fi
+  \par\vspace{1pt}}
+
+% \cvskill{libellé (peut être sur plusieurs lignes)}{contenu}
+\newcommand{\cvskill}[2]{%
+  \par\noindent
+  \begin{minipage}[t]{\cvdatewidth}\raggedright\bfseries\strut #1\end{minipage}%
+  \hspace{\cvgap}%
+  \begin{minipage}[t]{\cvbodywidth}\strut #2\end{minipage}%
+  \par\vspace{1pt}}
+
+% --- En-tête ----------------------------------------------------------------
+\newcommand{\cvheader}[3]{%
+  {\fontsize{24}{27}\selectfont\bfseries #1\par}
+  \vspace{2.5pt}
+  {#2\par}
+  \vspace{1.5pt}
+  {\small #3\par}}
+
+\newcommand{\cvsep}{\quad$\cdot$\quad}
