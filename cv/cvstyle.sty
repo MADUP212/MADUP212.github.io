@@ -47,6 +47,20 @@
   \begin{minipage}[t]{\cvbodywidth}\strut #2\end{minipage}%
   \par\vspace{1pt}}
 
+% \begin{cvitems} ... \end{cvitems} — sous-liste alignée sur la colonne de contenu.
+\newenvironment{cvitems}
+  {\vspace{-2pt}\begin{list}{\textendash}%
+     {\setlength{\leftmargin}{\dimexpr\cvindent+9pt\relax}%
+      \setlength{\labelwidth}{6pt}%
+      \setlength{\labelsep}{3pt}%
+      \setlength{\itemindent}{0pt}%
+      \setlength{\rightmargin}{0pt}%
+      \setlength{\topsep}{0pt}%
+      \setlength{\partopsep}{0pt}%
+      \setlength{\parsep}{0pt}%
+      \setlength{\itemsep}{0.5pt}}}
+  {\end{list}\vspace{1pt}}
+
 % --- En-tête ----------------------------------------------------------------
 \newcommand{\cvheader}[3]{%
   {\fontsize{24}{27}\selectfont\bfseries #1\par}
