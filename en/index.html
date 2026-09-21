@@ -1,217 +1,557 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marc-Antoine S. Dupuis — Political Scientist</title>
-    <meta name="description" content="Marc-Antoine S. Dupuis, Master's student in Political Science at Laval University, student researcher at the Center for Public Policy Analysis, and reserve soldier.">
-    <meta property="og:title" content="Marc-Antoine S. Dupuis — Political Scientist">
-    <meta property="og:description" content="Research on Canadian and Quebec public policy, census data, and social stratification.">
-    <meta property="og:image" content="../assets/profile-photo.png">
-    <meta property="og:type" content="website">
-    <link rel="alternate" hreflang="fr" href="../index.html">
-    <link rel="canonical" href="https://www.masdupuis.com/en/index.html">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="icon" type="image/jpeg" href="../assets/favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Marc-Antoine S. Dupuis</title>
+<meta name="description" content="Marc-Antoine S. Dupuis — master's student in political science at Université Laval, co-founder of Prof. Datagotchi, Canadian Army reservist.">
+<meta property="og:title" content="Marc-Antoine S. Dupuis — Political Scientist">
+<meta property="og:description" content="Master's in political science at Université Laval, co-founder of Prof. Datagotchi, research on social and linguistic stratification in Quebec and Canada.">
+<meta property="og:image" content="../img/portrait.png">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="fr" href="../index.html">
+<link rel="canonical" href="https://www.masdupuis.com/en/index.html">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<style>
+  /* Trois familles, chacune à sa place — la même règle que sur prof-datagotchi.com :
+     la police pixel pour le nom et les titres, Superpose pour l'interface (boutons,
+     étiquettes), un serif d'écran pour ce qui se lit. */
+  @font-face { font-family: "000webfont"; font-weight: 400; font-style: normal; font-display: swap;
+    src: url(../fonts/000webfont.woff2) format("woff2"); }
+  @font-face { font-family: "Superpose"; font-weight: 400; font-style: normal; font-display: swap;
+    src: url(../fonts/Superpose-Regular.woff2) format("woff2"); }
+  @font-face { font-family: "Superpose"; font-weight: 700; font-style: normal; font-display: swap;
+    src: url(../fonts/Superpose-Bold.woff2) format("woff2"); }
+  @font-face { font-family: "Source Serif 4"; font-weight: 200 900; font-style: normal; font-display: swap;
+    src: url(../fonts/SourceSerif4-Variable.woff2) format("woff2"); }
+  @font-face { font-family: "Source Serif 4"; font-weight: 200 900; font-style: italic; font-display: swap;
+    src: url(../fonts/SourceSerif4-Italic-Variable.woff2) format("woff2"); }
+
+  /* La palette de la classe du professeur : encre brune, papier, socle beige,
+     l'ampoule comme accent, le tableau pour ce qui touche aux sources. */
+  :root {
+    --ink: #2a1e14;
+    --paper: #faf5ec;
+    --off: #ece0cd;
+    --well: #d5c4aa;
+    --hairline: #b9a486;
+    --muted: #574632;
+    --accent: #e0912a;
+    --accent-bright: #f7c05a;
+    --accent-deep: #8f5314;
+    --board: #3f6b7e;
+    --font-body: "Superpose", "Helvetica Neue", Arial, sans-serif;
+    --font-display: "000webfont", "Superpose", Arial, sans-serif;
+    --font-prose: "Source Serif 4", Georgia, "Times New Roman", serif;
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  /* Le fond de page : le socle beige rayé en diagonale, la feuille de papier posée dessus. */
+  body {
+    margin: 0;
+    background-color: var(--off);
+    background-image: repeating-linear-gradient(135deg, transparent 0 14px, rgba(42, 30, 20, 0.05) 14px 28px);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::selection { background: var(--accent); color: var(--ink); }
+  img { display: block; max-width: 100%; }
+  p, h1, h2, h3, ul, ol { margin: 0; }
+  ul, ol { padding: 0; list-style: none; }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-deep); outline-offset: 2px; }
+
+  .sheet {
+    max-width: 880px;
+    margin: 0 auto;
+    background: var(--paper);
+    border-left: 2px solid var(--ink);
+    border-right: 2px solid var(--ink);
+    min-height: 100vh;
+  }
+  @media (max-width: 900px) {
+    .sheet { border-left: 0; border-right: 0; }
+  }
+
+  /* Les étiquettes : petites capitales espacées, en gras. */
+  .caps {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+  .display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+  }
+  .prose {
+    font-family: var(--font-prose);
+    font-size: 17px;
+    line-height: 1.55;
+    max-width: 62ch;
+  }
+  .prose p + p { margin-top: 0.85em; }
+  .prose a { color: var(--accent-deep); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
+  .prose a:hover { color: var(--ink); }
+  .prose strong { font-weight: 700; }
+
+  /* ── Le boîtier : la bande du haut ── */
+  .masthead {
+    background: var(--well);
+    border-bottom: 2px solid var(--ink);
+    padding: 22px clamp(16px, 4vw, 40px) 24px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 18px clamp(18px, 3vw, 32px);
+    align-items: end;
+  }
+  .portrait {
+    width: 132px;
+    height: 143px;
+    border: 2px solid var(--ink);
+    background: var(--paper);
+    box-shadow: 5px 5px 0 var(--ink);
+    overflow: hidden;
+    display: grid;
+    align-items: end;
+    justify-items: center;
+  }
+  .portrait img {
+    width: 130px;
+    height: auto;
+    image-rendering: pixelated;
+    margin-bottom: -3px;
+  }
+  .identity { min-width: 0; padding-bottom: 6px; }
+  .identity .caps { color: var(--muted); }
+  .name {
+    margin-top: 10px;
+    font-size: clamp(26px, 5.2vw, 40px);
+    text-wrap: balance;
+  }
+  .stamp {
+    display: inline-block;
+    margin-top: 12px;
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    padding: 4px 7px 3px;
+    font-size: 10.5px;
+    white-space: nowrap;
+  }
+  .stamp + .stamp { margin-left: 6px; }
+
+  /* La rangée de commandes, en pleine largeur sous l'identité. */
+  .toolbar {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .toolbar .spacer { flex: 1; }
+  .btn {
+    display: inline-flex;
+    height: 36px;
+    align-items: center;
+    gap: 0.45em;
+    border: 1.5px solid var(--ink);
+    border-radius: 0;
+    background: var(--paper);
+    padding: 0 0.8rem;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 120ms linear;
+  }
+  .btn:hover { background: var(--off); }
+  .btn:active { background: var(--accent); }
+  .btn svg { width: 15px; height: 15px; flex: none; }
+  .btn .ext { font-weight: 400; letter-spacing: 0; opacity: 0.8; }
+  .btn-ink { background: var(--ink); color: var(--paper); }
+  .btn-ink:hover { background: #3f2d1e; }
+  .btn-ink:active { background: var(--accent); color: var(--ink); }
+
+  /* ── La bulle d'accueil : deux points d'encre, la queue en escalier ── */
+  .hello {
+    position: relative;
+    margin: 28px clamp(16px, 4vw, 40px) 0;
+    border: 2px solid var(--ink);
+    border-radius: 2px;
+    background: var(--paper);
+    box-shadow: 5px 5px 0 var(--ink);
+    padding: 20px 24px 20px;
+  }
+  .hello .tail {
+    position: absolute;
+    top: -20px;
+    left: 40px;
+    width: 26px;
+    height: 20px;
+  }
+  .hello .prose { font-size: 18px; max-width: 64ch; }
+  .hello .prose em { font-style: italic; }
+
+  /* ── Les sections ── */
+  main { padding: 8px clamp(16px, 4vw, 40px) 56px; }
+  .section { padding-top: 44px; }
+  .section + .section { margin-top: 44px; border-top: 1.5px solid var(--ink); }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .section-head .caps { color: var(--muted); }
+  .section-head .since { color: var(--muted); font-family: var(--font-body); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; }
+  .section h2 {
+    margin-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--ink);
+    font-size: clamp(22px, 3.4vw, 28px);
+    text-wrap: balance;
+  }
+  .section-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 26px clamp(24px, 4vw, 48px);
+    align-items: start;
+    margin-top: 22px;
+  }
+  .section-body > .text { min-width: 0; }
+  .section-body .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+
+  /* La scène : un cadre d'encre, un plancher, le bonhomme debout dessus. */
+  .stage {
+    width: 236px;
+    border: 2px solid var(--ink);
+    border-radius: 2px;
+    background: var(--off);
+    box-shadow: 5px 5px 0 var(--ink);
+    display: grid;
+    grid-template-rows: 1fr auto;
+    justify-items: center;
+    align-items: end;
+    padding: 22px 12px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .stage::before {
+    /* Le plancher : une bande plus sombre, comme le sol du Défi. */
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 30px;
+    height: 16px;
+    background: var(--well);
+    border-top: 1.5px solid var(--hairline);
+  }
+  .stage img {
+    position: relative;
+    z-index: 1;
+    image-rendering: pixelated;
+    height: 220px;
+    width: auto;
+    margin-bottom: 30px;
+  }
+  .stage img.wide { height: 176px; margin-bottom: 40px; }
+  .stage img.tall { height: 240px; }
+  .stage figcaption {
+    grid-row: 2;
+    align-self: end;
+    justify-self: stretch;
+    z-index: 1;
+    background: var(--paper);
+    border-top: 2px solid var(--ink);
+    margin: 0 -12px;
+    padding: 7px 10px 6px;
+    color: var(--muted);
+    text-align: left;
+  }
+  /* Les deux tenues, l'une sous l'autre : la colonne fait la hauteur de la chronologie. */
+  .stage-pair { display: grid; gap: 22px; }
+  .stage-pair .stage img { height: 200px; }
+  .stage-pair .stage img.tall { height: 224px; }
+
+  /* Les listes de dates : la chronologie, où l'ordre est une information. */
+  .timeline { margin-top: 16px; display: grid; gap: 10px; }
+  .timeline li { display: grid; grid-template-columns: 84px 1fr; gap: 12px; align-items: start; }
+  .when {
+    border: 2px solid var(--ink);
+    padding: 3px 6px 2px;
+    font-size: 11.5px;
+    text-align: center;
+    background: var(--paper);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .when.now { background: var(--accent); }
+  .timeline .what { font-family: var(--font-prose); font-size: 16.5px; line-height: 1.45; padding-top: 1px; }
+  .timeline .what small { display: block; font-family: var(--font-body); font-size: 12.5px; color: var(--muted); margin-top: 2px; letter-spacing: 0.01em; }
+
+  .degrees { margin-top: 16px; display: grid; gap: 12px; }
+  .degrees li { border: 1.5px solid var(--ink); padding: 12px 14px; display: grid; gap: 4px; background: var(--paper); }
+  .degrees .caps { color: var(--muted); }
+  .degrees .title { font-family: var(--font-prose); font-weight: 700; font-size: 18px; line-height: 1.25; }
+  .degrees .detail { font-family: var(--font-prose); font-size: 15.5px; color: var(--muted); }
+
+  .facts { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .facts li { border: 1.5px solid var(--ink); background: var(--paper); padding: 5px 9px 4px; font-size: 11.5px; }
+  .facts li b { color: var(--accent-deep); }
+
+  /* Les présentations : une liste courte, en pied de page. */
+  .talks { margin-top: 16px; }
+  .talks li { display: grid; grid-template-columns: 84px 1fr auto; gap: 12px; align-items: center; padding: 12px 0; border-top: 1.5px solid var(--hairline); }
+  .talks li:last-child { border-bottom: 1.5px solid var(--hairline); }
+  .talks .what { font-family: var(--font-prose); font-size: 16.5px; }
+  .talks .what small { display: block; font-family: var(--font-body); font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+
+  footer {
+    border-top: 2px solid var(--ink);
+    background: var(--well);
+    padding: 16px clamp(16px, 4vw, 40px);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 16px;
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+  footer a { text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 720px) {
+    .section-body { grid-template-columns: 1fr; }
+    .section-body .figure { justify-self: center; }
+    .stage-pair { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; }
+    .stage-pair .stage { width: 170px; }
+    .timeline li { grid-template-columns: 76px 1fr; }
+    .talks li { grid-template-columns: 76px 1fr; }
+    .talks li .btn { grid-column: 2; justify-self: start; }
+  }
+  @media (max-width: 480px) {
+    .masthead { grid-template-columns: 1fr; align-items: start; }
+    .portrait { width: 112px; height: 122px; }
+    .portrait img { width: 110px; }
+    .hello { margin-left: 16px; margin-right: 16px; }
+    .stage-pair .stage { width: 156px; }
+    .stage-pair .stage img { height: 176px; }
+    .stage-pair .stage img.tall { height: 196px; }
+  }
+</style>
 </head>
-<body>
-    <div class="scroll-progress" aria-hidden="true"></div>
+<body id="top">
+<div class="sheet">
+  <header class="masthead">
+    <div class="portrait" aria-hidden="true">
+      <img src="../img/portrait.png" alt="" width="288" height="312">
+    </div>
+    <div class="identity">
+      <p class="caps">Political scientist · Quebec</p>
+      <h1 class="display name">Marc-Antoine S. Dupuis</h1>
+      <span class="caps stamp">Master's · Université Laval</span><span class="caps stamp">Reserve · Canadian Army</span>
+    </div>
+    <nav class="toolbar" aria-label="Main links">
+      <a class="btn" href="../assets/cv_en_2026.pdf" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3h8l5 5v13H6z" stroke-linejoin="round"/><path d="M14 3v5h5"/><path d="M9 13h7M9 17h7"/></svg>
+        CV <span class="ext">PDF</span>
+      </a>
+      <a class="btn" href="https://www.linkedin.com/in/marc-antoine-dupuis-a6a069233/" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3.5A1.5 1.5 0 1 1 4 6.5a1.5 1.5 0 0 1 0-3zM3 8h2.4v13H3zM9 8h2.3v1.8h.1c.4-.7 1.4-2 3.3-2 3.3 0 3.9 2.1 3.9 4.8V21h-2.4v-5.9c0-1.4 0-3.2-2-3.2s-2.3 1.5-2.3 3.1V21H9z"/></svg>
+        LinkedIn
+      </a>
+      <a class="btn" href="https://github.com/MADUP212" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5a3.9 3.9 0 0 1 1-2.7c-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.5 9.5 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>
+        GitHub
+      </a>
+      <a class="btn" href="#talks">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 4h18M5 4v11h14V4M12 15v4M9 21l3-2 3 2" stroke-linejoin="round" stroke-linecap="round"/></svg>
+        Talks
+      </a>
+      <span class="spacer"></span>
+      <a class="btn" href="../index.html" aria-label="Version française" title="Version française">FR</a>
+    </nav>
+  </header>
 
-    <header class="site-header">
-        <div class="wrap">
-            <div class="brand-block">
-                <span class="brand-title">Marc-Antoine S. Dupuis</span>
-                <span class="brand-role">Political Scientist</span>
-            </div>
+  <section class="hello" aria-label="Introduction">
+    <svg class="tail" viewBox="0 0 26 20" shape-rendering="crispEdges" aria-hidden="true">
+      <path d="M0 20 H26 V16 H22 V12 H18 V8 H14 V4 H10 V0 H6 V4 H2 V8 H0 Z" fill="#2a1e14"/>
+      <path d="M2 20 H24 V18 H20 V14 H16 V10 H12 V6 H8 V4 H6 V8 H4 V12 H2 Z" fill="#faf5ec"/>
+    </svg>
+    <div class="prose">
+      <p>Hello. I am a master's student in political science at Université Laval, a student researcher at the Centre d'analyse des politiques publiques and the CLESSN, a co-founder of <em>Prof. Datagotchi</em>, and a reservist in the Canadian Army. I am interested in what data says about Quebec society.</p>
+    </div>
+  </section>
 
-            <div class="site-nav">
-                <nav class="anchor-nav" aria-label="Main navigation">
-                    <a href="#profile" class="anchor-link">Profile</a>
-                    <a href="#research" class="anchor-link">Research</a>
-                    <a href="#projects" class="anchor-link">Projects</a>
-                    <a href="#presentations" class="anchor-link">Presentations</a>
-                    <a href="#contact" class="anchor-link">Contact</a>
-                </nav>
-                <a href="../index.html" class="lang-switch">FR</a>
-            </div>
+  <main>
+    <section class="section" id="datagotchi">
+      <div class="section-head">
+        <p class="caps">Project</p>
+        <span class="since">Since 2026 · prof-datagotchi.com</span>
+      </div>
+      <h2 class="display">Co-founder of Prof. Datagotchi</h2>
+      <div class="section-body">
+        <div class="text">
+          <div class="prose">
+            <p>Prof. Datagotchi is a robot professor who answers questions, in character, about what Quebec party leaders have said ahead of the 2026 general election. He does not guess: he quotes. Every answer rests on a verifiable corpus of interviews, press scrums, platforms and press releases, and the professor names his source rather than filling a gap.</p>
+            <p>Built at the Centre d'analyse des politiques publiques and the CLESSN at Université Laval, among the Datagotchi projects, he shares a classroom with the <a href="https://vitrinedemocratique.com/" target="_blank" rel="noopener noreferrer">Vitrine démocratique</a> and the Défi Datagotchi. I am one of its co-founders, and it went online in beta for the 2026 campaign.</p>
+          </div>
+          <ul class="facts caps" aria-label="By the numbers">
+            <li><b>285</b> interviews transcribed</li>
+            <li><b>5</b> parties, <b>6</b> spokespeople</li>
+            <li>Platforms, press releases, candidate profiles</li>
+          </ul>
+          <div class="actions">
+            <a class="btn btn-ink" href="https://prof-datagotchi.com" target="_blank" rel="noopener noreferrer">Talk to the professor ↗</a>
+            <a class="btn" href="https://github.com/clessn/datagotchi-chatbot-qc" target="_blank" rel="noopener noreferrer">The code</a>
+          </div>
         </div>
-    </header>
+        <figure class="figure stage">
+          <img src="../img/prof.png" alt="Prof. Datagotchi in pixels: a blue screen for a face, a white lab coat." width="200" height="320">
+          <figcaption class="caps">Prof. Datagotchi · 2026 –</figcaption>
+        </figure>
+      </div>
+    </section>
 
-    <main>
-        <section class="hero" id="profile">
-            <div class="wrap">
-                <div class="hero-grid">
-                    <div class="hero-copy">
-                        <span class="eyebrow">01 — Profile</span>
-                        <h1 class="hero-name">Marc-Antoine<br>S. Dupuis</h1>
-                        <p class="hero-lead">
-                            Master's student in Political Science at Laval University, student researcher at the
-                            Center for Public Policy Analysis, and reserve soldier in the logistics branch of the
-                            Canadian Armed Forces. I focus on Canadian and Quebec public policies, as well as
-                            social and economic issues.
-                        </p>
-                    </div>
-
-                    <div class="hero-media">
-                        <div class="portrait-frame">
-                            <img src="../assets/profile-photo.png" alt="Portrait of Marc-Antoine S. Dupuis" class="portrait-image">
-                        </div>
-                        <p class="portrait-caption">Quebec, Canada</p>
-                    </div>
-                </div>
-
-                <div class="stat-row reveal">
-                    <div class="stat-item">
-                        <span class="stat-num">01</span>
-                        <span class="stat-label">Education</span>
-                        <p class="stat-detail">Master's in Political Science, Laval University</p>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-num">02</span>
-                        <span class="stat-label">Research</span>
-                        <p class="stat-detail">Student researcher, Center for Public Policy Analysis</p>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-num">03</span>
-                        <span class="stat-label">Service</span>
-                        <p class="stat-detail">Reserve soldier, logistics, Canadian Armed Forces</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="research">
-            <div class="wrap">
-                <div class="section-head reveal">
-                    <span class="section-index">02</span>
-                    <div>
-                        <span class="section-label">Research</span>
-                        <h2 class="section-title">Research focus</h2>
-                    </div>
-                </div>
-
-                <div class="research-list reveal">
-                    <div class="research-item">
-                        <span class="research-num">01</span>
-                        <span class="research-title">Public policy</span>
-                        <p class="research-detail">Canadian and Quebec public policies, social and economic issues.</p>
-                    </div>
-                    <div class="research-item">
-                        <span class="research-num">02</span>
-                        <span class="research-title">Canadian census</span>
-                        <p class="research-detail">Analysis of Canadian census data.</p>
-                    </div>
-                    <div class="research-item">
-                        <span class="research-num">03</span>
-                        <span class="research-title">Social stratification</span>
-                        <p class="research-detail">Dynamics of social stratification in Quebec.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects">
-            <div class="wrap">
-                <div class="section-head reveal">
-                    <span class="section-index">03</span>
-                    <div>
-                        <span class="section-label">Projects</span>
-                        <h2 class="section-title">Selected projects</h2>
-                    </div>
-                </div>
-
-                <div class="project-row reveal">
-                    <div class="project-visual project-visual--mark">
-                        <img src="../assets/datagotchi-logo.png" alt="Professeur Datagotchi logo">
-                    </div>
-                    <div class="project-body">
-                        <span class="project-index">01</span>
-                        <h3 class="project-title">Professeur Datagotchi</h3>
-                        <p class="project-text">
-                            A RAG chatbot that answers, in the voice of Professeur Datagotchi, questions about what
-                            Quebec's five party leaders said in interviews ahead of the 2026 general election.
-                        </p>
-                        <a href="https://professeur-datagotchi.vitrine-api-worker.workers.dev/" target="_blank" rel="noopener noreferrer" class="project-link">Chat with the bot <span aria-hidden="true">→</span></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="presentations">
-            <div class="wrap">
-                <div class="section-head reveal">
-                    <span class="section-index">04</span>
-                    <div>
-                        <span class="section-label">Presentations</span>
-                        <h2 class="section-title">Presentations</h2>
-                    </div>
-                </div>
-
-                <div class="project-row reveal">
-                    <div class="project-visual project-visual--mark">
-                        <img src="../presentation_eiom/eiom-logo.png" alt="EIOM logo">
-                    </div>
-                    <div class="project-body">
-                        <span class="project-index">01</span>
-                        <h3 class="project-title">EIOM 2026</h3>
-                        <p class="project-text">
-                            An introduction to markup languages (Markdown, LaTeX, Quarto, HTML) in the social
-                            sciences.
-                        </p>
-                        <a href="../presentation_eiom/presentation.html#/questions" class="project-link">View the presentation <span aria-hidden="true">→</span></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <div class="wrap">
-                <div class="section-head reveal">
-                    <span class="section-index">05</span>
-                    <div>
-                        <span class="section-label">Contact</span>
-                        <h2 class="section-title">Get in touch</h2>
-                    </div>
-                </div>
-
-                <p class="contact-lead reveal">
-                    CV, professional profile, and source code are available below.
-                </p>
-
-                <ul class="link-list reveal">
-                    <li class="link-item">
-                        <a href="../assets/cv_en_2026.pdf" target="_blank" rel="noopener noreferrer">
-                            <span>CV</span>
-                            <span class="link-arrow">PDF ↗</span>
-                        </a>
-                    </li>
-                    <li class="link-item">
-                        <a href="https://www.linkedin.com/in/marc-antoine-dupuis-a6a069233/" target="_blank" rel="noopener noreferrer">
-                            <span>LinkedIn</span>
-                            <span class="link-arrow">↗</span>
-                        </a>
-                    </li>
-                    <li class="link-item">
-                        <a href="https://github.com/MADUP212" target="_blank" rel="noopener noreferrer">
-                            <span>Github</span>
-                            <span class="link-arrow">↗</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="wrap footer-row">
-            <span>&copy; 2025-2026 Marc-Antoine Dupuis. All rights reserved.</span>
-            <a href="#profile" class="back-to-top">Back to top ↑</a>
+    <section class="section" id="education">
+      <div class="section-head">
+        <p class="caps">Education</p>
+        <span class="since">Political science</span>
+      </div>
+      <h2 class="display">Student</h2>
+      <div class="section-body">
+        <div class="text">
+          <div class="prose">
+            <p>Trained in comparative politics and political sociology, I am pursuing at the master's level a question left open by my bachelor's degree: how language and social position overlap in Quebec and Canada, and what public data can say about it.</p>
+          </div>
+          <ol class="degrees" aria-label="Degrees">
+            <li>
+              <span class="caps">Since 2025 · Université Laval</span>
+              <span class="title">Master's in political science</span>
+              <span class="detail">Student researcher at the Centre d'analyse des politiques publiques and the CLESSN.</span>
+            </li>
+            <li>
+              <span class="caps">2025 · UQAM</span>
+              <span class="title">Bachelor's in political science</span>
+              <span class="detail">Concentration in comparative politics and political sociology.</span>
+            </li>
+          </ol>
         </div>
-    </footer>
+        <figure class="figure stage">
+          <img src="../img/etudiant.png" alt="Marc-Antoine in pixels, wearing a mortarboard, holding a diploma beside a stack of books." width="280" height="320">
+          <figcaption class="caps">M.A. · Université Laval</figcaption>
+        </figure>
+      </div>
+    </section>
 
-    <script src="../assets/main.js"></script>
+    <section class="section" id="research">
+      <div class="section-head">
+        <p class="caps">Current research</p>
+        <span class="since">CLESSN · CAPP · since 2026</span>
+      </div>
+      <h2 class="display">Social and linguistic stratification in Quebec and Canada</h2>
+      <div class="section-body">
+        <div class="text">
+          <div class="prose">
+            <p>My research project looks at social and linguistic stratification in Quebec and Canada: how language and social position — income, occupation, education — overlap, and how that overlap shifts from one census to the next.</p>
+            <p>I carry it out as a student researcher at the <a href="https://www.clessn.com/" target="_blank" rel="noopener noreferrer">Chaire de leadership en enseignement des sciences sociales numériques (CLESSN)</a> and the <a href="https://capp-ulaval.ca/" target="_blank" rel="noopener noreferrer">Centre d'analyse des politiques publiques (CAPP)</a> at Université Laval, since 2026, using Canadian census data.</p>
+          </div>
+          <ul class="facts caps" aria-label="Keywords">
+            <li>Canadian census</li>
+            <li>Language and class</li>
+            <li>Quebec · Canada</li>
+          </ul>
+        </div>
+        <figure class="figure stage">
+          <img class="wide" src="../img/recherche.png" alt="Four layers in cross-section, small figures standing on each, with FR and EN speech bubbles above their heads." width="288" height="256">
+          <figcaption class="caps">Who speaks what, on which floor</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="reserve">
+      <div class="section-head">
+        <p class="caps">Service</p>
+        <span class="since">Reserve · since 2021</span>
+      </div>
+      <h2 class="display">Army reservist</h2>
+      <div class="section-body">
+        <div class="text">
+          <div class="prose">
+            <p>I enrolled in the Canadian Army Reserve in 2021 and now serve as a combat clerk in operations with the Régiment de la Chaudière, after a stretch as a human resources administrator in two regiments and a training centre.</p>
+          </div>
+          <ol class="timeline" aria-label="Military service">
+            <li>
+              <span class="caps when now">Current</span>
+              <span class="what">Combat clerk, operations<small>Régiment de la Chaudière · Lévis</small></span>
+            </li>
+            <li>
+              <span class="caps when">2026</span>
+              <span class="what">Human resources administrator<small>Army Training Centre – East · Valcartier</small></span>
+            </li>
+            <li>
+              <span class="caps when">2025 –</span>
+              <span class="what">Human resources administrator<small>Régiment de la Chaudière</small></span>
+            </li>
+            <li>
+              <span class="caps when">2024 – 25</span>
+              <span class="what">Human resources administrator<small>Régiment de Maisonneuve · Montreal</small></span>
+            </li>
+            <li>
+              <span class="caps when">2023</span>
+              <span class="what">Ceremonial Guard<small>Parliament Hill · Ottawa</small></span>
+            </li>
+            <li>
+              <span class="caps when">2021</span>
+              <span class="what">Enrolment<small>Canadian Army Reserve</small></span>
+            </li>
+          </ol>
+        </div>
+        <div class="figure stage-pair">
+          <figure class="stage">
+            <img src="../img/soldat.png" alt="Pixel figure in Canadian combat dress with a digital pattern, green beret, clipboard in hand." width="200" height="320">
+            <figcaption class="caps">Combat dress</figcaption>
+          </figure>
+          <figure class="stage">
+            <img class="tall" src="../img/garde.png" alt="Pixel figure of the Ceremonial Guard: bearskin cap, scarlet tunic, rifle at the shoulder." width="200" height="360">
+            <figcaption class="caps">Ceremonial Guard</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="talks">
+      <div class="section-head">
+        <p class="caps">Talks</p>
+      </div>
+      <h2 class="display">What I have presented</h2>
+      <ul class="talks">
+        <li>
+          <span class="caps when">2026</span>
+          <span class="what">An introduction to markup languages for the social sciences<small>Markdown, LaTeX, Quarto, HTML · EIOM summer school · in French</small></span>
+          <a class="btn" href="../presentation_eiom/presentation.html">View the slides</a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2025 – 2026 Marc-Antoine S. Dupuis</span>
+    <span>Artwork drawn in pixels, in the Datagotchi family.</span>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+</div>
+
 </body>
 </html>
