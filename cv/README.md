@@ -20,7 +20,7 @@ Dépendances : `xelatex` (paquet `texlive-xetex`) et la police **TeX Gyre
 Pagella** (`texlive-fonts-recommended` ou `fonts-texgyre`).
 
 Le script met aussi à jour le numéro de version des liens du CV dans
-`index.html` et `fr/index.html` (`?v=AAAAMMJJ`). Sans ce numéro, les téléphones
+`index.html` et `fr/index.html` (`?v=AAAAMMJJHHMM`). Sans ce numéro, les téléphones
 peuvent continuer d'afficher un ancien PDF gardé en cache sous la même adresse.
 
 Toute modification du CV doit passer par ces `.tex` — les PDF de `assets/` ne

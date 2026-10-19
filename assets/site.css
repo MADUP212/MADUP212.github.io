@@ -28,6 +28,8 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 h1, h2, h3, p, ul, ol { margin: 0; }
+/* L'exposant (44ᵉ) ne doit pas écarter les lignes. */
+sup { line-height: 0; }
 ul, ol { padding: 0; list-style: none; }
 a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
 a:hover { color: var(--ink); }
