@@ -8,5 +8,10 @@ for lang in fr en; do
   xelatex -interaction=nonstopmode "cv_${lang}.tex" >/dev/null
   cp "cv_${lang}.pdf" "../assets/cv_${lang}_2026.pdf"
 done
-rm -f ./*.aux ./*.log ./*.out
-echo "CV FR et EN régénérés dans assets/."
+rm -f ./*.aux ./*.log ./*.out ./cv_fr.pdf ./cv_en.pdf
+# Nouvelle adresse à chaque compilation (?v=date) : sinon les téléphones
+# ressortent un ancien PDF gardé en cache sous le même nom.
+v=$(date +%Y%m%d)
+sed -i.bak -E "s/(cv_(fr|en)_2026\.pdf)(\?v=[0-9]+)?\"/\1?v=${v}\"/g" ../index.html ../fr/index.html
+rm -f ../index.html.bak ../fr/index.html.bak
+echo "CV FR et EN régénérés dans assets/ (liens : ?v=${v})."

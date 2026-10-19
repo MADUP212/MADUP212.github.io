@@ -9,9 +9,14 @@
 \usepackage{titlesec}
 \usepackage[hidelinks]{hyperref}
 
-\setmainfont{TeX Gyre Pagella}[Ligatures=TeX]
+% Chargée par nom de fichier : fonctionne avec la police fournie par TeX Live,
+% même quand elle n'est pas installée dans le système.
+\setmainfont{texgyrepagella}[
+  Extension=.otf, UprightFont=*-regular, BoldFont=*-bold,
+  ItalicFont=*-italic, BoldItalicFont=*-bolditalic, Ligatures=TeX]
 
 \setlength{\parindent}{0pt}
+\setlength{\emergencystretch}{3em} % évite les lignes qui débordent
 \pagestyle{empty}
 \raggedbottom
 
